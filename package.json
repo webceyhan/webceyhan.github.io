@@ -1,0 +1,24 @@
+{
+    "name": "vcard",
+    "version": "1.0.0",
+    "description": "==================================================================================================",
+    "main": "index.js",
+    "scripts": {
+        "serve": "live-server",
+        "start": "npm run serve",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/webceyhan/webceyhan.github.io.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/webceyhan/webceyhan.github.io/issues"
+    },
+    "homepage": "https://github.com/webceyhan/webceyhan.github.io#readme",
+    "devDependencies": {
+        "live-server": "^1.2.0"
+    }
+}

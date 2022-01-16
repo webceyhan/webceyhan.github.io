@@ -27,7 +27,7 @@
 
     <body>
         <!-- Header -->
-        <header class="p-5">
+        <header class="py-5 px-md-5">
             <div class="container text-center text-sm-start text-light p-md-5">
                 <div class="row align-items-center">
                     <div class="col-md-4">
@@ -64,7 +64,7 @@
         </header>
 
         <!-- Main Section -->
-        <main id="app" class="p-5">
+        <main id="app" class="py-5 px-md-5">
             <div class="container text-muted px-md-5">
                 <h1 class="display-4">Projects</h1>
                 <hr class="bg-white mb-4" />
@@ -76,7 +76,7 @@
                         :key="repo.id"
                     >
                         <div class="d-flex w-100 justify-content-between align-items-center">
-                            <i class="bi bi-git display-1 me-5 text-white text-opacity-50"></i>
+                            <i class="d-none d-md-block bi bi-git display-1 me-5 text-white text-opacity-50"></i>
 
                             <div class="flex-fill">
                                 <div
@@ -90,7 +90,7 @@
                                             {{repo.name}}
                                         </a>
                                     </h5>
-                                    <small
+                                    <small class="d-none d-md-block"
                                         >{{timestamp(repo.created_at)}}</small
                                     >
                                 </div>

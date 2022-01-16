@@ -1,5 +1,6 @@
 // GITHUP API //////////////////////////////////////////////////////////////////////////////////////
 
+const DEBUG = true;
 const GITHUB_URL = 'https://api.github.com/users/webceyhan';
 
 // const async getProfile = () => {
@@ -7,7 +8,9 @@ const GITHUB_URL = 'https://api.github.com/users/webceyhan';
 // }
 
 async function getRepositories() {
-    return await (await fetch(GITHUB_URL + '/repos')).json();
+    const url = DEBUG ? '/data/repos.json' : `${GITHUB_URL}/repos`;
+
+    return await (await fetch(url)).json();
 }
 
 const timestamp = (date) => new Date(date).toLocaleDateString();
@@ -21,8 +24,8 @@ Vue.createApp({
         };
     },
     methods: {
-        timestamp
-    },  
+        timestamp,
+    },
     async created() {
         this.repos = await getRepositories();
     },

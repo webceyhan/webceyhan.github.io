@@ -63,6 +63,34 @@
             </div>
         </header>
 
+        <!-- Main Section -->
+        <main id="app" class="p-5">
+            <div class="container">
+
+                <h1 class="display-4">Projects</h1>
+                <hr class="bg-white mb-4">
+
+                <ul class="list-group list-group-flush">
+                    <li
+                        class="list-group-item bg-transparent text-light border-secondary"
+                        v-for="repo in repos"
+                        :key="repo.id"
+                    >
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">
+                                <a :href="repo.homepage" target="__blank">
+                                    {{repo.name}}
+                                </a>
+                            </h5>
+                            <small>{{timestamp(repo.created_at)}}</small>
+                        </div>
+                        <p class="mb-1">{{repo.description}}</p>
+                        <small>And some small print.</small>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
         <!-- Footer -->
         <footer class="fixed-bottom py-5 px-md-5">
             <div class="container">
@@ -106,5 +134,9 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"
         ></script>
+
+        <!-- VueJs -->
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="app.js"></script>
     </body>
 </html>

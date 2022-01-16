@@ -75,8 +75,12 @@
                         v-for="repo in repos"
                         :key="repo.id"
                     >
-                        <div class="d-flex w-100 justify-content-between align-items-center">
-                            <i class="d-none d-md-block bi bi-git display-1 me-5 text-white text-opacity-50"></i>
+                        <div
+                            class="d-flex w-100 justify-content-between align-items-center"
+                        >
+                            <i
+                                class="d-none d-md-block bi bi-git display-1 me-5 text-white text-opacity-50"
+                            ></i>
 
                             <div class="flex-fill">
                                 <div
@@ -84,6 +88,7 @@
                                 >
                                     <h5 class="mb-1">
                                         <a
+                                            class="text-decoration-none"
                                             :href="repo.homepage"
                                             target="__blank"
                                         >

@@ -1,6 +1,5 @@
 // GITHUP API //////////////////////////////////////////////////////////////////////////////////////
 
-const DEBUG = true;
 const GITHUB_URL = 'https://api.github.com/users/webceyhan';
 
 // const async getProfile = () => {
@@ -8,7 +7,9 @@ const GITHUB_URL = 'https://api.github.com/users/webceyhan';
 // }
 
 async function getRepositories() {
-    const url = DEBUG ? '/data/repos.json' : `${GITHUB_URL}/repos`;
+    // const url = '/data/repos.json';
+    const url = `${GITHUB_URL}/repos`;
+
     const data = await (await fetch(url)).json();
 
     // filter repos without homepage (no deployed webapp)

@@ -1,6 +1,9 @@
 body {
-    background: url(../images/header-background.jpg) no-repeat bottom;
     background-color: #010204;
+}
+
+header {
+    background: url(../images/header-background.jpg) no-repeat bottom;
     background-size: cover;
     overflow: hidden;
 }

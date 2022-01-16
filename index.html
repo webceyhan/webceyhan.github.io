@@ -65,14 +65,13 @@
 
         <!-- Main Section -->
         <main id="app" class="p-5">
-            <div class="container">
-
+            <div class="container text-muted">
                 <h1 class="display-4">Projects</h1>
-                <hr class="bg-white mb-4">
+                <hr class="bg-white mb-4" />
 
                 <ul class="list-group list-group-flush">
                     <li
-                        class="list-group-item bg-transparent text-light border-secondary py-4"
+                        class="list-group-item bg-transparent border-secondary py-4"
                         v-for="repo in repos"
                         :key="repo.id"
                     >
@@ -84,8 +83,14 @@
                             </h5>
                             <small>{{timestamp(repo.created_at)}}</small>
                         </div>
-                        <p class="mb-1">{{repo.description}}</p>
-                        <small>And some small print.</small>
+                        <p class="text-light mb-1">{{repo.description}}</p>
+                        <small
+                            class="badge rounded-pill bg-dark text-muted me-2"
+                            v-for="(topic, i) in repo.topics"
+                            :key="i"
+                        >
+                            {{topic}}
+                        </small>
                     </li>
                 </ul>
             </div>

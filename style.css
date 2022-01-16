@@ -1,0 +1,17 @@
+body {
+    background-color: #010204;
+}
+
+header {
+    background: url(../images/header-background.jpg) no-repeat bottom;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+footer .nav-link {
+    color: rgb(148 184 215);
+}
+footer .nav-link:hover {
+    color: aliceblue;
+}

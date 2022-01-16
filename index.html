@@ -1,85 +1,167 @@
 <!DOCTYPE html>
-<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="favicon.ico" />
+        <title>Ceyhan.IO</title>
 
-<head>
+        <!-- Bootsrap CSS-->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
+        />
 
-    <!--- Basic Page Needs
-   ================================================== -->
-    <meta charset="utf-8">
-    <title>Evren Ceyhan</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <!-- Bootstrap Icons CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+        />
 
-    <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">    
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-    <!-- Mobile Specific Metas
-   ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <body>
+        <!-- Header -->
+        <header class="py-5 px-md-5">
+            <div class="container text-center text-sm-start text-light p-md-5">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div
+                            class="bg-light bg-opacity-25 rounded-circle p-2 mb-3"
+                        >
+                            <img
+                                class="img-fluid rounded-circle"
+                                src="https://avatars.githubusercontent.com/u/3739981?v=4"
+                                alt="avatar"
+                            />
+                        </div>
+                    </div>
 
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/media-queries.css">
+                    <div class="col-md-8">
+                        <h1 class="display-5 text-light text-opacity-50">
+                            Hi, I am
+                        </h1>
 
-    <!-- Script
-   ================================================== -->
-    <script src="js/modernizr.js"></script>
+                        <h1 class="display-1 mb-3">Evren Ceyhan</h1>
 
-</head>
+                        <h4 class="text-light text-opacity-50">
+                            I'm a Belgium based
+                            <span
+                                class="text-nowrap text-warning text-opacity-75-"
+                            >
+                                Full Stack Web Developer
+                            </span>
+                            at <img src="src/logo.png" class="img-fluid w-25" />
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-<body>
+        <!-- Main Section -->
+        <main id="app" class="py-5 px-md-5">
+            <div class="container text-muted px-md-5">
+                <h1 class="display-4">Projects</h1>
+                <hr class="bg-white mb-4" />
 
-    <!-- Header
-   ================================================== -->   
-    <header id="home">        
+                <ul class="list-group list-group-flush">
+                    <li
+                        class="list-group-item bg-transparent border-secondary py-4"
+                        v-for="repo in repos"
+                        :key="repo.id"
+                    >
+                        <div
+                            class="d-flex w-100 justify-content-between align-items-center"
+                        >
+                            <i
+                                class="d-none d-md-block bi bi-git display-1 me-5 text-white text-opacity-50"
+                            ></i>
 
-        <div class="row banner">
-            <div class="banner-text">
-                <h2>Hi, I am</h2>
-                <h1 class="responsive-headline">Evren Ceyhan</h1>
-                <h3>
-                    I'm a Belgium based
-                    <span>full-stack web developer</span> at                    
-                </h3>
-
-                <img src="src/logo.png" style="height:5rem">
-                
-                <hr />
-                <ul class="social">                    
-                    <li><a href="https://github.com/webceyhan"><i class="fa fa-github"></i></a></li>
-                    <!-- <li><a href="https://www.reddit.com/user/webceyhan"><i class="fa fa-reddit"></i></a></li> -->
-                    <li><a href="https://www.linkedin.com/in/webceyhan"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="https://twitter.com/webceyhan"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="https://www.facebook.com/webceyhan"><i class="fa fa-facebook"></i></a></li>                                                        
-                    <li><a href="https://www.instagram.com/webceyhan/"><i class="fa fa-instagram"></i></a></li>
+                            <div class="flex-fill">
+                                <div
+                                    class="d-flex w-100 justify-content-between"
+                                >
+                                    <h5 class="mb-1">
+                                        <a
+                                            class="text-decoration-none"
+                                            :href="repo.homepage"
+                                            target="__blank"
+                                        >
+                                            {{repo.name}}
+                                        </a>
+                                    </h5>
+                                    <small class="d-none d-md-block"
+                                        >{{timestamp(repo.created_at)}}</small
+                                    >
+                                </div>
+                                <p class="text-light mb-1">
+                                    {{repo.description}}
+                                </p>
+                                <small
+                                    class="badge rounded-pill bg-dark text-muted me-2"
+                                    v-for="(topic, i) in repo.topics"
+                                    :key="i"
+                                >
+                                    {{topic}}
+                                </small>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
-        </div>
+        </main>
 
-    </header>
-    <!-- Header End -->
+        <!-- Footer -->
+        <footer class="py-5 px-md-5">
+            <div class="container">
+                <!-- Social Links -->
+                <div class="nav justify-content-center h1">
+                    <a class="nav-link" href="https://github.com/webceyhan">
+                        <i class="bi bi-github"> </i>
+                    </a>
 
+                    <a
+                        class="nav-link"
+                        href="https://www.reddit.com/user/webceyhan"
+                    >
+                        <i class="bi bi-reddit"> </i>
+                    </a>
 
-    <!-- Java Script
-   ================================================== -->
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-   <script src="js/jquery.fittext.js"></script>
-   <script src="js/init.js"></script>-->
+                    <a
+                        class="nav-link"
+                        href="https://www.linkedin.com/in/webceyhan"
+                    >
+                        <i class="bi bi-linkedin"> </i>
+                    </a>
 
-</body>
+                    <a class="nav-link" href="https://twitter.com/webceyhan">
+                        <i class="bi bi-twitter"> </i>
+                    </a>
 
+                    <a
+                        class="nav-link"
+                        href="https://www.instagram.com/webceyhan/"
+                    >
+                        <i class="bi bi-instagram"> </i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- VueJs -->
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="app.js"></script>
+    </body>
 </html>

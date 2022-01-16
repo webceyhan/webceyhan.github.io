@@ -8,9 +8,10 @@ header {
     overflow: hidden;
 }
 
-#social-links .nav-link {
+
+footer .nav-link {
     color: rgb(148 184 215);
 }
-#social-links .nav-link:hover {
+footer .nav-link:hover {
     color: aliceblue;
 }

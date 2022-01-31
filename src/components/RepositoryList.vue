@@ -22,6 +22,30 @@ const filteredRepos = computed(() => {
         : props.repos.filter(({ topics }) => topics.some(topic => topic === selectedFilter.value))
 });
 
+
+const beforeEnter = (el) => {
+    el.style.opacity = 0
+    el.style.height = 0
+};
+
+const enter = (el, done) => {
+    gsap.to(el, {
+        opacity: 1,
+        height: '1.6em',
+        delay: el.dataset.index * 0.15,
+        onComplete: done
+    })
+};
+
+const leave = (el, done) => {
+    gsap.to(el, {
+        opacity: 0,
+        height: 0,
+        delay: el.dataset.index * 0.15,
+        onComplete: done
+    })
+};
+
 </script>
 
 <template>
@@ -42,9 +66,23 @@ const filteredRepos = computed(() => {
         </div>
 
         <div class="col-12 col-lg-8 offset-lg-1">
-            <ul class="list-group list-group-flush">
+            <transition-group name="list" tag="ul" class="list-group list-group-flush">
                 <repository v-for="repo in filteredRepos" :key="repo.id" :repo="repo" />
-            </ul>
+            </transition-group>
         </div>
     </div>
 </template>
+
+<style>
+.list-enter-active {
+    transition: all 300ms ease;
+}
+.list-leave-active {
+    transition: all 200ms ease;
+}
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(100px);
+}
+</style>

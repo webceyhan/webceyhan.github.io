@@ -1,3 +1,5 @@
+import SOCIAL_LINKS from './social-links';
+
 // define vars
 const IS_DEV = import.meta.env.DEV;
 const BASE_URL = 'https://api.github.com';
@@ -13,10 +15,6 @@ export const createGithubAPI = () => {
             return IS_DEV ? fetchFile('profile.json') : fetchJson(PROFILE_URL);
         },
 
-        getSocialLinks() {
-            return fetchFile('links.json');
-        },
-
         getRepositories(query = {}) {
             // return mock-data in DEV
             if (IS_DEV) return fetchFile('repos.json');
@@ -27,6 +25,10 @@ export const createGithubAPI = () => {
 
             // fetch and return json
             return fetchJson(url);
+        },
+
+        getSocialLinks() {
+            return SOCIAL_LINKS;
         },
     };
 };

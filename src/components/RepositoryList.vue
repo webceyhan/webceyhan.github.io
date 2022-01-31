@@ -27,11 +27,17 @@ const filteredRepos = computed(() => {
 <template>
     <h1 class="display-4">Projects</h1>
 
-    <topic-filter-nav :topics="filters" v-model="selectedFilter" />
-
     <hr class="bg-white mb-4" />
 
-    <ul class="list-group list-group-flush">
-        <repository v-for="repo in filteredRepos" :key="repo.id" :repo="repo" />
-    </ul>
+    <div class="row">
+        <div class="col-12 col-lg-3 mb-3">
+            <topic-filter-nav :topics="filters" v-model="selectedFilter" />
+        </div>
+
+        <div class="col-12 col-lg-8 offset-lg-1">
+            <ul class="list-group list-group-flush">
+                <repository v-for="repo in filteredRepos" :key="repo.id" :repo="repo" />
+            </ul>
+        </div>
+    </div>
 </template>

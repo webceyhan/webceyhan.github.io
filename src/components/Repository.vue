@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-    <li class="list-group-item bg-transparent border-secondary py-4">
+    <li class="list-group-item bg-dark bg-opacity-10 border-dark py-4">
         <div class="d-flex w-100 justify-content-between align-items-center">
             <i class="d-none d-md-block bi bi-git display-1 me-5 text-white text-opacity-50"></i>
 

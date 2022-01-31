@@ -57,7 +57,7 @@ const created = async () => {
                             class="text-nowrap text-warning"
                         >Full Stack Web Developer</span>
                         at
-                        <img src="src/logo.png" class="img-fluid w-25" />
+                        <img src="./assets/logo.png" class="img-fluid w-25" />
                     </h4>
                 </div>
             </div>

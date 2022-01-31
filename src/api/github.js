@@ -3,29 +3,32 @@ const IS_DEV = import.meta.env.DEV;
 const BASE_URL = 'https://api.github.com';
 const PROFILE_URL = `${BASE_URL}/users/webceyhan`;
 
-const fetchFile = async (path) =>
-    (await fetch(new URL(path, import.meta.url))).json();
+// helpers
+const fetchJson = async (url) => (await fetch(url)).json();
+const fetchFile = async (path) => fetchJson(new URL(path, import.meta.url));
 
-export const getSocialLinks = () => fetchFile('links.json');
+export const createGithubAPI = () => {
+    return {
+        getProfile() {
+            return IS_DEV ? fetchFile('profile.json') : fetchJson(PROFILE_URL);
+        },
 
-export const getProfile = async () => {
-    // return mock-data in DEV
-    if (IS_DEV) return fetchFile('profile.json');
+        getSocialLinks() {
+            return fetchFile('links.json');
+        },
 
-    // fetch and return json
-    return (await fetch(PROFILE_URL)).json();
-};
+        getRepositories(query = {}) {
+            // return mock-data in DEV
+            if (IS_DEV) return fetchFile('repos.json');
 
-export const getRepositories = async (query = {}) => {
-    // return mock-data in DEV
-    if (IS_DEV) return fetchFile('repos.json');
+            // create url with given query params
+            const url = new URL(`${PROFILE_URL}/repos`);
+            url.search = new URLSearchParams(query);
 
-    // create url with given query params
-    const url = new URL(`${PROFILE_URL}/repos`);
-    url.search = new URLSearchParams(query);
-
-    // fetch and return json
-    return (await fetch(url)).json();
+            // fetch and return json
+            return fetchJson(url);
+        },
+    };
 };
 
 // export const getRepositories = async () => {

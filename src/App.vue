@@ -1,10 +1,12 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
-import { getProfile, getRepositories, getSocialLinks } from './api/github';
+import { createGithubAPI } from './api/github';
 import Avatar from './components/Avatar.vue'
 import RepositoryList from './components/RepositoryList.vue'
 import SocialLinkNav from './components/SocialLinkNav.vue'
+
+const api = createGithubAPI();
 
 const profile = ref({});
 const repos = ref([]);
@@ -12,9 +14,9 @@ const socialLinks = ref([]);
 
 onMounted(async () => {
     // load api sources
-    profile.value = await getProfile();
-    repos.value = await getRepositories();
-    socialLinks.value = await getSocialLinks();
+    profile.value = await api.getProfile();
+    repos.value = await api.getRepositories();
+    socialLinks.value = await api.getSocialLinks();
 });
 
 </script>

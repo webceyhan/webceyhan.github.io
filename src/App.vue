@@ -14,7 +14,7 @@ const socialLinks = ref([]);
 onMounted(async () => {
     // load api sources
     profile.value = await api.getProfile();
-    repos.value = await api.getRepositories();
+    repos.value = await api.getRepositories({ sort: 'updated' });
     socialLinks.value = await api.getSocialLinks();
 });
 

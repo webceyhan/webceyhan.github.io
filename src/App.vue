@@ -1,33 +1,13 @@
-<script setup>import { ref } from 'vue';
+<script setup>
 
-// GITHUP API //////////////////////////////////////////////////////////////////////////////////////
-
-const GITHUB_URL = 'https://api.github.com/users/webceyhan';
-
-// const async getProfile = () => {
-//     return await fetch(GITHUB_URL);
-// }
-
-async function getRepositories() {
-    // const url = '/data/repos.json';
-    const url = `${GITHUB_URL}/repos`;
-
-    const data = await (await fetch(url)).json();
-
-    // filter repos without homepage (no deployed webapp)
-    return data.filter((repo) => repo.homepage !== '' && repo.homepage != null);
-}
-
-const timestamp = (date) => new Date(date).toLocaleDateString();
-
-// VUE /////////////////////////////////////////////////////////////////////////////////////////////
+import { ref, onMounted } from 'vue';
+import { getRepositories, timestamp } from './api/github';
 
 const repos = ref([]);
 
-const created = async () => {
-    this.repos = await getRepositories();
-}
-
+onMounted(async () => {
+    repos.value = await getRepositories();
+})
 
 </script>
 
@@ -57,7 +37,10 @@ const created = async () => {
                             class="text-nowrap text-warning"
                         >Full Stack Web Developer</span>
                         at
-                        <img src="./assets/logo.png" class="img-fluid w-25" />
+                        <img
+                            src="./assets/logo.png"
+                            class="img-fluid w-25"
+                        />
                     </h4>
                 </div>
             </div>

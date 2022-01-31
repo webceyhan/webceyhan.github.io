@@ -29,7 +29,7 @@ onMounted(async () => {
     </header>
 
     <!-- Main Section -->
-    <main class="py-5 px-md-5">
+    <main class="py-3 px-md-5">
         <div class="container text-muted px-md-5">
             <repository-list :repos="repos" />
         </div>

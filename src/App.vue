@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue';
 import { getProfile, getRepositories } from './api/github';
 import Avatar from './components/Avatar.vue'
 import RepositoryList from './components/RepositoryList.vue'
+import SocialLinkNav from './components/SocialLinkNav.vue'
 
 const profile = ref({});
 const repos = ref([]);
@@ -67,18 +68,7 @@ onMounted(async () => {
     <!-- Footer -->
     <footer class="py-5 px-md-5">
         <div class="container">
-            <!-- Social Links -->
-            <div class="nav justify-content-center h1">
-                <a
-                    v-for="(link, i) in socialLinks"
-                    :key="i"
-                    class="nav-link"
-                    target="__blank"
-                    :href="link.url"
-                >
-                    <i :class="`bi bi-${link.icon}`"></i>
-                </a>
-            </div>
+            <social-link-nav :links="socialLinks" />
         </div>
     </footer>
 </template>

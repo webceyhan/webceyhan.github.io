@@ -4,7 +4,13 @@ const BASE_URL = 'https://api.github.com';
 const PROFILE_URL = `${BASE_URL}/users/webceyhan`;
 
 export const getProfile = async () => {
-    return (await fetch(PROFILE_URL)).json();
+    // create url
+    let url = new URL(PROFILE_URL);
+
+    // change url to mock-data url in DEV
+    if (IS_DEV) url = new URL('profile.json', import.meta.url);
+
+    return (await fetch(url)).json();
 };
 
 export const getRepositories = async (query = {}) => {

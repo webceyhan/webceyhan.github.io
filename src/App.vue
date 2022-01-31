@@ -1,13 +1,16 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
-import { getRepositories } from './api/github';
+import { getProfile, getRepositories } from './api/github';
 import Avatar from './components/Avatar.vue'
 import RepositoryList from './components/RepositoryList.vue'
 
+const profile = ref({})
 const repos = ref([]);
 
 onMounted(async () => {
+    // load api sources
+    profile.value = await getProfile();
     repos.value = await getRepositories();
 })
 
@@ -19,16 +22,16 @@ onMounted(async () => {
         <div class="container text-center text-sm-start text-light p-md-5">
             <div class="row align-items-center">
                 <div class="col-md-4 d-flex justify-content-center">
-                    <avatar url="https://avatars.githubusercontent.com/u/3739981?v=4" />
+                    <avatar :url="profile.avatar_url" />
                 </div>
 
                 <div class="col-md-8">
                     <h1 class="display-5 text-light text-opacity-50">Hi, I am</h1>
 
-                    <h1 class="display-1 mb-3">Evren Ceyhan</h1>
+                    <h1 class="display-1 mb-3">{{ profile.name }}</h1>
 
                     <h4 class="text-light text-opacity-50">
-                        I'm a Belgium based
+                        I'm a {{ profile.location }} based
                         <span
                             class="text-nowrap text-warning"
                         >Full Stack Web Developer</span>

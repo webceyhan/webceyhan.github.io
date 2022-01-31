@@ -5,14 +5,22 @@ import { getProfile, getRepositories } from './api/github';
 import Avatar from './components/Avatar.vue'
 import RepositoryList from './components/RepositoryList.vue'
 
-const profile = ref({})
+const profile = ref({});
 const repos = ref([]);
+
+const socialLinks = ref([
+    { icon: 'github', url: 'https://github.com/webceyhan' },
+    { icon: 'reddit', url: 'https://www.reddit.com/user/webceyhan' },
+    { icon: 'linkedin', url: 'https://www.linkedin.com/in/webceyhan' },
+    { icon: 'twitter', url: 'https://twitter.com/webceyhan' },
+    { icon: 'instagram', url: 'https://www.instagram.com/webceyhan' },
+]);
 
 onMounted(async () => {
     // load api sources
     profile.value = await getProfile();
     repos.value = await getRepositories();
-})
+});
 
 </script>
 
@@ -61,24 +69,14 @@ onMounted(async () => {
         <div class="container">
             <!-- Social Links -->
             <div class="nav justify-content-center h1">
-                <a class="nav-link" target="__blank" href="https://github.com/webceyhan">
-                    <i class="bi bi-github"></i>
-                </a>
-
-                <a class="nav-link" target="__blank" href="https://www.reddit.com/user/webceyhan">
-                    <i class="bi bi-reddit"></i>
-                </a>
-
-                <a class="nav-link" target="__blank" href="https://www.linkedin.com/in/webceyhan">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-
-                <a class="nav-link" target="__blank" href="https://twitter.com/webceyhan">
-                    <i class="bi bi-twitter"></i>
-                </a>
-
-                <a class="nav-link" target="__blank" href="https://www.instagram.com/webceyhan/">
-                    <i class="bi bi-instagram"></i>
+                <a
+                    v-for="(link, i) in socialLinks"
+                    :key="i"
+                    class="nav-link"
+                    target="__blank"
+                    :href="link.url"
+                >
+                    <i :class="`bi bi-${link.icon}`"></i>
                 </a>
             </div>
         </div>

@@ -7,7 +7,7 @@
     "preview": "vite preview"
   },
   "author": "Evren Ceyhan",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webceyhan/webceyhan.github.io.git"

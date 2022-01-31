@@ -52,11 +52,8 @@ onMounted(async () => {
     </header>
 
     <!-- Main Section -->
-    <main id="app" class="py-5 px-md-5">
+    <main class="py-5 px-md-5">
         <div class="container text-muted px-md-5">
-            <h1 class="display-4">Projects</h1>
-            <hr class="bg-white mb-4" />
-
             <repository-list :repos="repos" />
         </div>
     </main>

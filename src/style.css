@@ -3,7 +3,7 @@ body {
 }
 
 header {
-    background: url(../images/header-background.jpg) no-repeat bottom;
+    background: url(./assets/header-background.jpg) no-repeat bottom;
     background-size: cover;
     overflow: hidden;
 }

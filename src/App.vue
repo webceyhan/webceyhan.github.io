@@ -2,6 +2,7 @@
 
 import { ref, onMounted } from 'vue';
 import { getRepositories } from './api/github';
+import Avatar from './components/Avatar.vue'
 import RepositoryList from './components/RepositoryList.vue'
 
 const repos = ref([]);
@@ -18,13 +19,7 @@ onMounted(async () => {
         <div class="container text-center text-sm-start text-light p-md-5">
             <div class="row align-items-center">
                 <div class="col-md-4 d-flex justify-content-center">
-                    <div class="bg-light bg-opacity-25 rounded-circle p-2 mb-3 w-75">
-                        <img
-                            class="img-fluid rounded-circle"
-                            src="https://avatars.githubusercontent.com/u/3739981?v=4"
-                            alt="avatar"
-                        />
-                    </div>
+                    <avatar url="https://avatars.githubusercontent.com/u/3739981?v=4" />
                 </div>
 
                 <div class="col-md-8">

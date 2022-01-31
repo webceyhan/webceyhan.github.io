@@ -1,4 +1,4 @@
-[![pages-build-deployment](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/pages/pages-build-deployment)
+[![Build and Deploy](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml)
 
 # CeyhanIO Landing Page
 

@@ -3,6 +3,11 @@ const IS_DEV = import.meta.env.DEV;
 const BASE_URL = 'https://api.github.com';
 const PROFILE_URL = `${BASE_URL}/users/webceyhan`;
 
+const fetchFile = async (path) =>
+    (await fetch(new URL(path, import.meta.url))).json();
+
+export const getSocialLinks = () => fetchFile('links.json');
+
 export const getProfile = async () => {
     // create url
     let url = new URL(PROFILE_URL);

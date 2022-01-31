@@ -1,26 +1,20 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
-import { getProfile, getRepositories } from './api/github';
+import { getProfile, getRepositories, getSocialLinks } from './api/github';
 import Avatar from './components/Avatar.vue'
 import RepositoryList from './components/RepositoryList.vue'
 import SocialLinkNav from './components/SocialLinkNav.vue'
 
 const profile = ref({});
 const repos = ref([]);
-
-const socialLinks = ref([
-    { icon: 'github', url: 'https://github.com/webceyhan' },
-    { icon: 'reddit', url: 'https://www.reddit.com/user/webceyhan' },
-    { icon: 'linkedin', url: 'https://www.linkedin.com/in/webceyhan' },
-    { icon: 'twitter', url: 'https://twitter.com/webceyhan' },
-    { icon: 'instagram', url: 'https://www.instagram.com/webceyhan' },
-]);
+const socialLinks = ref([]);
 
 onMounted(async () => {
     // load api sources
     profile.value = await getProfile();
     repos.value = await getRepositories();
+    socialLinks.value = await getSocialLinks();
 });
 
 </script>

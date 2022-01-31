@@ -1,7 +1,8 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
-import { getRepositories, timestamp } from './api/github';
+import { getRepositories } from './api/github';
+import RepositoryList from './components/RepositoryList.vue'
 
 const repos = ref([]);
 
@@ -53,38 +54,7 @@ onMounted(async () => {
             <h1 class="display-4">Projects</h1>
             <hr class="bg-white mb-4" />
 
-            <ul class="list-group list-group-flush">
-                <li
-                    class="list-group-item bg-transparent border-secondary py-4"
-                    v-for="repo in repos"
-                    :key="repo.id"
-                >
-                    <div class="d-flex w-100 justify-content-between align-items-center">
-                        <i
-                            class="d-none d-md-block bi bi-git display-1 me-5 text-white text-opacity-50"
-                        ></i>
-
-                        <div class="flex-fill">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">
-                                    <a
-                                        class="text-decoration-none"
-                                        :href="repo.homepage"
-                                        target="__blank"
-                                    >{{ repo.name }}</a>
-                                </h5>
-                                <small class="d-none d-md-block">{{ timestamp(repo.created_at) }}</small>
-                            </div>
-                            <p class="text-light mb-1">{{ repo.description }}</p>
-                            <small
-                                class="badge rounded-pill bg-dark text-muted me-2"
-                                v-for="(topic, i) in repo.topics"
-                                :key="i"
-                            >{{ topic }}</small>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            <repository-list :repos="repos" />
         </div>
     </main>
 

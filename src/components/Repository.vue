@@ -1,6 +1,6 @@
 <script setup>
 
-import { timestamp } from '../api/github';
+import { timestamp } from '../utils';
 import TopicList from './TopicList.vue'
 
 defineProps({

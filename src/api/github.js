@@ -26,5 +26,3 @@ export const getRepositories = async (query = {}) => {
 //     // filter repos without homepage (no deployed webapp)
 //     return data.filter((repo) => repo.homepage !== '' && repo.homepage != null);
 // };
-
-export const timestamp = (date) => new Date(date).toLocaleDateString();

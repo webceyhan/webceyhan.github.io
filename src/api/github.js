@@ -9,23 +9,22 @@ const fetchFile = async (path) =>
 export const getSocialLinks = () => fetchFile('links.json');
 
 export const getProfile = async () => {
-    // create url
-    let url = new URL(PROFILE_URL);
+    // return mock-data in DEV
+    if (IS_DEV) return fetchFile('profile.json');
 
-    // change url to mock-data url in DEV
-    if (IS_DEV) url = new URL('profile.json', import.meta.url);
-
-    return (await fetch(url)).json();
+    // fetch and return json
+    return (await fetch(PROFILE_URL)).json();
 };
 
 export const getRepositories = async (query = {}) => {
+    // return mock-data in DEV
+    if (IS_DEV) return fetchFile('repos.json');
+
     // create url with given query params
-    let url = new URL(`${PROFILE_URL}/repos`);
+    const url = new URL(`${PROFILE_URL}/repos`);
     url.search = new URLSearchParams(query);
 
-    // change url to mock-data url in DEV
-    if (IS_DEV) url = new URL('repos.json', import.meta.url);
-
+    // fetch and return json
     return (await fetch(url)).json();
 };
 

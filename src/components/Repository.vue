@@ -1,6 +1,7 @@
 <script setup>
 
 import { timestamp } from '../api/github';
+import TopicList from './TopicList.vue'
 
 defineProps({
     repo: Object
@@ -25,11 +26,7 @@ defineProps({
                     <small class="d-none d-md-block">{{ timestamp(repo.created_at) }}</small>
                 </div>
                 <p class="text-light mb-1">{{ repo.description }}</p>
-                <small
-                    class="badge rounded-pill bg-dark text-muted me-2"
-                    v-for="(topic, i) in repo.topics"
-                    :key="i"
-                >{{ topic }}</small>
+                <topic-list :topics="repo.topics" />
             </div>
         </div>
     </li>

@@ -25,13 +25,20 @@ const filteredRepos = computed(() => {
 </script>
 
 <template>
-    <h1 class="display-4">Projects</h1>
+    <h1 class="display-4 text-center text-md-start">
+        <i class="bi bi-github"></i>
+        Projects
+    </h1>
 
-    <hr class="bg-white mb-4" />
+    <hr class="bg-secondary mb-3" />
 
     <div class="row">
         <div class="col-12 col-lg-3 mb-3">
-            <topic-filter-nav :topics="filters" v-model="selectedFilter" />
+            <topic-filter-nav
+                class="justify-content-center justify-content-md-start"
+                :topics="filters"
+                v-model="selectedFilter"
+            />
         </div>
 
         <div class="col-12 col-lg-8 offset-lg-1">

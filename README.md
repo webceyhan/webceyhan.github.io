@@ -62,7 +62,15 @@ npm install npm@latest -g
     ```sh
     npm install
     ```
-
+4. Set your social link handles in .env file.
+    ```sh
+    # social-link handles
+    VITE_USER_GITHUB=
+    VITE_USER_REDDIT=
+    VITE_USER_LINKEDIN=
+    VITE_USER_TWITTER=
+    VITE_USER_INSTAGRAM=
+    ```
 <br>
 <!-- Usage Examples -->
 
@@ -83,7 +91,7 @@ npm run preview     # preview built app
 
 -   [ ] Vuex
 -   [ ] Project sort options
--   [ ] DotEnv configuration
+-   [x] DotEnv configuration
 
 > See the [open issues](https://github.com/webceyhan/webceyhan.github.io/issues) for a full list of proposed features (and known issues).
 

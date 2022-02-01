@@ -10,14 +10,14 @@
 
 <!-- Description -->
 
-This is a personal landing page which is served at [ceyhan.io](https://www.ceyhan.io/). 
+This is a personal landing page which is served at [ceyhan.io](https://www.ceyhan.io/).
 It contains a short personal introduction and list of projects i developed on GitHub. All data is dynamically fetched from GitHub REST API.
 Feel free to use it as your own landing page if you like.
 
 [View Demo](https://webceyhan.github.io) |
 [Report Issue](https://github.com/webceyhan/webceyhan.github.io/issues) |
 [Request Feature](https://github.com/webceyhan/webceyhan.github.io/pulls) |
-[Contact](mailto:evren.ceyhan@gmail.com)
+[@webceyhan](https://twitter.com/webceyhan)
 
 <br>
 <!-- Built With -->
@@ -85,13 +85,14 @@ npm run preview     # preview built app
 -   [ ] Project sort options
 -   [ ] DotEnv configuration
 
-> See the [open issues](./issues) for a full list of proposed features (and known issues).
+> See the [open issues](https://github.com/webceyhan/webceyhan.github.io/issues) for a full list of proposed features (and known issues).
 
 <br>
 <!-- Acknowledgments -->
 
 ## Acknowledgments
 
--   [GitHub Pages](https://pages.github.com/)
--   [GitHub Actions](https://docs.github.com/en/actions)
--   [GitHub REST API](https://docs.github.com/en/rest)
+-   Project hosted on [GitHub Pages](https://pages.github.com/)
+-   Project deployed with [GitHub Actions](https://docs.github.com/en/actions)
+    -   using [github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action)
+-   Data provided by [GitHub REST API](https://docs.github.com/en/rest)

@@ -22,30 +22,6 @@ const filteredRepos = computed(() => {
         : props.repos.filter(({ topics }) => topics.some(topic => topic === selectedFilter.value))
 });
 
-
-const beforeEnter = (el) => {
-    el.style.opacity = 0
-    el.style.height = 0
-};
-
-const enter = (el, done) => {
-    gsap.to(el, {
-        opacity: 1,
-        height: '1.6em',
-        delay: el.dataset.index * 0.15,
-        onComplete: done
-    })
-};
-
-const leave = (el, done) => {
-    gsap.to(el, {
-        opacity: 0,
-        height: 0,
-        delay: el.dataset.index * 0.15,
-        onComplete: done
-    })
-};
-
 </script>
 
 <template>

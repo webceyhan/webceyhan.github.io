@@ -4,22 +4,19 @@
 
 ![Logo](./src/assets/logo.png)
 
-<br>
  <!-- Title -->
 
 # CEYHAN I/O Landing Page
 
 <!-- Description -->
 
-This is a personal landing page which is served at [ceyhan.io](https://www.ceyhan.io/).
-
+This is a personal landing page which is served at [ceyhan.io](https://www.ceyhan.io/). 
 It contains a short personal introduction and list of projects i developed on GitHub. All data is dynamically fetched from GitHub REST API.
-
 Feel free to use it as your own landing page if you like.
 
-[View Demo](https://www.ceyhan.io/) |
-[Report Issue](./issues) |
-[Request Feature](./pulls) |
+[View Demo](https://webceyhan.github.io) |
+[Report Issue](https://github.com/webceyhan/webceyhan.github.io/issues) |
+[Request Feature](https://github.com/webceyhan/webceyhan.github.io/pulls) |
 [Contact](mailto:evren.ceyhan@gmail.com)
 
 <br>
@@ -34,7 +31,7 @@ Feel free to use it as your own landing page if you like.
 -   [Bootstrap Icons](https://icons.getbootstrap.com/)
 -   [GitHub REST API](https://docs.github.com/en/rest)
 
-<br/>
+<br>
 <!-- Prerequisites -->
 
 ## Prerequisites

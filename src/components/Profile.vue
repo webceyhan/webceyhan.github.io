@@ -23,7 +23,7 @@ defineProps({
                 I'm a {{ profile.location }} based
                 <span
                     class="text-nowrap text-warning"
-                >Full Stack Web Developer</span>
+                >{{ profile.bio }}</span>
                 at
                 <img src="../assets/logo.png" class="img-fluid w-25" />
             </h4>

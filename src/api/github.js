@@ -11,7 +11,7 @@ const fetchFile = async (path) => fetchJson(new URL(path, import.meta.url));
 export const getProfile = () =>
     IS_DEV ? fetchFile('profile.json') : fetchJson(API_USER_URL);
 
-export const getRepositories = (query = {}) =>
+export const getRepositories = (query = { sort: 'updated' }) =>
     IS_DEV
         ? fetchFile('repos.json')
         : fetchJson(`${API_USER_URL}/repos`, query);

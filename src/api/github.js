@@ -1,4 +1,4 @@
-import { fetchJson, IS_DEV, makeUrl } from '../utils';
+import { fetchJson, IS_DEV } from '../utils';
 
 // define vars
 const API_URL = 'https://api.github.com';
@@ -19,7 +19,7 @@ export const createGithubAPI = () => {
             if (IS_DEV) return fetchFile('repos.json');
 
             // fetch and return json
-            return fetchJson(makeUrl(`${API_USER_URL}/repos`, query));
+            return fetchJson(`${API_USER_URL}/repos`, query);
         },
     };
 };

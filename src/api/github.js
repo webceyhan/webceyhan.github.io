@@ -1,11 +1,11 @@
+import { fetchJson, IS_DEV } from '../utils';
+
 // define vars
-const IS_DEV = import.meta.env.DEV;
 const API_URL = 'https://api.github.com';
 const API_USER_ID = import.meta.env.VITE_USER_GITHUB;
 const API_USER_URL = `${API_URL}/users/${API_USER_ID}`;
 
 // helpers
-const fetchJson = async (url) => (await fetch(url)).json();
 const fetchFile = async (path) => fetchJson(new URL(path, import.meta.url));
 
 export const createGithubAPI = () => {

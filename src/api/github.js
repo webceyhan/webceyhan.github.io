@@ -1,5 +1,3 @@
-import SOCIAL_LINKS from './social-links';
-
 // define vars
 const IS_DEV = import.meta.env.DEV;
 const BASE_URL = 'https://api.github.com';
@@ -26,18 +24,5 @@ export const createGithubAPI = () => {
             // fetch and return json
             return fetchJson(url);
         },
-
-        getSocialLinks() {
-            return SOCIAL_LINKS;
-        },
     };
 };
-
-// export const getRepositories = async () => {
-//     const url = `${GITHUB_URL}/repos`;
-
-//     const data = await (await fetch(url)).json();
-
-//     // filter repos without homepage (no deployed webapp)
-//     return data.filter((repo) => repo.homepage !== '' && repo.homepage != null);
-// };

@@ -71,6 +71,15 @@ npm install npm@latest -g
     VITE_USER_TWITTER=
     VITE_USER_INSTAGRAM=
     ```
+5. Setup your GitHub profile settings to show in header section.
+    ```sh
+    name=       # Your Name
+    bio=        # Your Job Description
+    location=   # Where You're based in
+    company=    # Where you work at (optional)
+    ```
+> If you like to use a company logo instead of text, you can put a company-logo.png under the assets folder which will be automatically rendered.
+
 <br>
 <!-- Usage Examples -->
 

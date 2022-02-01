@@ -1,6 +1,9 @@
 <script setup>
 
+import { ref } from 'vue';
 import Avatar from './Avatar.vue'
+
+const showLogo = ref(true);
 
 defineProps({
     profile: Object
@@ -25,7 +28,13 @@ defineProps({
                     class="text-nowrap text-warning"
                 >{{ profile.bio }}</span>
                 at
-                <img src="../assets/logo.png" class="img-fluid w-25" />
+                <img
+                    v-if="showLogo"
+                    src="../assets/company-logo.png"
+                    class="img-fluid w-25"
+                    @error="showLogo = false"
+                />
+                <span v-else class="text-nowrap">{{ profile.company }}</span>
             </h4>
         </div>
     </div>

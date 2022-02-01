@@ -8,18 +8,10 @@ const API_USER_URL = `${API_URL}/users/${API_USER_ID}`;
 // helpers
 const fetchFile = async (path) => fetchJson(new URL(path, import.meta.url));
 
-export const createGithubAPI = () => {
-    return {
-        getProfile() {
-            return IS_DEV ? fetchFile('profile.json') : fetchJson(API_USER_URL);
-        },
+export const getProfile = () =>
+    IS_DEV ? fetchFile('profile.json') : fetchJson(API_USER_URL);
 
-        getRepositories(query = {}) {
-            // return mock-data in DEV
-            if (IS_DEV) return fetchFile('repos.json');
-
-            // fetch and return json
-            return fetchJson(`${API_USER_URL}/repos`, query);
-        },
-    };
-};
+export const getRepositories = (query = {}) =>
+    IS_DEV
+        ? fetchFile('repos.json')
+        : fetchJson(`${API_USER_URL}/repos`, query);

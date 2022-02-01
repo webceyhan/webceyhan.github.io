@@ -1,4 +1,4 @@
-import { fetchJson, IS_DEV } from '../utils';
+import { fetchJson, IS_DEV, makeUrl } from '../utils';
 
 // define vars
 const API_URL = 'https://api.github.com';
@@ -18,12 +18,8 @@ export const createGithubAPI = () => {
             // return mock-data in DEV
             if (IS_DEV) return fetchFile('repos.json');
 
-            // create url with given query params
-            const url = new URL(`${API_USER_URL}/repos`);
-            url.search = new URLSearchParams(query);
-
             // fetch and return json
-            return fetchJson(url);
+            return fetchJson(makeUrl(`${API_USER_URL}/repos`, query));
         },
     };
 };

@@ -1,27 +1,33 @@
-import { computed, ref } from 'vue';
+import { computed, reactive } from 'vue';
 import { getProfile } from '../api/github';
 
-// define states
-let preloaded = false;
-const loading = ref(false);
-const profile = ref({});
+// define state
+const state = reactive({
+    preloaded: false,
+    loading: false,
+    profile: {},
+});
+
+// define getters & setters
+const loading = computed(() => state.loading);
+const profile = computed(() => state.profile);
 
 // define actions
 const load = async () => {
-    loading.value = true;
-    profile.value = await getProfile();
-    loading.value = false;
-    preloaded = true;
+    state.loading = true;
+    state.profile = await getProfile();
+    state.loading = false;
+    state.preloaded = true;
 };
 
 // public API
 export function useProfile() {
     // preload oncce if needed
-    if (!preloaded) load();
+    if (!state.preloaded) load();
 
     return {
         load,
-        loading: computed(() => loading.value),
-        profile: computed(() => profile.value),
+        loading,
+        profile,
     };
 }

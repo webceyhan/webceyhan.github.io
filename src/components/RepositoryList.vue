@@ -5,16 +5,12 @@ import Repository from './Repository.vue'
 import TopicFilterNav from './TopicFilterNav.vue';
 
 const props = defineProps({
-    repos: Array
+    repos: Array,
+    topics: Array
 });
 
 const selectedFilter = ref(null);
 
-const filters = computed(() => {
-    return Array.from(props.repos.reduce((all,
-        { topics }) => new Set([...all, ...topics]), [])
-    );
-});
 
 const filteredRepos = computed(() => {
     return !selectedFilter.value
@@ -36,7 +32,7 @@ const filteredRepos = computed(() => {
         <div class="col-12 col-lg-3 mb-3">
             <topic-filter-nav
                 class="justify-content-center justify-content-md-start"
-                :topics="filters"
+                :topics="topics"
                 v-model="selectedFilter"
             />
         </div>

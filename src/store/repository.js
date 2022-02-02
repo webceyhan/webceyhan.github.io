@@ -23,5 +23,13 @@ export function useRepository() {
         load,
         loading: computed(() => loading.value),
         repositories: computed(() => repositories.value),
+        topics: computed(() =>
+            Array.from(
+                repositories.value.reduce(
+                    (all, { topics }) => new Set([...all, ...topics]),
+                    []
+                )
+            )
+        ),
     };
 }

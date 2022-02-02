@@ -7,7 +7,7 @@ import RepositoryList from './components/RepositoryList.vue'
 import SocialLinkNav from './components/SocialLinkNav.vue'
 import Profile from './components/Profile.vue';
 
-const { repositories } = useRepository()
+const { repositories, topics } = useRepository()
 const { profile } = useProfile();
 const { links } = useSocial()
 
@@ -24,7 +24,7 @@ const { links } = useSocial()
     <!-- Main Section -->
     <main class="py-3 px-md-5">
         <div class="container text-muted px-md-5">
-            <repository-list :repos="repositories" />
+            <repository-list :repos="repositories" :topics="topics" />
         </div>
     </main>
 

@@ -21,7 +21,7 @@ const onToggle = (topic) => {
             :key="i"
             href="#"
             @click.prevent="onToggle(topic)"
-            class="nav-link link-primary badge rounded-pill bg-dark me-1 mb-1"
+            class="nav-link link-primary badge rounded-pill bg-dark bg-opacity-50 me-1 mb-1"
             :class="{ 'text-light': topic === modelValue }"
         >{{ topic }}</a>
     </nav>

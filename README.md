@@ -2,7 +2,7 @@
 
 <!-- Logo -->
 
-![Logo](./src/assets/logo.png)
+![Logo](./src/assets/company-logo.png)
 
  <!-- Title -->
 

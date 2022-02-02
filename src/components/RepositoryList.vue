@@ -1,48 +1,17 @@
 <script setup>
 
-import { computed, ref } from 'vue';
 import Repository from './Repository.vue'
-import TopicFilterNav from './TopicFilterNav.vue';
 
-const props = defineProps({
+defineProps({
     repos: Array,
-    topics: Array
-});
-
-const selectedFilter = ref(null);
-
-
-const filteredRepos = computed(() => {
-    return !selectedFilter.value
-        ? props.repos
-        : props.repos.filter(({ topics }) => topics.some(topic => topic === selectedFilter.value))
 });
 
 </script>
 
 <template>
-    <h1 class="display-4 text-center text-md-start">
-        <i class="bi bi-github"></i>
-        Projects
-    </h1>
-
-    <hr class="bg-secondary mb-3" />
-
-    <div class="row">
-        <div class="col-12 col-lg-3 mb-3">
-            <topic-filter-nav
-                class="justify-content-center justify-content-md-start"
-                :topics="topics"
-                v-model="selectedFilter"
-            />
-        </div>
-
-        <div class="col-12 col-lg-8 offset-lg-1">
-            <transition-group name="list" tag="ul" class="list-group list-group-flush">
-                <repository v-for="repo in filteredRepos" :key="repo.id" :repo="repo" />
-            </transition-group>
-        </div>
-    </div>
+    <transition-group name="list" tag="ul" class="list-group list-group-flush">
+        <repository v-for="repo in repos" :key="repo.id" :repo="repo" />
+    </transition-group>
 </template>
 
 <style>

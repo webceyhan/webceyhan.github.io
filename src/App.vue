@@ -3,11 +3,12 @@
 import { useSocial } from './store/social';
 import { useProfile } from './store/profile';
 import { useRepository } from './store/repository';
+import Profile from './components/Profile.vue';
+import TopicFilterNav from './components/TopicFilterNav.vue';
 import RepositoryList from './components/RepositoryList.vue'
 import SocialLinkNav from './components/SocialLinkNav.vue'
-import Profile from './components/Profile.vue';
 
-const { repositories, topics } = useRepository()
+const { repositories, topics, selectedTopic } = useRepository()
 const { profile } = useProfile();
 const { links } = useSocial()
 
@@ -24,7 +25,26 @@ const { links } = useSocial()
     <!-- Main Section -->
     <main class="py-3 px-md-5">
         <div class="container text-muted px-md-5">
-            <repository-list :repos="repositories" :topics="topics" />
+            <h1 class="display-4 text-center text-md-start">
+                <i class="bi bi-github"></i>
+                Projects
+            </h1>
+
+            <hr class="bg-secondary mb-3" />
+
+            <div class="row">
+                <div class="col-12 col-lg-3 mb-3">
+                    <topic-filter-nav
+                        class="justify-content-center justify-content-md-start"
+                        :topics="topics"
+                        v-model="selectedTopic"
+                    />
+                </div>
+
+                <div class="col-12 col-lg-8 offset-lg-1">
+                    <repository-list :repos="repositories" />
+                </div>
+            </div>
         </div>
     </main>
 

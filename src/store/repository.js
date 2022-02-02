@@ -1,35 +1,58 @@
-import { computed, ref } from 'vue';
+import { computed, reactive } from 'vue';
 import { getRepositories } from '../api/github';
 
-// define states
-let preloaded = false;
-const loading = ref(false);
-const repositories = ref([]);
+// define state
+const state = reactive({
+    loading: false,
+    preloaded: false,
+    repositories: [],
+    topics: [],
+    selectedTopic: null,
+});
+
+// define getters & setters
+const loading = computed(() => state.loading);
+
+const topics = computed(() =>
+    Array.from(
+        state.repositories.reduce(
+            (all, { topics }) => new Set([...all, ...topics]),
+            []
+        )
+    )
+);
+
+const selectedTopic = computed({
+    get: () => state.selectedTopic,
+    set: (v) => (state.selectedTopic = v),
+});
+
+const repositories = computed(() => {
+    return !selectedTopic.value
+        ? state.repositories
+        : state.repositories.filter((repo) =>
+              repo.topics.includes(selectedTopic.value)
+          );
+});
 
 // define actions
 const load = async () => {
-    loading.value = true;
-    repositories.value = await getRepositories();
-    loading.value = false;
-    preloaded = true;
+    state.loading = true;
+    state.repositories = await getRepositories();
+    state.loading = false;
+    state.preloaded = true;
 };
 
 // public API
 export function useRepository() {
     // preload oncce if needed
-    if (!preloaded) load();
+    if (!state.preloaded) load();
 
     return {
         load,
-        loading: computed(() => loading.value),
-        repositories: computed(() => repositories.value),
-        topics: computed(() =>
-            Array.from(
-                repositories.value.reduce(
-                    (all, { topics }) => new Set([...all, ...topics]),
-                    []
-                )
-            )
-        ),
+        loading,
+        repositories,
+        topics,
+        selectedTopic,
     };
 }

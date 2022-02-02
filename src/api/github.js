@@ -1,5 +1,5 @@
 import { fetchJson, IS_DEV } from '../utils';
-import { normalizeRepoLanguages } from './languages';
+import LANGUAGES from './languages.json';
 
 // define vars
 const API_URL = 'https://api.github.com';
@@ -8,6 +8,18 @@ const API_USER_URL = `${API_URL}/users/${API_USER_ID}`;
 
 // helpers
 const fetchFile = async (path) => fetchJson(new URL(path, import.meta.url));
+
+const normalizeRepoLanguages = (languages) => {
+    // summarize total lines of languages in single repo
+    const lineSum = Object.values(languages).reduce((sum, v) => sum + v, 0);
+
+    return Object.entries(languages).map(([name, lines]) => ({
+        name,
+        lines,
+        color: LANGUAGES[name].color,
+        rate: (lines / lineSum) * 100,
+    }));
+};
 
 export const getProfile = () =>
     IS_DEV ? fetchFile('profile.json') : fetchJson(API_USER_URL);

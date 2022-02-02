@@ -98,7 +98,7 @@ npm run preview     # preview built app
 
 ## Roadmap
 
--   [ ] Vuex
+-   [x] State management
 -   [ ] Project sort options
 -   [x] DotEnv configuration
 

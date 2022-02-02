@@ -2,6 +2,7 @@
 
 import { timestamp } from '../utils';
 import TopicList from './TopicList.vue'
+import LanguageList from './LanguageList.vue';
 
 defineProps({
     repo: Object
@@ -26,7 +27,8 @@ defineProps({
                     <small class="d-none d-md-block">{{ timestamp(repo.created_at) }}</small>
                 </div>
                 <p class="text-light mb-1">{{ repo.description }}</p>
-                <topic-list :topics="repo.topics" />
+                <language-list :languages="repo.languages" />
+                <topic-list :topics="repo.topics" class="mt-1"/>
             </div>
         </div>
     </li>

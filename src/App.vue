@@ -1,22 +1,15 @@
 <script setup>
 
-import { ref, onMounted } from 'vue';
-import * as github from './api/github';
 import { useSocial } from './store/social';
+import { useProfile } from './store/profile';
+import { useRepository } from './store/repository';
 import RepositoryList from './components/RepositoryList.vue'
 import SocialLinkNav from './components/SocialLinkNav.vue'
 import Profile from './components/Profile.vue';
-import { useProfile } from './store/profile';
 
-// const profile = ref({});
-const repos = ref([]);
+const { repositories } = useRepository()
 const { profile } = useProfile();
 const { links } = useSocial()
-
-onMounted(async () => {
-    // load api sources
-    repos.value = await github.getRepositories();
-});
 
 </script>
 
@@ -31,7 +24,7 @@ onMounted(async () => {
     <!-- Main Section -->
     <main class="py-3 px-md-5">
         <div class="container text-muted px-md-5">
-            <repository-list :repos="repos" />
+            <repository-list :repos="repositories" />
         </div>
     </main>
 

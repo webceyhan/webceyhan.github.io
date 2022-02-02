@@ -3,13 +3,16 @@
 import { useRepository } from '../store/repository';
 import Loader from '../components/Loader.vue'
 import TopicFilterNav from '../components/TopicFilterNav.vue';
+import LanguageFilterNav from '../components/LanguageFilterNav.vue';
 import RepositoryList from '../components/RepositoryList.vue'
 
 const {
     loading,
     topics,
+    languages,
     repositories,
     selectedTopic,
+    selectedLanguage,
 } = useRepository();
 
 </script>
@@ -27,6 +30,12 @@ const {
             <loader v-if="loading" />
             <div v-else class="row">
                 <div class="col-12 col-lg-3 mb-3">
+                    <language-filter-nav
+                        class="justify-content-center justify-content-md-start mb-2"
+                        :languages="languages"
+                        v-model="selectedLanguage"
+                    />
+
                     <topic-filter-nav
                         class="justify-content-center justify-content-md-start"
                         :topics="topics"

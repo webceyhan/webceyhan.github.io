@@ -7,11 +7,3 @@ header {
     background-size: cover;
     overflow: hidden;
 }
-
-
-footer .nav-link {
-    color: rgb(148 184 215);
-}
-footer .nav-link:hover {
-    color: aliceblue;
-}

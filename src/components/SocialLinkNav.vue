@@ -13,3 +13,12 @@ defineProps({
         </a>
     </div>
 </template>
+
+<style scoped>
+.nav-link {
+    color: rgb(148 184 215);
+}
+.nav-link:hover {
+    color: aliceblue;
+}
+</style>

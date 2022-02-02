@@ -6,14 +6,15 @@ import { useSocial } from './store/social';
 import RepositoryList from './components/RepositoryList.vue'
 import SocialLinkNav from './components/SocialLinkNav.vue'
 import Profile from './components/Profile.vue';
+import { useProfile } from './store/profile';
 
-const profile = ref({});
+// const profile = ref({});
 const repos = ref([]);
+const { profile } = useProfile();
 const { links } = useSocial()
 
 onMounted(async () => {
     // load api sources
-    profile.value = await github.getProfile();
     repos.value = await github.getRepositories();
 });
 

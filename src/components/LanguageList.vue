@@ -11,12 +11,12 @@ defineProps({
         <small
             v-for="({ name, rate, color }, i) in languages"
             class="badge bg-transparent border border-dark me-2"
-            :style="{ color, opacity: 0.5 }"
+            :style="{ color }"
             :key="name"
         >{{ name }}</small>
     </div>
 
-    <div class="progress" style="height: 3px; opacity: 0.5;">
+    <div class="progress" style="height: 3px">
         <div
             v-for="({ name, rate, color }, i) in languages"
             class="progress-bar small"

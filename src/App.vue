@@ -2,14 +2,14 @@
 
 import { ref, onMounted } from 'vue';
 import * as github from './api/github';
-import { getSocialLinks } from './api/social';
+import { useSocial } from './store/social';
 import RepositoryList from './components/RepositoryList.vue'
 import SocialLinkNav from './components/SocialLinkNav.vue'
 import Profile from './components/Profile.vue';
 
 const profile = ref({});
 const repos = ref([]);
-const socialLinks = ref(getSocialLinks());
+const { links } = useSocial()
 
 onMounted(async () => {
     // load api sources
@@ -37,7 +37,7 @@ onMounted(async () => {
     <!-- Footer -->
     <footer class="py-5 px-md-5">
         <div class="container">
-            <social-link-nav :links="socialLinks" />
+            <social-link-nav :links="links" />
         </div>
     </footer>
 </template>

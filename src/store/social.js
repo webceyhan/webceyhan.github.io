@@ -1,4 +1,7 @@
-const LINKS = [
+import { computed } from 'vue';
+
+// define constants
+const AVAILABLE_LINKS = [
     {
         icon: 'github',
         url: 'https://github.com',
@@ -26,9 +29,15 @@ const LINKS = [
     },
 ];
 
-// return filtered and built links
-export const getSocialLinks = () =>
-    LINKS.filter((link) => !!link.id).map((link) => ({
-        ...link,
-        url: `${link.url}/${link.id}`,
-    }));
+// define getters
+const links = computed(() =>
+    AVAILABLE_LINKS.filter(({ id }) => !!id).map(({ icon, url, id }) => ({
+        icon,
+        url: `${url}/${id}`,
+    }))
+);
+
+// public API
+export function useSocial() {
+    return { links };
+}

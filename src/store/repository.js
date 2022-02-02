@@ -3,11 +3,11 @@ import { getRepositories } from '../api/github';
 
 // define state
 const state = reactive({
-    loading: false,
     preloaded: false,
+    loading: false,
     repositories: [],
-    topics: [],
     selectedTopic: null,
+    selectedLanguae: null,
 });
 
 // define getters & setters
@@ -22,17 +22,49 @@ const topics = computed(() =>
     )
 );
 
+const languages = computed(() => {
+    const all = {};
+
+    // populate key-based unique list
+    state.repositories.forEach(({ languages }) => {
+        languages.forEach((lang) => {
+            all[lang.name] = lang;
+        });
+    });
+
+    // return as array
+    return Object.values(all);
+});
+
 const selectedTopic = computed({
     get: () => state.selectedTopic,
     set: (v) => (state.selectedTopic = v),
 });
 
+const selectedLanguage = computed({
+    get: () => state.selectedLanguae,
+    set: (v) => (state.selectedLanguae = v),
+});
+
 const repositories = computed(() => {
-    return !selectedTopic.value
-        ? state.repositories
-        : state.repositories.filter((repo) =>
-              repo.topics.includes(selectedTopic.value)
-          );
+    // get repositories;
+    let repos = state.repositories;
+
+    // filter by language
+    if (selectedLanguage.value) {
+        repos = repos.filter((repo) =>
+            repo.languages.some(({ name }) => name === selectedLanguage.value)
+        );
+    }
+
+    // filter by topics
+    if (selectedTopic.value) {
+        repos = repos.filter((repo) =>
+            repo.topics.includes(selectedTopic.value)
+        );
+    }
+
+    return repos;
 });
 
 // define actions
@@ -51,8 +83,10 @@ export function useRepository() {
     return {
         load,
         loading,
-        repositories,
         topics,
+        languages,
+        repositories,
         selectedTopic,
+        selectedLanguage,
     };
 }

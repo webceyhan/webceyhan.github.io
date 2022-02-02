@@ -29,7 +29,7 @@ const {
 
             <loader v-if="loading" />
             <div v-else class="row">
-                <div class="col-12 col-lg-3 mb-3">
+                <div class="col-12 col-lg-3 mb-5">
                     <language-filter-nav
                         class="justify-content-center justify-content-md-start mb-2"
                         :languages="languages"

@@ -3,14 +3,25 @@
 import { useSocial } from './store/social';
 import { useProfile } from './store/profile';
 import { useRepository } from './store/repository';
+import Loader from './components/Loader.vue'
 import Profile from './components/Profile.vue';
 import TopicFilterNav from './components/TopicFilterNav.vue';
 import RepositoryList from './components/RepositoryList.vue'
 import SocialLinkNav from './components/SocialLinkNav.vue'
 
-const { repositories, topics, selectedTopic } = useRepository()
-const { profile } = useProfile();
-const { links } = useSocial()
+const {
+    repositories,
+    topics,
+    selectedTopic,
+    loading: repositoryLoading
+} = useRepository();
+
+const {
+    profile,
+    loading: profileLoading
+} = useProfile();
+
+const { links } = useSocial();
 
 </script>
 
@@ -18,7 +29,8 @@ const { links } = useSocial()
     <!-- Header -->
     <header class="py-5 px-md-5">
         <div class="container text-center text-sm-start text-light p-md-5">
-            <profile :profile="profile" />
+            <loader v-if="profileLoading" />
+            <profile v-else :profile="profile" />
         </div>
     </header>
 
@@ -32,7 +44,8 @@ const { links } = useSocial()
 
             <hr class="bg-secondary mb-3" />
 
-            <div class="row">
+            <loader v-if="repositoryLoading" />
+            <div v-else class="row">
                 <div class="col-12 col-lg-3 mb-3">
                     <topic-filter-nav
                         class="justify-content-center justify-content-md-start"

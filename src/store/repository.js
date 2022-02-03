@@ -13,14 +13,25 @@ const state = reactive({
 // define getters & setters
 const loading = computed(() => state.loading);
 
-const topics = computed(() =>
-    Array.from(
-        state.repositories.reduce(
-            (all, { topics }) => new Set([...all, ...topics]),
-            []
-        )
-    )
-);
+const topics = computed(() => {
+    /* name : rate */
+    const all = {};
+
+    // populate topic - rate list
+    state.repositories.forEach(({ topics }) =>
+        topics.forEach((topic) => {
+            all[topic] = (all[topic] || 0) + 1;
+        })
+    );
+
+    return (
+        Object.entries(all)
+            // sort from more to less line rate
+            .sort((a, b) => (a[1] < b[1] ? 1 : a[1] > b[1] ? -1 : 0))
+            // nap to name only
+            .map(([name]) => name)
+    );
+});
 
 const languages = computed(() => {
     const all = {};
@@ -39,14 +50,16 @@ const languages = computed(() => {
     });
 
     // return as array
-    return Object.values(all)
-        .map((lang) => ({
-            ...lang,
-            // calculate line rate
-            rate: (lang.lines / lineSum) * 100,
-        }))
-        // sort from more to less line rate
-        .sort((a, b) => (a.rate < b.rate ? 1 : a.rate > b.rate ? -1 : 0));
+    return (
+        Object.values(all)
+            .map((lang) => ({
+                ...lang,
+                // calculate line rate
+                rate: (lang.lines / lineSum) * 100,
+            }))
+            // sort from more to less line rate
+            .sort((a, b) => (a.rate < b.rate ? 1 : a.rate > b.rate ? -1 : 0))
+    );
 });
 
 const selectedTopic = computed({

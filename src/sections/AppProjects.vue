@@ -29,15 +29,15 @@ const {
 
             <loader v-if="loading" />
             <div v-else class="row g-lg-5">
-                <div class="col-12 col-lg-4 mb-5">
+                <div class="col-12 col-lg-4">
                     <language-filter-nav
-                        class="justify-content-center justify-content-md-start mb-2"
+                        class="justify-content-center justify-content-md-start mb-4"
                         :languages="languages"
                         v-model="selectedLanguage"
                     />
 
                     <topic-filter-nav
-                        class="justify-content-center justify-content-md-start"
+                        class="justify-content-center justify-content-md-start mb-4"
                         :topics="topics"
                         v-model="selectedTopic"
                     />

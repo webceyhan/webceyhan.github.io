@@ -24,16 +24,29 @@ const topics = computed(() =>
 
 const languages = computed(() => {
     const all = {};
+    let lineSum = 0;
 
     // populate key-based unique list
     state.repositories.forEach(({ languages }) => {
-        languages.forEach((lang) => {
-            all[lang.name] = lang;
+        languages.forEach(({ name, lines, color }) => {
+            // sum lines if exists or add new
+            if (all[name]) all[name].lines += lines;
+            else all[name] = { name, lines, color };
+
+            // sum total lines
+            lineSum += lines;
         });
     });
 
     // return as array
-    return Object.values(all);
+    return Object.values(all)
+        .map((lang) => ({
+            ...lang,
+            // calculate line rate
+            rate: (lang.lines / lineSum) * 100,
+        }))
+        // sort from more to less line rate
+        .sort((a, b) => (a.rate < b.rate ? 1 : a.rate > b.rate ? -1 : 0));
 });
 
 const selectedTopic = computed({

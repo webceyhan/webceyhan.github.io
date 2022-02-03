@@ -12,7 +12,7 @@ defineProps({
     <div class="mb-2">
         <small
             v-for="({ name, color }, i) in languages"
-            class="badge bg-transparent border border-dark me-2"
+            class="badge bg-transparent border border-dark text-muted me-2"
             :key="name"
         >
             <i class="bi bi-box me-1" :style="{ color }"></i>

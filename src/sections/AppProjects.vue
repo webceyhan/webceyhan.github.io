@@ -28,8 +28,8 @@ const {
             <hr class="bg-secondary mb-3" />
 
             <loader v-if="loading" />
-            <div v-else class="row">
-                <div class="col-12 col-lg-3 mb-5">
+            <div v-else class="row g-lg-5">
+                <div class="col-12 col-lg-4 mb-5">
                     <language-filter-nav
                         class="justify-content-center justify-content-md-start mb-2"
                         :languages="languages"
@@ -43,7 +43,7 @@ const {
                     />
                 </div>
 
-                <div class="col-12 col-lg-8 offset-lg-1">
+                <div class="col-12 col-lg-8">
                     <repository-list :repos="repositories" />
                 </div>
             </div>

@@ -11,11 +11,13 @@ defineProps({
 <template>
     <div class="mb-2">
         <small
-            v-for="({ name, rate, color }, i) in languages"
+            v-for="({ name, color }, i) in languages"
             class="badge bg-transparent border border-dark me-2"
-            :style="{ color }"
             :key="name"
-        >{{ name }}</small>
+        >
+            <i class="bi bi-box me-1" :style="{ color }"></i>
+            {{ name }}
+        </small>
     </div>
 
     <progress-bar :items="languages" style="height: 3px" />

@@ -1,5 +1,7 @@
 <script setup>
 
+import ProgressBar from './ProgressBar.vue';
+
 defineProps({
     languages: Array
 });
@@ -16,11 +18,5 @@ defineProps({
         >{{ name }}</small>
     </div>
 
-    <div class="progress" style="height: 3px">
-        <div
-            v-for="({ name, rate, color }, i) in languages"
-            class="progress-bar small"
-            :style="{ width: `${rate}%`, backgroundColor: color }"
-        ></div>
-    </div>
+    <progress-bar :items="languages" style="height: 3px" />
 </template>

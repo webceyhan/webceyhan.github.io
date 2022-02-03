@@ -43,13 +43,11 @@ defineProps({
 
 .repo-list .badge,
 .repo-list .progress {
-    filter: saturate(0);
-    opacity: 0.5;
+    filter: grayscale(1);
     transition: all 1s ease;
 }
 .repo-list:hover .badge,
 .repo-list:hover .progress {
-    filter: saturate(1);
-    opacity: 1;
+    filter: grayscale(0);
 }
 </style>

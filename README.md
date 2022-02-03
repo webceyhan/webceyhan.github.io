@@ -100,7 +100,7 @@ npm run preview     # preview built app
 ## Roadmap
 
 -   [x] State management
--   [ ] Project sort options
+-   [x] Project sort options
 -   [x] DotEnv configuration
 
 > See the [open issues](https://github.com/webceyhan/webceyhan.github.io/issues) for a full list of proposed features (and known issues).

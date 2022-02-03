@@ -17,7 +17,7 @@ const onToggle = (name) => {
 
 <template>
     <div>
-        <h5 class="mb-3">Languages</h5>
+        <h5 class="mb-2">Languages</h5>
 
         <progress-bar class="mb-2" :items="languages" />
 

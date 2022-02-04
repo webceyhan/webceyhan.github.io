@@ -1,5 +1,5 @@
-[![Build and Deploy](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml)
 [![CodeQL](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/codeql-analysis.yml)
+[![Build and Deploy](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml)
 
 <!-- Logo -->
 

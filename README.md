@@ -1,15 +1,15 @@
+<!-- AUTOMATION BADGES -->
 [![CodeQL](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/codeql-analysis.yml)
 [![Build and Deploy](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml)
 
-<!-- Logo -->
+<!-- LOGO (OPTIONAL) -->
 
 ![Logo](./src/assets/company-logo.png)
 
- <!-- Title -->
+<!-- HEADER ///////////////////////////////////////////////////////////// -->
+
 
 # CEYHAN I/O Landing Page
-
-<!-- Description -->
 
 This is a personal landing page which is served at [ceyhan.io](https://www.ceyhan.io/).
 It contains a short personal introduction and list of projects i developed on GitHub. All data is dynamically fetched from GitHub REST API.
@@ -21,33 +21,17 @@ Feel free to use it as your own landing page if you like.
 [@webceyhan](https://twitter.com/webceyhan)
 
 <br>
-<!-- Built With -->
+<!-- REQUIREMENTS /////////////////////////////////////////////////////// -->
 
-## Built With
+## Requirements
 
--   [Node.js](https://nodejs.dev/)
--   [Vite](https://vitejs.dev/)
--   [Vue.js](https://vuejs.org/)
--   [Bootstrap](https://getbootstrap.com)
--   [Bootstrap Icons](https://icons.getbootstrap.com/)
--   [GitHub REST API](https://docs.github.com/en/rest)
+You need to install the [Node.js](https://nodejs.dev/) and `npm` package manager first.
 
-<br>
-<!-- Prerequisites -->
-
-## Prerequisites
-
-You need to install the [Node.js](https://nodejs.dev/) and npm package manager first.
-
-```sh
-npm install npm@latest -g
-```
-
-> Recommended IDE settings:
+> Recommended IDE:
 > [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
 <br>
-<!-- Installation -->
+<!-- INSTALLATION //////////////////////////////////////////////////////// -->
 
 ## Installation
 
@@ -57,7 +41,7 @@ npm install npm@latest -g
     ```
 2. Get inside the cloned project folder.
     ```sh
-    cd <project folder>
+    cd webceyhan.github.io
     ```
 3. Install NPM packages.
     ```sh
@@ -82,35 +66,71 @@ npm install npm@latest -g
 > If you like to use a company logo instead of text, you can put a company-logo.png under the assets folder which will be automatically rendered.
 
 <br>
-<!-- Usage Examples -->
+<!-- USAGE /////////////////////////////////////////////////////////////// -->
 
 ## Usage
 
 You can use following commands to do various task with the project.
 
 ```sh
-npm run dev         # start development server
-npm run build       # build for production
-npm run preview     # preview built app
+npm run dev             # start development server
+npm run build           # build for production
+npm run preview         # preview built application
+```
+
+> Take a look at the other scripts in [`package.json`](./package.json)
+
+<br>
+
+<!-- DEVELOPMENT ///////////////////////////////////////////////////////// -->
+
+## Development
+
+Start the development server to watch changes while you code.
+
+```sh
+npm run dev
 ```
 
 <br>
-<!-- Roadmap -->
+<!-- BUILDING //////////////////////////////////////////////////////////// -->
 
-## Roadmap
+## Building
 
--   [x] State management
--   [x] Project sort options
--   [x] DotEnv configuration
+Build the application for production.
 
-> See the [open issues](https://github.com/webceyhan/webceyhan.github.io/issues) for a full list of proposed features (and known issues).
+```sh
+npm run build
+```
+
+You can also preview the application after building it.
+
+```sh
+npm run preview
+```
 
 <br>
-<!-- Acknowledgments -->
+<!-- DEPLOYMENT ////////////////////////////////////////////////////////// -->
 
-## Acknowledgments
+## Deployment (GitHub Pages)
 
--   Project hosted on [GitHub Pages](https://pages.github.com/)
--   Project deployed with [GitHub Actions](https://docs.github.com/en/actions)
-    -   using [github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action)
--   Data provided by [GitHub REST API](https://docs.github.com/en/rest)
+A GitHub Action will automatically deploy the project to GitHub Pages on every push.
+
+The workflow will build the project using npm and output the result to the `dist` folder which will be then pushed to the `gh-pages` branch.
+
+> See the details in [.github/workflows/build-and-deploy.yml](./.github/workflows/build-and-deploy.yml)
+
+<br>
+<!-- REFERENCES ////////////////////////////////////////////////////////// -->
+
+## References
+
+-   [Node.js](https://nodejs.dev/)
+-   [Vite](https://vitejs.dev/)
+-   [Vue.js](https://vuejs.org/)
+-   [Bootstrap](https://getbootstrap.com)
+-   [Bootstrap Icons](https://icons.getbootstrap.com/)
+-   [GitHub REST API](https://docs.github.com/en/rest)
+-   [GitHub Actions](https://docs.github.com/en/actions)
+    -   [GitHub Pages](https://pages.github.com/)
+    -   [github-pages-deploy-action](https://github.com/JamesIves/)

@@ -29,10 +29,10 @@ defineProps({
                         <span v-if="repo.homepage">
                         <span class="px-2">|</span>
                         <a
-                            class="text-decoration-none"
+                            class="text-decoration-none h6"
                             :href="repo.homepage"
                             target="__blank"
-                        ><small>DEMO</small></a>
+                        >DEMO</a>
                         </span>
                     </h5>
                     <small class="d-none d-md-block -text-muted">{{ timestamp(repo.created_at) }}</small>

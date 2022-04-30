@@ -22,9 +22,18 @@ defineProps({
                     <h5 class="mb-2">
                         <a
                             class="text-decoration-none"
-                            :href="repo.homepage"
+                            :href="repo.html_url"
                             target="__blank"
                         >{{ repo.name }}</a>
+
+                        <span v-if="repo.homepage">
+                        <span class="px-2">|</span>
+                        <a
+                            class="text-decoration-none"
+                            :href="repo.homepage"
+                            target="__blank"
+                        ><small>DEMO</small></a>
+                        </span>
                     </h5>
                     <small class="d-none d-md-block -text-muted">{{ timestamp(repo.created_at) }}</small>
                 </div>

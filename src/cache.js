@@ -10,20 +10,6 @@ const NAME = `${PREFIX}${VERSION}`;
 
 // METHODS /////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Try to get data from the cache, but fall back to fetching it live.
- */
-export async function fetchData(url) {
-    // try to get response from the cache
-    let cachedResponse = await getCachedResponse(url);
-
-    if (!cachedResponse || !cachedResponse.ok) {
-        return false;
-    }
-
-    return await cachedResponse.json();
-}
-
 export async function fetchResponse(url) {
     // try to get response from the cache
     let cachedResponse = await getCachedResponse(url);

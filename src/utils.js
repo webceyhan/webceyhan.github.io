@@ -1,4 +1,4 @@
-import { fetchData } from './cache';
+import { fetchResponse } from './cache';
 
 export const IS_DEV = import.meta.env.DEV;
 
@@ -12,4 +12,4 @@ export const makeUrl = (url, search = {}) => {
 };
 
 export const fetchJson = async (url, search = {}) =>
-    await fetchData(makeUrl(url, search)); //.json();
+    (await fetchResponse(makeUrl(url, search))).json();

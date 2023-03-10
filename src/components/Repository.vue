@@ -12,7 +12,7 @@ defineProps({
 
 <template>
     <li
-        class="repo-list list-group-item list-group-item-action bg-dark bg-opacity-25 border-5 py-4"
+        class="repo-list list-group-item list-group-item-action bg-dark bg-opacity-25 py-4"
     >
         <div class="d-flex w-100 justify-content-between align-items-center">
             <i class="d-none d-md-block bi bi-git display-1 -text-muted me-5"></i>

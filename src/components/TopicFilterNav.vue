@@ -1,32 +1,31 @@
 <script setup>
-
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
-    modelValue: String,
-    topics: Array
-})
+  modelValue: String,
+  topics: Array,
+});
 
 const onToggle = (topic) => {
-    const active = props.modelValue === topic;
-    emit('update:modelValue', active ? null : topic);
-}
-
+  const active = props.modelValue === topic;
+  emit("update:modelValue", active ? null : topic);
+};
 </script>
 
 <template>
-    <div>
-        <h5 class="mb-2">Topics</h5>
+  <div>
+    <h5>Topics</h5>
 
-        <nav class="nav">
-            <a
-                v-for="(topic, i) in topics"
-                :key="i"
-                href="#"
-                @click.prevent="onToggle(topic)"
-                class="nav-link link-primary badge rounded-pill bg-dark bg-opacity-50 me-1 mb-1"
-                :class="{ 'text-light': topic === modelValue }"
-            >{{ topic }}</a>
-        </nav>
-    </div>
+    <nav class="nav nav-pills gap-2">
+      <a
+        v-for="(topic, i) in topics"
+        :key="i"
+        href="#"
+        @click.prevent="onToggle(topic)"
+        class="nav-link rounded-pill bg-dark bg-opacity-50 fs-7 p-1 px-2"
+        :class="{ active: topic === modelValue }"
+        >{{ topic }}</a
+      >
+    </nav>
+  </div>
 </template>

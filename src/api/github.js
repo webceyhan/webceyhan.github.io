@@ -16,7 +16,7 @@ const normalizeRepoLanguages = (languages) => {
     return Object.entries(languages).map(([name, lines]) => ({
         name,
         lines,
-        color: LANGUAGES[name].color,
+        color: LANGUAGES[name]?.color,
         rate: (lines / lineSum) * 100,
     }));
 };
@@ -32,9 +32,14 @@ export const getRepositories = async (query = { sort: 'updated' }) => {
 
     // fetch languages per repository
     const reposWithLanguages = repos.map(async (repo) => {
-        const languages = IS_DEV
-            ? repo.languages // use as-is in DEV
-            : await fetchJson(repo.languages_url);
+        // define default language as fallback
+        let languages = { [repo.language]: 1 };
+
+        try {
+            languages = IS_DEV
+                ? repo.languages // use as-is in DEV
+                : await fetchJson(repo.languages_url);
+        } catch (e) {}
 
         // normalize languages per repository
         return { ...repo, languages: normalizeRepoLanguages(languages) };

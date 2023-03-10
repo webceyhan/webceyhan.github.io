@@ -28,24 +28,27 @@ const {
             <hr class="bg-secondary mb-3" />
 
             <loader v-if="loading" />
+
             <div v-else class="row g-lg-5">
-                <div class="col-12 col-lg-4">
+                <!-- side navigation -->
+                <aside class="col-12 col-lg-4 d-flex flex-column gap-4">
                     <language-filter-nav
-                        class="justify-content-center justify-content-md-start mb-4"
+                        class="justify-content-center justify-content-md-start"
                         :languages="languages"
                         v-model="selectedLanguage"
                     />
 
                     <topic-filter-nav
-                        class="justify-content-center justify-content-md-start mb-4"
+                        class="justify-content-center justify-content-md-start"
                         :topics="topics"
                         v-model="selectedTopic"
                     />
-                </div>
+                </aside>
 
-                <div class="col-12 col-lg-8">
+                <!-- content section -->
+                <section class="col-12 col-lg-8">
                     <repository-list :repos="repositories" />
-                </div>
+                </section>
             </div>
         </div>
     </main>

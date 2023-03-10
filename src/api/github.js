@@ -27,7 +27,7 @@ export const getProfile = () =>
 
 export const getRepositories = async (query = { sort: 'updated' }) => {
     // purge cache if modified since last cached request
-    purgeCacheIfModified(`${API_USER_URL}/repos`);
+    // purgeCacheIfModified(`${API_USER_URL}/repos`);
 
     // fetch data or use mock in DEV
     const repos = IS_DEV
@@ -53,24 +53,24 @@ export const getRepositories = async (query = { sort: 'updated' }) => {
     return Promise.all(reposWithLanguages);
 };
 
-export const purgeCacheIfModified = async (url) => {
-    // get etag from last cached request
-    const etag = localStorage.getItem('etag');
+// export const purgeCacheIfModified = async (url) => {
+//     // get etag from last cached request
+//     const etag = localStorage.getItem('etag');
 
-    // check if cache is still fresh
-    const response = await fetch(url, {
-        headers: { 'If-None-Match': etag },
-    });
+//     // check if cache is still fresh
+//     const response = await fetch(url, {
+//         headers: { 'If-None-Match': etag },
+//     });
 
-    if (response.status === 304) {
-        return console.log('Cache is still fresh');
-    }
+//     if (response.status === 304) {
+//         return console.log('Cache is still fresh');
+//     }
 
-    // purge cache
-    console.log('Cache is stale');
+//     // purge cache
+//     console.log('Cache is stale');
 
-    purgeExpiredCaches(true);
+//     purgeExpiredCaches(true);
 
-    // update etag of the last cached request
-    localStorage.setItem('etag', response.headers.get('etag'));
-};
+//     // update etag of the last cached request
+//     localStorage.setItem('etag', response.headers.get('etag'));
+// };

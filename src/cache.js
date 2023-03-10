@@ -10,12 +10,15 @@ const NAME = `${PREFIX}${VERSION}`;
 
 // METHODS /////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Fetch response from cache or fetch fresh one.
+ */
 export async function fetchResponse(url) {
     // try to get response from the cache
     let cachedResponse = await getCachedResponse(url);
 
     // return cached response if available
-    if (cachedResponse) {
+    if (cachedResponse && cachedResponse.ok) {
         console.log('Retrieved cached response');
         return cachedResponse;
     }
@@ -29,6 +32,9 @@ export async function fetchResponse(url) {
     return await getCachedResponse(url);
 }
 
+/**
+ * Get cached response from cache.
+ */
 async function getCachedResponse(url) {
     const cacheStorage = await caches.open(NAME);
     return await cacheStorage.match(url);
@@ -37,7 +43,7 @@ async function getCachedResponse(url) {
 /**
  * Purge expired caches to force a refresh.
  */
-export async function purgeExpiredCaches(force = false) {
+export async function purgeExpiredCaches(all = false) {
     // get all cache keys
     const cacheNames = await caches.keys();
 
@@ -46,7 +52,7 @@ export async function purgeExpiredCaches(force = false) {
             // filter out caches that don't match the prefix
             .filter((name) => name.startsWith(PREFIX))
             // filter out current cache
-            .filter((name) => !force && name !== NAME)
+            .filter((name) => !all && name !== NAME)
             // delete all other caches
             .map((name) => caches.delete(name))
     );

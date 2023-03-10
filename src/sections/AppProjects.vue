@@ -20,8 +20,8 @@ const {
 <template>
     <main>
         <div class="container text-muted px-md-5">
-            <h1 class="display-4 text-center text-md-start">
-                <i class="bi bi-github"></i>
+            <h1 class="display-5 text-center text-md-start">
+                <i class="bi bi-github me-2"></i>
                 Projects
             </h1>
 

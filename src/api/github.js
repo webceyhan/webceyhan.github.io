@@ -1,3 +1,4 @@
+import { purgeExpiredCaches } from '../cache';
 import { fetchJson, IS_DEV } from '../utils';
 import LANGUAGES from './languages.json';
 
@@ -25,6 +26,9 @@ export const getProfile = () =>
     IS_DEV ? fetchFile('profile.json') : fetchJson(API_USER_URL);
 
 export const getRepositories = async (query = { sort: 'updated' }) => {
+    // purge cache if modified since last cached request
+    purgeCacheIfModified(`${API_USER_URL}/repos`);
+
     // fetch data or use mock in DEV
     const repos = IS_DEV
         ? await fetchFile('repos.json')
@@ -47,4 +51,26 @@ export const getRepositories = async (query = { sort: 'updated' }) => {
 
     // return all promises as one
     return Promise.all(reposWithLanguages);
+};
+
+export const purgeCacheIfModified = async (url) => {
+    // get etag from last cached request
+    const etag = localStorage.getItem('etag');
+
+    // check if cache is still fresh
+    const response = await fetch(url, {
+        headers: { 'If-None-Match': etag },
+    });
+
+    if (response.status === 304) {
+        return console.log('Cache is still fresh');
+    }
+
+    // purge cache
+    console.log('Cache is stale');
+
+    purgeExpiredCaches(true);
+
+    // update etag of the last cached request
+    localStorage.setItem('etag', response.headers.get('etag'));
 };

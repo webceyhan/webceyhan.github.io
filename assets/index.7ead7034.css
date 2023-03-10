@@ -1,4 +1,4 @@
-@charset "UTF-8";.nav-link[data-v-5392bceb]{color:#94b8d7}.nav-link[data-v-5392bceb]:hover{color:#f0f8ff}.repo-list{border-color:#000!important}.repo-list .badge,.repo-list .progress{filter:grayscale(1);transition:all 1s ease}.repo-list:hover .badge,.repo-list:hover .progress{filter:grayscale(0)}.list-enter-active{transition:all .3s ease}.list-leave-active{transition:all .2s ease}.list-enter-from,.list-leave-to{opacity:0;transform:translate(100px)}/*!
+@charset "UTF-8";.nav-link[data-v-5392bceb]{color:#94b8d7}.nav-link[data-v-5392bceb]:hover{color:#f0f8ff}.repo-list{border-color:#000!important}.repo-list+.repo-list{border-top-width:5px!important}.repo-list .badge,.repo-list .progress{filter:grayscale(1);transition:all 1s ease}.repo-list:hover .badge,.repo-list:hover .progress{filter:grayscale(0)}.list-enter-active{transition:all .3s ease}.list-leave-active{transition:all .2s ease}.list-enter-from,.list-leave-to{opacity:0;transform:translate(100px)}/*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.

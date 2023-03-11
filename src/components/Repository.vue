@@ -13,7 +13,7 @@ defineProps({
     class="repo-list list-group-item list-group-item-action bg-dark border border-dark border-opacity-75 mb-2 py-4 rounded-2"
   >
     <div class="d-flex w-100 justify-content-between align-items-center">
-      <i class="d-none d-xl-block bi bi-git display-1 ms-4 me-5"></i>
+      <i class="d-none d-xl-block bi bi-git display-2 ms-4 me-5"></i>
 
       <div class="flex-fill d-grid gap-1">
         <div class="w-100 d-flex justify-content-between">

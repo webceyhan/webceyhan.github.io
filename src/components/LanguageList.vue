@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="mb-2">
+    <div class="text-truncate">
         <small
             v-for="({ name, color }, i) in languages"
             class="badge bg-transparent border border-dark text-muted me-2"
@@ -20,5 +20,5 @@ defineProps({
         </small>
     </div>
 
-    <progress-bar :items="languages" style="height: 3px" />
+    <progress-bar :items="languages" style="height: 3px" class="my-2" />
 </template>

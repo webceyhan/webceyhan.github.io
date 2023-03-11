@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-    <div>
+    <div class="text-truncate">
         <small
             class="badge rounded-pill bg-dark bg-opacity-50 text-muted me-2"
             v-for="(topic, i) in topics"

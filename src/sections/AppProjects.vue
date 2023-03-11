@@ -31,7 +31,7 @@ const {
 
             <div v-else class="row g-5">
                 <!-- side navigation -->
-                <aside class="col-12 col-lg-4 d-flex flex-column gap-4">
+                <aside class="col-12 col-lg-4 d-flex flex-column gap-5">
                     <language-filter-nav
                         class="justify-content-center justify-content-md-start"
                         :languages="languages"

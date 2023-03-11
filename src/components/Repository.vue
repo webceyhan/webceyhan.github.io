@@ -15,27 +15,33 @@ defineProps({
     <div class="d-flex w-100 justify-content-between align-items-center">
       <i class="d-none d-xl-block bi bi-git display-1 ms-4 me-5"></i>
 
-      <div class="flex-fill">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-2">
-            <a class="text-decoration-none" :href="repo.html_url" target="__blank">{{
-              repo.name
-            }}</a>
+      <div class="flex-fill d-grid gap-1">
+        <div class="w-100 d-flex justify-content-between">
+          <div class="w-100 d-flex align-items-center gap-2">
+            <a class="text-decoration-none h5 mb-1" :href="repo.html_url" target="__blank">
+              {{ repo.name }}
+            </a>
 
-            <span v-if="repo.homepage">
-              <span class="px-2">|</span>
-              <a class="text-decoration-none h6" :href="repo.homepage" target="__blank"
-                >DEMO</a
-              >
-            </span>
-          </h5>
-          <small class="d-none d-md-block -text-muted">{{
-            timestamp(repo.created_at)
-          }}</small>
+            <a
+              v-if="repo.homepage"
+              class="text-decoration-none btn badge btn-dark rounded-pill opacity-75"
+              :href="repo.homepage"
+              target="__blank"
+            >
+              DEMO
+            </a>
+          </div>
+
+          <small class="d-none d-md-block">
+            {{ timestamp(repo.created_at) }}
+          </small>
         </div>
+
         <p class="text-light mb-1">{{ repo.description }}</p>
+
         <language-list :languages="repo.languages" />
-        <topic-list :topics="repo.topics" class="mt-1" />
+
+        <topic-list :topics="repo.topics" />
       </div>
     </div>
   </li>

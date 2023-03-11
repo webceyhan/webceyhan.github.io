@@ -29,7 +29,7 @@ const {
 
             <loader v-if="loading" />
 
-            <div v-else class="row g-lg-5">
+            <div v-else class="row g-5">
                 <!-- side navigation -->
                 <aside class="col-12 col-lg-4 d-flex flex-column gap-4">
                     <language-filter-nav

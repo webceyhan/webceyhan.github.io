@@ -1,29 +1,27 @@
 <script setup>
-
-import Repository from './Repository.vue'
+import Repository from "./Repository.vue";
 
 defineProps({
-    repos: Array,
+  repos: Array,
 });
-
 </script>
 
 <template>
-    <transition-group name="list" tag="ul" class="list-group list-group-flush">
-        <repository v-for="repo in repos" :key="repo.id" :repo="repo" />
-    </transition-group>
+  <transition-group name="list" tag="ul" class="list-group list-group-flush">
+    <repository v-for="repo in repos" :key="repo.id" :repo="repo" />
+  </transition-group>
 </template>
 
 <style>
 .list-enter-active {
-    transition: all 300ms ease;
+  transition: all 300ms ease;
 }
 .list-leave-active {
-    transition: all 200ms ease;
+  transition: all 200ms ease;
 }
 .list-enter-from,
 .list-leave-to {
-    opacity: 0;
-    transform: translateX(100px);
+  opacity: 0;
+  transform: translateX(100px);
 }
 </style>

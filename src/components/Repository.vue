@@ -9,9 +9,11 @@ defineProps({
 </script>
 
 <template>
-  <li class="repo-list list-group-item list-group-item-action bg-dark bg-opacity-25 py-4">
+  <li
+    class="repo-list list-group-item list-group-item-action bg-dark border border-dark border-opacity-75 mb-2 py-4 rounded-2"
+  >
     <div class="d-flex w-100 justify-content-between align-items-center">
-      <i class="d-none d-md-block bi bi-git display-1 -text-muted me-5"></i>
+      <i class="d-none d-xl-block bi bi-git display-1 ms-4 me-5"></i>
 
       <div class="flex-fill">
         <div class="d-flex w-100 justify-content-between">
@@ -41,18 +43,21 @@ defineProps({
 
 <style>
 .repo-list {
-  border-color: black !important;
+  opacity: 0.8;
+  --bs-bg-opacity: 0.4 !important;
 }
 
-/* quick fix: border-5 causes all child elements to have same size of border */
-.repo-list + .repo-list {
-  border-top-width: 5px !important;
+.repo-list:hover {
+  opacity: 1;
+  --bs-bg-opacity: 0.6 !important;
+  --bs-border-opacity: 2 !important;
+  transition: opacity 500ms ease;
 }
 
 .repo-list .badge,
 .repo-list .progress {
   filter: grayscale(1);
-  transition: all 1s ease;
+  transition: filter 1s ease;
 }
 
 .repo-list:hover .badge,

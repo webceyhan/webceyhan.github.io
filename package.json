@@ -18,7 +18,7 @@
   "homepage": "https://github.com/webceyhan/webceyhan.github.io#readme",
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.3",
+    "bootstrap-icons": "^1.10.4",
     "vue": "^3.2.47"
   },
   "devDependencies": {

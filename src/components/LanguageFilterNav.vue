@@ -1,4 +1,6 @@
 <script setup>
+import Button from "./Button.vue";
+import Icon from "./Icon.vue";
 import ProgressBar from "./ProgressBar.vue";
 
 const emit = defineEmits(["update:modelValue"]);
@@ -16,22 +18,22 @@ const onToggle = (name) => {
 
 <template>
   <div>
-    <h5>Languages</h5>
+    <h5 class="text-xl">Languages</h5>
 
     <progress-bar class="my-3" :items="languages" />
 
-    <nav class="nav nav-pills gap-2">
-      <a
+    <nav class="flex flex-wrap gap-2">
+      <Button
         v-for="({ name, rate, color }, i) in languages"
         :key="name"
-        href="#"
-        @click.prevent="onToggle(name)"
-        class="nav-link bg-transparent border border-dark fs-7 p-1 px-2"
-        :class="{ active: name === modelValue }"
+        :active="name === modelValue"
+        @click="onToggle(name)"
+        variant="ghost"
+        small
       >
-        <i class="bi bi-box me-1" :style="{ color }"></i>
+        <Icon class="me-1" name="box" :style="{ color }" />
         {{ name }}
-      </a>
+      </Button>
     </nav>
   </div>
 </template>

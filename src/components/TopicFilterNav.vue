@@ -1,4 +1,5 @@
 <script setup>
+import Heading from "./Heading.vue";
 import Link from "./Link.vue";
 
 const emit = defineEmits(["update:modelValue"]);
@@ -16,7 +17,7 @@ const onToggle = (topic) => {
 
 <template>
   <div class="space-y-2">
-    <h1 class="text-xl">Topics</h1>
+    <Heading small> Topics </Heading>
 
     <nav class="flex flex-wrap gap-2">
       <Link

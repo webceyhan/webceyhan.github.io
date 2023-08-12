@@ -1,4 +1,5 @@
 <script setup>
+import Heading from "./Heading.vue";
 import Button from "./Button.vue";
 import Icon from "./Icon.vue";
 import ProgressBar from "./ProgressBar.vue";
@@ -17,10 +18,10 @@ const onToggle = (name) => {
 </script>
 
 <template>
-  <div>
-    <h5 class="text-xl">Languages</h5>
+  <div class="space-y-2">
+    <Heading small> Languages </Heading>
 
-    <progress-bar class="my-3" :items="languages" />
+    <progress-bar :items="languages" />
 
     <nav class="flex flex-wrap gap-2">
       <Button

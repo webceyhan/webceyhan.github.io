@@ -1,24 +1,19 @@
 <script setup>
-
 defineProps({
-    links: Array
-})
-
+  links: Array,
+});
 </script>
 
 <template>
-    <div class="nav justify-content-center h1">
-        <a v-for="(link, i) in links" :key="i" :href="link.url" class="nav-link" target="__blank">
-            <i :class="`bi bi-${link.icon}`"></i>
-        </a>
-    </div>
+  <nav class="text-3xl space-x-6">
+    <a
+      v-for="(link, i) in links"
+      :key="i"
+      :href="link.url"
+      class="link link-primary"
+      target="__blank"
+    >
+      <i :class="`bi bi-${link.icon}`"></i>
+    </a>
+  </nav>
 </template>
-
-<style scoped>
-.nav-link {
-    color: rgb(148 184 215);
-}
-.nav-link:hover {
-    color: aliceblue;
-}
-</style>

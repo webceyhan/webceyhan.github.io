@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex max-w-sm justify-center p-5 lg:p-10">
+  <div class="flex max-w-lg justify-center p-5 lg:px-20">
     <avatar :url="profile.avatar_url" class="max-lg:w-52" />
   </div>
 

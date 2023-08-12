@@ -1,55 +1,53 @@
 <script setup>
-
-import { useRepository } from '../store/repository';
-import Loader from '../components/Loader.vue'
-import TopicFilterNav from '../components/TopicFilterNav.vue';
-import LanguageFilterNav from '../components/LanguageFilterNav.vue';
-import RepositoryList from '../components/RepositoryList.vue'
+import { useRepository } from "../store/repository";
+import Heading from "../components/Heading.vue";
+import Divider from "../components/Divider.vue";
+import Loader from "../components/Loader.vue";
+import Icon from "../components/Icon.vue";
+import TopicFilterNav from "../components/TopicFilterNav.vue";
+import LanguageFilterNav from "../components/LanguageFilterNav.vue";
+import RepositoryList from "../components/RepositoryList.vue";
 
 const {
-    loading,
-    topics,
-    languages,
-    repositories,
-    selectedTopic,
-    selectedLanguage,
+  loading,
+  topics,
+  languages,
+  repositories,
+  selectedTopic,
+  selectedLanguage,
 } = useRepository();
-
 </script>
 
 <template>
-    <main>
-        <div class="container text-muted px-md-5">
-            <h1 class="display-5 text-center text-md-start">
-                <i class="bi bi-github me-2"></i>
-                Projects
-            </h1>
+  <main class="container mx-auto">
+    <Heading class="max-md:text-center" large>
+      <Icon name="github" class="mr-2" /> Projects
+    </Heading>
 
-            <hr class="bg-secondary mb-3" />
+    <Divider />
 
-            <loader v-if="loading" />
+    <loader v-if="loading" />
 
-            <div v-else class="row g-5">
-                <!-- side navigation -->
-                <aside class="col-12 col-lg-4 d-flex flex-column gap-5">
-                    <language-filter-nav
-                        class="justify-content-center justify-content-md-start"
-                        :languages="languages"
-                        v-model="selectedLanguage"
-                    />
+    <div v-else class="flex gap-10">
+      <!-- side navigation -->
+      <aside class="w-1/3 space-y-8">
+        <language-filter-nav
+          class="justify-center md:justify-start"
+          :languages="languages"
+          v-model="selectedLanguage"
+        />
 
-                    <topic-filter-nav
-                        class="justify-content-center justify-content-md-start"
-                        :topics="topics"
-                        v-model="selectedTopic"
-                    />
-                </aside>
+        <topic-filter-nav
+          class="justify-center md:justify-start"
+          :topics="topics"
+          v-model="selectedTopic"
+        />
+      </aside>
 
-                <!-- content section -->
-                <section class="col-12 col-lg-8">
-                    <repository-list :repos="repositories" />
-                </section>
-            </div>
-        </div>
-    </main>
+      <!-- content section -->
+      <section class="w-2/3">
+        <repository-list :repos="repositories" />
+      </section>
+    </div>
+  </main>
 </template>

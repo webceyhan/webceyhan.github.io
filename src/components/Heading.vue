@@ -9,7 +9,7 @@ defineProps({
 <template>
   <h1
     :class="{
-      'text-4xl': large,
+      'text-5xl': large,
       'text-2xl': !large && !small,
       'text-xl': small,
     }"

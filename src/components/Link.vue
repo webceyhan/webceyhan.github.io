@@ -1,0 +1,27 @@
+<script setup>
+defineEmits(["click"]);
+
+defineProps({
+  label: String,
+  hover: Boolean,
+  active: Boolean,
+  variant: String, // primary, secondary, neutral, accent
+});
+</script>
+
+<template>
+  <a
+    href="#"
+    :class="{
+      link: true,
+      'link-primary': variant === 'primary' && !active,
+      'link-secondary': variant === 'secondary' && !active,
+      'link-neutral': variant === 'neutral' && !active,
+      'link-accent': variant === 'accent' && !active,
+      'link-hover': hover,
+    }"
+    @click.prevent="$emit('click')"
+  >
+    <slot> {{ label }} </slot>
+  </a>
+</template>

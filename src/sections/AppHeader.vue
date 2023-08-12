@@ -1,18 +1,28 @@
 <script setup>
-
-import { useProfile } from '../store/profile';
-import Loader from '../components/Loader.vue'
-import Profile from '../components/Profile.vue';
+import { useProfile } from "../store/profile";
+import Loader from "../components/Loader.vue";
+import Profile from "../components/Profile.vue";
 
 const { profile, loading } = useProfile();
-
 </script>
 
 <template>
-    <header>
-        <div class="container text-center text-sm-start text-light p-md-5">
-            <loader v-if="loading" />
-            <profile v-else :profile="profile" />
-        </div>
-    </header>
+  <header class="hero min-h-screen" :class="$style.cover">
+    <!-- <div class="hero-overlay bg-opacity-60"></div> -->
+    <div
+      class="hero-content flex-col md:flex-row text-center md:text-left text-neutral-content"
+    >
+      <Loader v-if="loading" />
+      <Profile v-else :profile="profile" />
+    </div>
+  </header>
 </template>
+
+<style module>
+.cover {
+  background-image: url("../assets/bg-header.jpg");
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  overflow: hidden;
+}
+</style>

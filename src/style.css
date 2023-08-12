@@ -5,13 +5,3 @@
 body {
     background-color: #010204;
 }
-
-header {
-    background: url(./assets/bg-header.jpg) no-repeat bottom;
-    background-size: cover;
-    overflow: hidden;
-}
-
-.fs-7 {
-    font-size: 0.8rem !important;
-}

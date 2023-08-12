@@ -12,7 +12,8 @@ const { profile, loading } = useProfile();
     <div
       class="hero-content flex-col md:flex-row text-center md:text-left text-neutral-content"
     >
-      <Loader v-if="loading" />
+      <Loader v-if="loading" ring class="w-52" />
+
       <Profile v-else :profile="profile" />
     </div>
   </header>

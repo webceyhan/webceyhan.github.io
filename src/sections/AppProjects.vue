@@ -26,7 +26,7 @@ const {
 
     <Divider />
 
-    <loader v-if="loading" />
+    <Loader v-if="loading" bars large />
 
     <div v-else class="flex gap-10">
       <!-- side navigation -->

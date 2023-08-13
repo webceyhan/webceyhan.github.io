@@ -23,12 +23,13 @@ const onToggle = (name) => {
 
     <progress-bar :items="languages" />
 
-    <nav class="flex flex-wrap gap-2">
+    <nav class="flex flex-wrap gap-1">
       <Button
         v-for="({ name, rate, color }, i) in languages"
         :key="name"
         :active="name === modelValue"
         @click="onToggle(name)"
+        class="border-neutral-content/20"
         variant="ghost"
         small
       >

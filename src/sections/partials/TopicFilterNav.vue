@@ -1,6 +1,6 @@
 <script setup>
 import Heading from "@/components/Heading.vue";
-import Link from "@/components/Link.vue";
+import Button from "@/components/Button.vue";
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -19,15 +19,17 @@ const onToggle = (topic) => {
   <div class="space-y-2">
     <Heading small> Topics </Heading>
 
-    <nav class="flex flex-wrap gap-2">
-      <Link
+    <nav class="flex flex-wrap gap-1">
+      <Button
         v-for="(topic, i) in topics"
         :key="i"
         :label="topic"
         :active="topic === modelValue"
         @click="onToggle(topic)"
         variant="primary"
-        hover
+        class="border-neutral-content/20 rounded-full lowercase"
+        outline
+        small
       />
     </nav>
   </div>

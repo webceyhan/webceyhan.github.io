@@ -7,21 +7,21 @@ defineProps({
 </script>
 
 <template>
-  <transition-group name="list" tag="div" class="space-y-4">
-    <Repository v-for="repo in repos" :key="repo.id" :repo="repo" />
+  <transition-group
+    tag="div"
+    class="flex flex-col space-y-4"
+    enter-active-class="transform-gpu"
+    enter-class="opacity-0 translate-x-full"
+    enter-to-class="opacity-100 translate-x-0"
+    leave-active-class="absolute transform-gpu"
+    leave-class="opacity-100 translate-x-0"
+    leave-to-class="opacity-0 translate-x-full"
+  >
+    <Repository
+      v-for="repo in repos"
+      :key="repo.id"
+      :repo="repo"
+      class="transition-all duration-300"
+    />
   </transition-group>
 </template>
-
-<style>
-.list-enter-active {
-  transition: all 300ms ease;
-}
-.list-leave-active {
-  transition: all 200ms ease;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(100px);
-}
-</style>

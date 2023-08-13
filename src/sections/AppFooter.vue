@@ -1,15 +1,15 @@
 <script setup>
 import { useSocial } from "../store/social";
-import SocialLinkNav from "../components/SocialLinkNav.vue";
+import SocialNav from "./partials/SocialNav.vue";
 
 const { links } = useSocial();
 </script>
 
 <template>
-  <footer class="footer footer-center bg-neutral text-neutral-content p-10">
+  <footer class="footer footer-center bg-neutral/30 text-neutral-content p-5">
     <div>
       <span class="footer-title">Social</span>
-      <social-link-nav :links="links" />
+      <SocialNav :links="links" />
     </div>
   </footer>
 </template>

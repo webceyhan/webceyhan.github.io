@@ -11,7 +11,7 @@ defineProps({
     :class="{
       'join w-full bg-base-100 rounded-full': true,
       'h-4': large,
-      'h-2.5': !small && !large,
+      'h-2': !small && !large,
       'h-1': small,
     }"
   >
@@ -21,7 +21,7 @@ defineProps({
       :class="{
         'join-item rounded-full': true,
         'h-4': large,
-        'h-2.5': !small && !large,
+        'h-2': !small && !large,
         'h-1': small,
       }"
       :style="{ width: `${rate}%`, backgroundColor: color }"

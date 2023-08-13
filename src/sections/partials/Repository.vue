@@ -1,11 +1,11 @@
 <script setup>
-import { timestamp } from "../../utils";
-import Card from "../../components/Card.vue";
-import Icon from "../../components/Icon.vue";
-import Link from "../../components/Link.vue";
-import Badge from "../../components/Badge.vue";
-import Divider from "../../components/Divider.vue";
-import ProgressBar from "../../components/ProgressBar.vue";
+import { timestamp } from "@/utils";
+import Card from "@/components/Card.vue";
+import Icon from "@/components/Icon.vue";
+import Link from "@/components/Link.vue";
+import Badge from "@/components/Badge.vue";
+import Divider from "@/components/Divider.vue";
+import ProgressBar from "@/components/ProgressBar.vue";
 import TopicList from "./TopicList.vue";
 import LanguageList from "./LanguageList.vue";
 

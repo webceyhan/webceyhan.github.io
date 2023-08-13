@@ -1,5 +1,5 @@
 <script setup>
-import Icon from "../../components/Icon.vue";
+import Icon from "@/components/Icon.vue";
 
 defineProps({
   links: Array,

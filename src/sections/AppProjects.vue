@@ -1,9 +1,9 @@
 <script setup>
-import { useRepository } from "../store/repository";
-import Heading from "../components/Heading.vue";
-import Divider from "../components/Divider.vue";
-import Loader from "../components/Loader.vue";
-import Icon from "../components/Icon.vue";
+import { useRepository } from "@/store/repository";
+import Heading from "@/components/Heading.vue";
+import Divider from "@/components/Divider.vue";
+import Loader from "@/components/Loader.vue";
+import Icon from "@/components/Icon.vue";
 import TopicFilterNav from "./partials/TopicFilterNav.vue";
 import LanguageFilterNav from "./partials/LanguageFilterNav.vue";
 import RepositoryList from "./partials/RepositoryList.vue";

@@ -1,5 +1,5 @@
 <script setup>
-import { useSocial } from "../store/social";
+import { useSocial } from "@/store/social";
 import SocialNav from "./partials/SocialNav.vue";
 
 const { links } = useSocial();

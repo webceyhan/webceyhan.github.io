@@ -1,5 +1,5 @@
 <script setup>
-import Badge from "../../components/Badge.vue";
+import Badge from "@/components/Badge.vue";
 
 defineProps({
   topics: Array,

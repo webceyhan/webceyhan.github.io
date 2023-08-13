@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import { useProfile } from "../store/profile";
-import Loader from "../components/Loader.vue";
-import Avatar from "../components/Avatar.vue";
+import { useProfile } from "@/store/profile";
+import Loader from "@/components/Loader.vue";
+import Avatar from "@/components/Avatar.vue";
 
 const showLogo = ref(true);
 
@@ -12,9 +12,7 @@ const { profile, loading } = useProfile();
 <template>
   <header class="hero min-h-screen" :class="$style.cover">
     <!-- <div class="hero-overlay bg-opacity-60"></div> -->
-    <div
-      class="hero-content text-center md:text-left text-neutral-content"
-    >
+    <div class="hero-content text-center md:text-left text-neutral-content">
       <Loader v-if="loading" ring class="w-52" />
 
       <div v-else class="flex flex-col md:flex-row items-center">

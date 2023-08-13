@@ -7,7 +7,8 @@ defineProps({
 </script>
 
 <template>
-  <div class="max-w-md lg:max-w-xl truncate space-x-1">
-    <Badge v-for="(topic, i) in topics" :key="i" :label="topic" />
+  <!-- todo: find a clean way to make truncate work while fitting to container -->
+  <div class="h-6 text-clip overflow-hidden space-x-1">
+    <Badge v-for="(topic, i) in topics" :key="i" :label="topic" class="mb-3" />
   </div>
 </template>

@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <Card class="bg-neutral text-neutral-content group" image-aside>
+  <Card class="bg-neutral text-neutral-content group max-md:card-compact" image-aside>
     <template #image>
       <Icon name="git" class="max-xl:hidden text-9xl opacity-25" />
     </template>
@@ -53,7 +53,7 @@ defineProps({
       <div class="flex flex-col opacity-50 group-hover:opacity-100 transition-all gap-2">
         <LanguageList :languages="repo.languages" />
         <ProgressBar :items="repo.languages" small />
-        <TopicList :topics="repo.topics" />
+        <TopicList :topics="repo.topics" class="max-sm:hidden" />
       </div>
     </div>
   </Card>

@@ -8,8 +8,14 @@ defineProps({
 </script>
 
 <template>
-  <div class="max-w-md lg:max-w-xl truncate space-x-1">
-    <Badge v-for="({ name, color }, i) in languages" :key="i" variant="ghost">
+  <!-- todo: find a clean way to make truncate work while fitting to container -->
+  <div class="h-6 text-clip overflow-hidden space-x-1">
+    <Badge
+      v-for="({ name, color }, i) in languages"
+      :key="i"
+      variant="ghost"
+      class="mb-3"
+    >
       <Icon name="box" class="mr-2" :style="{ color }" />
       {{ name }}
     </Badge>

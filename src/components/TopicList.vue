@@ -1,17 +1,13 @@
 <script setup>
+import Badge from "./Badge.vue";
 
 defineProps({
-    topics: Array
-})
-
+  topics: Array,
+});
 </script>
 
 <template>
-    <div class="text-truncate">
-        <small
-            class="badge rounded-pill bg-dark bg-opacity-50 text-muted me-2"
-            v-for="(topic, i) in topics"
-            :key="i"
-        >{{ topic }}</small>
-    </div>
+  <div class="max-w-xl truncate">
+    <Badge v-for="(topic, i) in topics" :key="i" :label="topic" />
+  </div>
 </template>

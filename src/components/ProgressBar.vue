@@ -1,15 +1,29 @@
 <script setup>
 defineProps({
   items: Array,
+  small: Boolean,
+  large: Boolean,
 });
 </script>
 
 <template>
-  <div class="join w-full h-1.5 bg-base-100 rounded-full">
+  <div
+    :class="{
+      'join w-full bg-base-100 rounded-full': true,
+      'h-4': large,
+      'h-2.5': !small && !large,
+      'h-1': small,
+    }"
+  >
     <div
       v-for="({ rate, color }, i) in items"
       :key="i"
-      class="join-item h-1.5 rounded-full"
+      :class="{
+        'join-item rounded-full': true,
+        'h-4': large,
+        'h-2.5': !small && !large,
+        'h-1': small,
+      }"
       :style="{ width: `${rate}%`, backgroundColor: color }"
     />
   </div>

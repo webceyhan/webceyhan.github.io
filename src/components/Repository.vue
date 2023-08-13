@@ -1,7 +1,13 @@
 <script setup>
 import { timestamp } from "../utils";
+import Card from "./Card.vue";
+import Icon from "./Icon.vue";
+import Link from "./Link.vue";
+import Badge from "./Badge.vue";
+import Divider from "./Divider.vue";
 import TopicList from "./TopicList.vue";
 import LanguageList from "./LanguageList.vue";
+import ProgressBar from "./ProgressBar.vue";
 
 defineProps({
   repo: Object,
@@ -9,65 +15,46 @@ defineProps({
 </script>
 
 <template>
-  <li
-    class="repo-list list-group-item list-group-item-action bg-dark border border-dark border-opacity-75 mb-2 py-4 rounded-2"
-  >
-    <div class="d-flex w-100 justify-content-between align-items-center">
-      <i class="d-none d-xl-block bi bi-git display-2 ms-4 me-5"></i>
+  <Card class="bg-neutral text-neutral-content group" image-aside>
+    <template #image>
+      <Icon name="git" class="max-xl:hidden text-9xl opacity-25" />
+    </template>
 
-      <div class="flex-fill d-grid gap-1">
-        <div class="w-100 d-flex justify-content-between">
-          <div class="w-100 d-flex align-items-center gap-2">
-            <a class="text-decoration-none h5 mb-1" :href="repo.html_url" target="__blank">
-              {{ repo.name }}
-            </a>
+    <div class="space-y-2">
+      <div class="flex justify-between items-center">
+        <Link
+          :href="repo.html_url"
+          :label="repo.name"
+          target="__blank"
+          variant="primary"
+          class="text-xl"
+          hover
+        />
 
-            <a
-              v-if="repo.homepage"
-              class="text-decoration-none btn badge btn-dark rounded-pill opacity-75"
-              :href="repo.homepage"
-              target="__blank"
-            >
-              DEMO
-            </a>
-          </div>
+        <Divider v-if="repo.homepage" class="max-lg:hidden" horizontal />
 
-          <small class="d-none d-md-block">
-            {{ timestamp(repo.created_at) }}
-          </small>
-        </div>
+        <Link
+          v-if="repo.homepage"
+          :href="repo.homepage"
+          target="__blank"
+          variant="primary"
+          label="DEMO"
+          hover
+        />
 
-        <p class="text-light mb-1">{{ repo.description }}</p>
+        <Badge
+          class="max-lg:hidden ml-auto opacity-50"
+          :label="timestamp(repo.created_at)"
+        />
+      </div>
 
-        <language-list :languages="repo.languages" />
+      <p>{{ repo.description }}</p>
 
-        <topic-list :topics="repo.topics" />
+      <div class="flex flex-col opacity-50 group-hover:opacity-100 transition-all gap-2">
+        <LanguageList :languages="repo.languages" />
+        <ProgressBar :items="repo.languages" small />
+        <TopicList :topics="repo.topics" />
       </div>
     </div>
-  </li>
+  </Card>
 </template>
-
-<style>
-.repo-list {
-  opacity: 0.8;
-  --bs-bg-opacity: 0.4 !important;
-}
-
-.repo-list:hover {
-  opacity: 1;
-  --bs-bg-opacity: 0.6 !important;
-  --bs-border-opacity: 2 !important;
-  transition: opacity 500ms ease;
-}
-
-.repo-list .badge,
-.repo-list .progress {
-  filter: grayscale(1);
-  transition: filter 1s ease;
-}
-
-.repo-list:hover .badge,
-.repo-list:hover .progress {
-  filter: grayscale(0);
-}
-</style>

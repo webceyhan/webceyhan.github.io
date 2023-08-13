@@ -7,8 +7,8 @@ defineProps({
 </script>
 
 <template>
-  <transition-group name="list" tag="ul" class="list-group list-group-flush">
-    <repository v-for="repo in repos" :key="repo.id" :repo="repo" />
+  <transition-group name="list" tag="div" class="space-y-4">
+    <Repository v-for="repo in repos" :key="repo.id" :repo="repo" />
   </transition-group>
 </template>
 

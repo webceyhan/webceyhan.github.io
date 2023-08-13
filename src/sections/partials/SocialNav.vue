@@ -1,4 +1,5 @@
 <script setup>
+import Link from "@/components/Link.vue";
 import Icon from "@/components/Icon.vue";
 
 defineProps({
@@ -8,14 +9,15 @@ defineProps({
 
 <template>
   <nav class="text-4xl space-x-6">
-    <a
+    <Link
       v-for="(link, i) in links"
       :key="i"
       :href="link.url"
-      class="link link-primary hover:text-neutral-content"
+      variant="primary"
+      class="hover:text-neutral-content"
       target="__blank"
     >
       <Icon :name="link.icon" />
-    </a>
+    </Link>
   </nav>
 </template>

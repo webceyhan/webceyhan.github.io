@@ -1,6 +1,4 @@
 <script setup>
-defineEmits(["click"]);
-
 defineProps({
   label: String,
   hover: Boolean,
@@ -20,7 +18,6 @@ defineProps({
       'link-accent': variant === 'accent' && !active,
       'link-hover': hover,
     }"
-    @click.prevent="$emit('click')"
   >
     <slot> {{ label }} </slot>
   </a>

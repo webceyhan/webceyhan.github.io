@@ -23,7 +23,7 @@ defineProps({
     image-aside
   >
     <template #image>
-      <Icon name="git" class="max-xl:hidden text-9xl opacity-25" />
+      <Icon name="git" class="max-xl:hidden w-40 text-9xl opacity-25" />
     </template>
 
     <div class="space-y-2">

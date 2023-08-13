@@ -20,7 +20,7 @@ defineProps({
       <slot name="image" />
     </figure>
 
-    <div class="card-body">
+    <div class="w-full card-body">
       <!-- title -->
       <h2 v-if="title" class="card-title">{{ title }}</h2>
 

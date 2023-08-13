@@ -1,13 +1,13 @@
 <script setup>
-import { timestamp } from "../utils";
-import Card from "./Card.vue";
-import Icon from "./Icon.vue";
-import Link from "./Link.vue";
-import Badge from "./Badge.vue";
-import Divider from "./Divider.vue";
+import { timestamp } from "../../utils";
+import Card from "../../components/Card.vue";
+import Icon from "../../components/Icon.vue";
+import Link from "../../components/Link.vue";
+import Badge from "../../components/Badge.vue";
+import Divider from "../../components/Divider.vue";
+import ProgressBar from "../../components/ProgressBar.vue";
 import TopicList from "./TopicList.vue";
 import LanguageList from "./LanguageList.vue";
-import ProgressBar from "./ProgressBar.vue";
 
 defineProps({
   repo: Object,

@@ -1,6 +1,6 @@
 <script setup>
-import Badge from "./Badge.vue";
-import Icon from "./Icon.vue";
+import Badge from "../../components/Badge.vue";
+import Icon from "../../components/Icon.vue";
 
 defineProps({
   languages: Array,

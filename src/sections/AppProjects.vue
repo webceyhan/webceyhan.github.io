@@ -4,9 +4,9 @@ import Heading from "../components/Heading.vue";
 import Divider from "../components/Divider.vue";
 import Loader from "../components/Loader.vue";
 import Icon from "../components/Icon.vue";
-import TopicFilterNav from "../components/TopicFilterNav.vue";
-import LanguageFilterNav from "../components/LanguageFilterNav.vue";
-import RepositoryList from "../components/RepositoryList.vue";
+import TopicFilterNav from "./partials/TopicFilterNav.vue";
+import LanguageFilterNav from "./partials/LanguageFilterNav.vue";
+import RepositoryList from "./partials/RepositoryList.vue";
 
 const {
   loading,

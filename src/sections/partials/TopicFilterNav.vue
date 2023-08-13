@@ -1,6 +1,6 @@
 <script setup>
-import Heading from "./Heading.vue";
-import Link from "./Link.vue";
+import Heading from "../../components/Heading.vue";
+import Link from "../../components/Link.vue";
 
 const emit = defineEmits(["update:modelValue"]);
 

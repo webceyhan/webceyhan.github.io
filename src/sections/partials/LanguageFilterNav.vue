@@ -1,8 +1,8 @@
 <script setup>
-import Heading from "./Heading.vue";
-import Button from "./Button.vue";
-import Icon from "./Icon.vue";
-import ProgressBar from "./ProgressBar.vue";
+import Heading from "../../components/Heading.vue";
+import Button from "../../components/Button.vue";
+import Icon from "../../components/Icon.vue";
+import ProgressBar from "../../components/ProgressBar.vue";
 
 const emit = defineEmits(["update:modelValue"]);
 

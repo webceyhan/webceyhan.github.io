@@ -1,7 +1,30 @@
+<script setup>
+defineProps({
+  spinner: Boolean,
+  dots: Boolean,
+  ring: Boolean,
+  ball: Boolean,
+  bars: Boolean,
+  infinity: Boolean,
+  small: Boolean,
+  large: Boolean,
+});
+</script>
+
 <template>
-    <div class="d-flex justify-content-center">
-        <div class="spinner-border" style="width: 5rem; height: 5rem;">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
+  <span
+    :class="{
+      loading: true,
+      'loading-spinner': spinner,
+      'loading-dots': dots,
+      'loading-ring': ring,
+      'loading-ball': ball,
+      'loading-bars': bars,
+      'loading-infinity': infinity,
+      // size
+      'loading-sm': small,
+      'loading-md': !small && !large,
+      'loading-lg': large,
+    }"
+  />
 </template>

@@ -4,6 +4,7 @@ import VueWriter from "vue-writer";
 import { useProfile } from "@/store/profile";
 import Loader from "@/components/Loader.vue";
 import Avatar from "@/components/Avatar.vue";
+import CoverUrl from "@/assets/bg-header.jpg";
 
 const showLogo = ref(true);
 
@@ -15,7 +16,10 @@ const titles = computed(() => {
 </script>
 
 <template>
-  <header class="hero min-h-screen" :class="$style.cover">
+  <header
+    class="hero min-h-screen overflow-hidden bg-bottom"
+    :style="{ backgroundImage: `url(${CoverUrl})` }"
+  >
     <!-- <div class="hero-overlay bg-opacity-60"></div> -->
     <div class="hero-content text-center md:text-left text-neutral-content">
       <Loader v-if="loading" ring class="w-52" />
@@ -48,8 +52,8 @@ const titles = computed(() => {
             working at
             <img
               v-if="showLogo"
-              src="../assets/company-logo.png"
               class="w-36 h-auto inline-block"
+              src="@/assets/company-logo.png"
               @error="showLogo = false"
             />
             <span v-else class="text-nowrap">{{ profile.company }}</span>
@@ -59,12 +63,3 @@ const titles = computed(() => {
     </div>
   </header>
 </template>
-
-<style module>
-.cover {
-  background-image: url("../assets/bg-header.jpg");
-  background-position: bottom !important;
-  background-repeat: no-repeat !important;
-  overflow: hidden;
-}
-</style>

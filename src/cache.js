@@ -14,6 +14,13 @@ const NAME = `${PREFIX}${VERSION}`;
  * Fetch response from cache or fetch fresh one.
  */
 export async function fetchResponse(url) {
+    // check if caches are supported
+    // bugfix: caches not defined when using unsecure connection
+    if (!window.caches) {
+        console.log('Caches not supported');
+        return await fetch(url);
+    }
+
     // try to get response from the cache
     let cachedResponse = await getCachedResponse(url);
 
@@ -44,6 +51,11 @@ async function getCachedResponse(url) {
  * Purge expired caches to force a refresh.
  */
 export async function purgeExpiredCaches(all = false) {
+    // bugfix: @see fetchResponse()
+    if (!window.caches) {
+        return console.log('Caches not supported');
+    }
+
     // get all cache keys
     const cacheNames = await caches.keys();
 

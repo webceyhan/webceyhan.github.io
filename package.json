@@ -2,9 +2,9 @@
   "name": "ceyhan-io",
   "version": "2.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host"
   },
   "author": "Evren Ceyhan",
   "license": "MIT",
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/webceyhan/webceyhan.github.io#readme",
   "dependencies": {
-    "bootstrap-icons": "^1.10.3",
+    "bootstrap-icons": "^1.10.5",
     "tsparticles-slim": "^2.12.0",
     "vue": "^3.2.47",
     "vue-writer": "^1.2.0",
@@ -29,6 +29,6 @@
     "daisyui": "^3.5.1",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
-    "vite": "^2.9.14"
+    "vite": "^2.9.16"
   }
 }

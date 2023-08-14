@@ -1,8 +1,10 @@
 <script setup>
 import { useRepository } from "@/store/repository";
+import Loader from "@/components/Loader.vue";
 import Heading from "@/components/Heading.vue";
 import Divider from "@/components/Divider.vue";
-import Loader from "@/components/Loader.vue";
+import Drawer from "../components/Drawer.vue";
+import Button from "@/components/Button.vue";
 import Icon from "@/components/Icon.vue";
 import TopicFilterNav from "./partials/TopicFilterNav.vue";
 import LanguageFilterNav from "./partials/LanguageFilterNav.vue";
@@ -29,26 +31,24 @@ const {
 
     <Loader v-if="loading" bars large />
 
-    <div v-else class="flex flex-col md:flex-row gap-10">
-      <!-- side navigation -->
-      <aside class="md:w-1/3 space-y-8">
-        <language-filter-nav
-          class="justify-center md:justify-start"
-          :languages="languages"
-          v-model="selectedLanguage"
-        />
+    <Drawer v-else>
+      <template #trigger="{ toggle }">
+        <Button
+          @click="toggle()"
+          variant="primary"
+          class="drawer-button lg:hidden mb-4"
+          outline
+        >
+          <Icon name="filter" /> Show Filters
+        </Button>
+      </template>
 
-        <topic-filter-nav
-          class="justify-center md:justify-start"
-          :topics="topics"
-          v-model="selectedTopic"
-        />
-      </aside>
+      <template #sidebar>
+        <LanguageFilterNav :languages="languages" v-model="selectedLanguage" />
+        <TopicFilterNav :topics="topics" v-model="selectedTopic" />
+      </template>
 
-      <!-- content section -->
-      <section class="md:w-2/3">
-        <repository-list :repos="repositories" />
-      </section>
-    </div>
+      <RepositoryList :repos="repositories" />
+    </Drawer>
   </main>
 </template>

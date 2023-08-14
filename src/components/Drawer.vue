@@ -38,8 +38,8 @@ const toggle = () => {
 
       <aside
         :class="[
-          'w-80 lg:w-96 h-full overflow-scroll p-4 lg:p-0 lg:pr-8 space-y-8',
-          'bg-base-200 text-base-content',
+          'w-80 lg:w-96 h-full overflow-scroll p-4 lg:p-0 lg:mr-8 space-y-8',
+          'bg-base-300 text-base-content lg:bg-opacity-50',
         ]"
       >
         <slot name="sidebar" />

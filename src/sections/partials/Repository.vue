@@ -41,12 +41,19 @@ defineProps({
           v-if="repo.homepage"
           :href="repo.homepage"
           target="__blank"
-          class="opacity-50 group-hover:opacity-100 text-2xl"
+          variant="secondary"
+          class="opacity-50 group-hover:opacity-100 text-2xl no-underline"
         >
-          <Icon
-            name="play-circle"
-            class="group-hover:animate-pulse hover:group-hover:animate-none"
-          />
+          <span class="relative flex h-6 w-6">
+            <Icon name="play-circle" class="relative inline-flex" />
+            <Icon
+              name="play-circle"
+              :class="[
+                'absolute inline-flex opacity-75',
+                'group-hover:animate-ping hover:group-hover:animate-none',
+              ]"
+            />
+          </span>
         </Link>
 
         <Badge

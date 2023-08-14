@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import VueWriter from "vue-writer";
 import { useProfile } from "@/store/profile";
 import Loader from "@/components/Loader.vue";
 import Avatar from "@/components/Avatar.vue";
@@ -7,6 +8,10 @@ import Avatar from "@/components/Avatar.vue";
 const showLogo = ref(true);
 
 const { profile, loading } = useProfile();
+
+const titles = computed(() => {
+  return [profile.value.bio, "Open Source Contributor", "Tech Enthusiast"];
+});
 </script>
 
 <template>
@@ -27,17 +32,20 @@ const { profile, loading } = useProfile();
             {{ profile.name }}
           </h1>
 
-          <p class="text-lg lg:text-2xl">
+          <p class="text-xl lg:text-3xl">
             <!-- profession -->
-            I'm a <span class="text-warning text-nowrap">{{ profile.bio }}</span>
+            <VueWriter
+              :array="titles"
+              class="text-warning mb-2"
+              :eraseSpeed="50"
+              :typeSpeed="30"
+            />
 
             <!-- location -->
-            , based in {{ profile.location }}
-
-            <br class="max-sm:hidden" />
+            Based in {{ profile.location }},
 
             <!-- company -->
-            and working as freelance at
+            working at
             <img
               v-if="showLogo"
               src="../assets/company-logo.png"

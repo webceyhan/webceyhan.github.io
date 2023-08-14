@@ -57,7 +57,7 @@ defineProps({
         </Link>
 
         <Badge
-          class="max-lg:hidden ml-auto opacity-50"
+          class="max-lg:hidden ml-auto opacity-50 rounded-md"
           :label="timestamp(repo.created_at)"
         />
       </div>

@@ -1,5 +1,5 @@
-import { purgeExpiredCaches } from '../cache';
-import { fetchJson, IS_DEV } from '../utils';
+import { purgeExpiredCaches } from '@/cache';
+import { fetchJson, IS_DEV } from '@/utils';
 import LANGUAGES from './languages.json';
 
 // define vars

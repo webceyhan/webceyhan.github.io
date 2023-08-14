@@ -1,5 +1,5 @@
 import { computed, reactive } from 'vue';
-import { getRepositories } from '../api/github';
+import { getRepositories } from '@/api/github';
 
 // define state
 const state = reactive({

@@ -2,9 +2,9 @@
   "name": "ceyhan-io",
   "version": "2.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host"
   },
   "author": "Evren Ceyhan",
   "license": "MIT",

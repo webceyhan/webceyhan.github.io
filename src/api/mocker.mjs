@@ -41,19 +41,22 @@ const generateProfile = async () => {
 };
 
 const generateRepos = async () => {
-    const response = await fetch(`${API_USER_URL}/repos`);
+    const response = await fetch(`${API_USER_URL}/repos?sort=updated`);
     const data = await response.json();
     writeMockFile('repos', data);
 };
 
 const generateLanguages = async () => {
     const repos = readMockFile('repos');
-    repos.forEach(async ({ name, languages }) => {
+
+    repos.forEach(async ({ name, languages_url }) => {
+        const response = await fetch(languages_url);
+        const languages = await response.json();
         writeMockFile(`${name}-languages`, languages);
     });
 };
 
 // generate mock data
-// await generateProfile();
-// await generateRepos();
+await generateProfile();
+await generateRepos();
 await generateLanguages();

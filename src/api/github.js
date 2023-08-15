@@ -67,7 +67,7 @@ const normalizeRepoLanguages = (languages) => {
         name,
         lines,
         color: LANGUAGES[name]?.color,
-        rate: (lines / lineSum) * 100,
+        rate: ((lines / lineSum) * 100).toFixed(1),
     }));
 };
 

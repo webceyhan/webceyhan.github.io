@@ -14,7 +14,7 @@ const showLogo = ref(true);
 const { profile, loading } = useProfile();
 
 const titles = computed(() => {
-  return [profile.value.bio, "Open Source Contributor", "Tech Enthusiast"];
+  return [profile.value.bio, "Open Source Contributor", "Web3 & Blockchain Enthusiast"];
 });
 </script>
 

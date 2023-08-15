@@ -62,7 +62,7 @@ defineProps({
         />
       </div>
 
-      <p>{{ repo.description }}</p>
+      <p class="!mb-5 lg:text-lg">{{ repo.description }}</p>
 
       <div
         :class="[
@@ -72,9 +72,9 @@ defineProps({
           'transition-all duration-300',
         ]"
       >
-        <LanguageList :languages="repo.languages" />
-        <ProgressBar :items="repo.languages" small />
         <TopicList :topics="repo.topics" class="max-sm:hidden" />
+        <ProgressBar :items="repo.languages" small />
+        <LanguageList :languages="repo.languages" />
       </div>
     </div>
   </Card>

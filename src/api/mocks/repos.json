@@ -109,7 +109,7 @@
       "javascript",
       "nodejs",
       "rest",
-      "tailwind",
+      "tailwindcss",
       "vite",
       "vue"
     ],
@@ -146,7 +146,7 @@
       "site_admin": false
     },
     "html_url": "https://github.com/webceyhan/recipe-book",
-    "description": null,
+    "description": "Demonstration of peer programming for Content & Coffee job interview",
     "fork": false,
     "url": "https://api.github.com/repos/webceyhan/recipe-book",
     "forks_url": "https://api.github.com/repos/webceyhan/recipe-book/forks",
@@ -212,7 +212,15 @@
     "allow_forking": true,
     "is_template": false,
     "web_commit_signoff_required": false,
-    "topics": [],
+    "topics": [
+      "mysql",
+      "php",
+      "laravel",
+      "vue",
+      "inertiajs",
+      "tailwindcss",
+      "daisyui"
+    ],
     "visibility": "public",
     "forks": 0,
     "open_issues": 0,
@@ -318,7 +326,12 @@
     "allow_forking": true,
     "is_template": false,
     "web_commit_signoff_required": false,
-    "topics": [],
+    "topics": [
+      "javascript",
+      "react",
+      "json-server",
+      "tailwindcss"
+    ],
     "visibility": "public",
     "forks": 0,
     "open_issues": 5,
@@ -2972,8 +2985,8 @@
       "nodejs",
       "php",
       "tailwindcss",
-      "vitejs",
-      "vuejs"
+      "vite",
+      "vue"
     ],
     "visibility": "public",
     "forks": 0,
@@ -3081,12 +3094,12 @@
     "is_template": false,
     "web_commit_signoff_required": false,
     "topics": [
-      "bootstrap5",
+      "bootstrap",
       "breeze",
       "inertiajs",
       "laravel",
       "php",
-      "vue3"
+      "vue"
     ],
     "visibility": "public",
     "forks": 0,

@@ -1,23 +1,23 @@
 <script setup>
-import Badge from "@/components/Badge.vue";
 import Icon from "@/components/Icon.vue";
 
 defineProps({
   languages: Array,
 });
+
+// filter significant languages that has rate >= 1
+const filterSignificant = (languages) => {
+  const filtered = languages.filter((lang) => lang.rate >= 1);
+  return filtered.sort((a, b) => b.rate - a.rate);
+};
 </script>
 
 <template>
-  <!-- todo: find a clean way to make truncate work while fitting to container -->
-  <div class="h-6 text-clip overflow-hidden space-x-1">
-    <Badge
-      v-for="({ name, color }, i) in languages"
-      :key="i"
-      variant="ghost"
-      class="mb-3"
-    >
+  <div class="flex flex-wrap gap-y-2 gap-x-4 text-xs lg:text-sm lg:font-semibold">
+    <span v-for="({ name, color, rate }, i) in filterSignificant(languages)" :key="i">
       <Icon name="box" class="mr-2" :style="{ color }" />
-      {{ name }}
-    </Badge>
+      <span class="mr-1">{{ name }}</span>
+      <span class="opacity-50">{{ rate }}%</span>
+    </span>
   </div>
 </template>

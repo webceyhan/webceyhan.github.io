@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview --host"
+    "preview": "vite preview --host",
+    "mocker": "node ./src/api/mocker.mjs"
   },
   "author": "Evren Ceyhan",
   "license": "MIT",
@@ -27,6 +28,7 @@
     "@vitejs/plugin-vue": "^2.3.4",
     "autoprefixer": "^10.4.14",
     "daisyui": "^3.5.1",
+    "dotenv": "^16.3.1",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "vite": "^2.9.16"

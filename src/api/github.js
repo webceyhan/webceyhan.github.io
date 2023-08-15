@@ -7,8 +7,57 @@ const API_URL = 'https://api.github.com';
 const API_USER_ID = import.meta.env.VITE_USER_GITHUB;
 const API_USER_URL = `${API_URL}/users/${API_USER_ID}`;
 
-// helpers
-const fetchFile = async (path) => fetchJson(new URL(path, import.meta.url));
+// RESOURCES ///////////////////////////////////////////////////////////////////////////////////////
+
+export async function getProfile() {
+    return IS_DEV
+        ? await fetchFile('mocks/profile.json')
+        : await fetchJson(API_USER_URL);
+}
+
+export async function getRepositories(query = { sort: 'updated' }) {
+    // purge cache if modified since last cached request
+    // purgeCacheIfModified(`${API_USER_URL}/repos`);
+
+    // fetch data or use mock in DEV
+    const repos = IS_DEV
+        ? await fetchFile('mocks/repos.json')
+        : await fetchJson(`${API_USER_URL}/repos`, query);
+
+    // fetch languages per repository
+    const reposWithLanguages = repos.map(async (repo) => {
+        let languages;
+
+        try {
+            // try fetching languages per repository
+            languages = await getRepoLanguages(repo.name);
+        } catch (e) {
+            // use default language as fallback if failed
+            languages = normalizeRepoLanguages({ [repo.language]: 1 });
+        }
+
+        // normalize languages per repository
+        return { ...repo, languages };
+    });
+
+    // return all promises as one
+    return Promise.all(reposWithLanguages);
+}
+
+export async function getRepoLanguages(repo) {
+    const languages = IS_DEV
+        ? await fetchFile(`mocks/${repo}-languages.json`)
+        : await fetchJson(`${API_USER_URL}/${repo}/languages`);
+
+    return normalizeRepoLanguages(languages);
+}
+
+// HELPERS /////////////////////////////////////////////////////////////////////////////////////////
+
+const fetchFile = async (path) => {
+    const url = new URL(path, import.meta.url);
+    return (await fetch(url)).json();
+};
 
 const normalizeRepoLanguages = (languages) => {
     // summarize total lines of languages in single repo
@@ -20,37 +69,6 @@ const normalizeRepoLanguages = (languages) => {
         color: LANGUAGES[name]?.color,
         rate: (lines / lineSum) * 100,
     }));
-};
-
-export const getProfile = () =>
-    IS_DEV ? fetchFile('profile.json') : fetchJson(API_USER_URL);
-
-export const getRepositories = async (query = { sort: 'updated' }) => {
-    // purge cache if modified since last cached request
-    // purgeCacheIfModified(`${API_USER_URL}/repos`);
-
-    // fetch data or use mock in DEV
-    const repos = IS_DEV
-        ? await fetchFile('repos.json')
-        : await fetchJson(`${API_USER_URL}/repos`, query);
-
-    // fetch languages per repository
-    const reposWithLanguages = repos.map(async (repo) => {
-        // define default language as fallback
-        let languages = { [repo.language]: 1 };
-
-        try {
-            languages = IS_DEV
-                ? repo.languages // use as-is in DEV
-                : await fetchJson(repo.languages_url);
-        } catch (e) {}
-
-        // normalize languages per repository
-        return { ...repo, languages: normalizeRepoLanguages(languages) };
-    });
-
-    // return all promises as one
-    return Promise.all(reposWithLanguages);
 };
 
 // export const purgeCacheIfModified = async (url) => {

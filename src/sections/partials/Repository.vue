@@ -4,7 +4,6 @@ import Card from "@/components/Card.vue";
 import Icon from "@/components/Icon.vue";
 import Link from "@/components/Link.vue";
 import Badge from "@/components/Badge.vue";
-import Divider from "@/components/Divider.vue";
 import ProgressBar from "@/components/ProgressBar.vue";
 import LanguageList from "./LanguageList.vue";
 import TopicList from "./TopicList.vue";
@@ -62,7 +61,7 @@ defineProps({
         />
       </div>
 
-      <p>{{ repo.description }}</p>
+      <p class="!mb-5 lg:text-lg">{{ repo.description }}</p>
 
       <div
         :class="[
@@ -72,9 +71,9 @@ defineProps({
           'transition-all duration-300',
         ]"
       >
-        <LanguageList :languages="repo.languages" />
-        <ProgressBar :items="repo.languages" small />
         <TopicList :topics="repo.topics" class="max-sm:hidden" />
+        <ProgressBar :items="repo.languages" small />
+        <LanguageList :languages="repo.languages" />
       </div>
     </div>
   </Card>

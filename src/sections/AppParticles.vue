@@ -3,12 +3,11 @@ import { ParticlesComponent } from "vue3-particles";
 import { loadSlim } from "tsparticles-slim";
 
 const particlesInit = async (engine) => {
-  //await loadFull(engine);
   await loadSlim(engine);
 };
 
 const particlesLoaded = async (container) => {
-  console.log("Particles container loaded", container);
+  // console.log("Particles container loaded", container);
 };
 
 const options = {

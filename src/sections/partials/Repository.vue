@@ -4,7 +4,6 @@ import Card from "@/components/Card.vue";
 import Icon from "@/components/Icon.vue";
 import Link from "@/components/Link.vue";
 import Badge from "@/components/Badge.vue";
-import Divider from "@/components/Divider.vue";
 import ProgressBar from "@/components/ProgressBar.vue";
 import LanguageList from "./LanguageList.vue";
 import TopicList from "./TopicList.vue";

@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
 import { sortByRate } from '@/utils';
 import { getRepositories } from '@/api/github';
@@ -8,6 +8,18 @@ export const useTopicStore = defineStore('topic', () => {
     const topics = ref([]);
     const loading = ref(false);
     const selected = ref(null);
+
+    // getters
+    const topicsByCategory = computed(() => {
+        return Object.entries(TOPIC_CATEGORIES).map(
+            ([category, topicNames]) => ({
+                category,
+                topics: topics.value.filter((topic) =>
+                    topicNames.includes(topic.name)
+                ),
+            })
+        );
+    });
 
     // actions
     async function load() {
@@ -20,7 +32,12 @@ export const useTopicStore = defineStore('topic', () => {
     load();
 
     // expose
-    return { load, topics, selected };
+    return {
+        load,
+        topics,
+        topicsByCategory,
+        selected,
+    };
 });
 
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
@@ -41,4 +58,64 @@ const collectTopics = (repos) => {
     }, {});
 
     return Object.values(list);
+};
+
+const TOPIC_CATEGORIES = {
+    // Language: [
+    //     'javascript',
+    //     'typescript',
+    //     'python',
+    //     'ruby',
+    //     'php',
+    //     'html',
+    //     'css',
+    //     'sass',
+    // ],
+    Framework: [
+        'vue',
+        'react',
+        'angular',
+        'svelte',
+        'nuxt',
+        'next',
+        'express',
+        'laravel',
+    ],
+    Database: [
+        'mysql',
+        'mongodb',
+        'postgresql',
+        'redis',
+        'sqlite',
+        'firestore',
+    ],
+    Design: [
+        'bootstrap',
+        'tailwindcss',
+        'material-ui',
+        'chakra-ui',
+        'radix-ui',
+        'daisyui',
+        'fontawesome',
+        'bootstrap-icons',
+    ],
+    Deployment: [
+        'aws',
+        'digitalocean',
+        'vercel',
+        'netlify',
+        'heroku',
+        'firebase',
+        'github-pages',
+        'github-actions',
+        'kubernetes',
+        'docker',
+    ],
+    'Web Technologies': [
+        'rest',
+        'graphql',
+        'web3',
+        'websockets',
+        'webassembly',
+    ],
 };

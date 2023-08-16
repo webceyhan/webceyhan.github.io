@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
+import { sortByRate } from '@/utils';
 import { getRepositories } from '@/api/github';
 
 export const useTopicStore = defineStore('topic', () => {
@@ -13,7 +14,7 @@ export const useTopicStore = defineStore('topic', () => {
         loading.value = true;
         topics.value = await getTopics();
         loading.value = false;
-    };
+    }
 
     // init
     load();
@@ -41,5 +42,3 @@ const collectTopics = (repos) => {
 
     return Object.values(list);
 };
-
-const sortByRate = (topics) => topics.sort((a, b) => b.rate - a.rate);

@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
+import { sortByRate } from '@/utils';
 import { getRepositories } from '@/api/github';
 
 export const useLanguageStore = defineStore('language', () => {
@@ -50,5 +51,3 @@ const collectLanguages = (repos) => {
         rate: (language.lines / lineSum) * 100,
     }));
 };
-
-const sortByRate = (languages) => languages.sort((a, b) => b.rate - a.rate);

@@ -21,11 +21,11 @@ const onToggle = (topic) => {
 
     <nav class="flex flex-wrap gap-1">
       <Button
-        v-for="(topic, i) in topics"
+        v-for="({name}, i) in topics"
         :key="i"
-        :label="topic"
-        :active="topic === modelValue"
-        @click="onToggle(topic)"
+        :label="name"
+        :active="name === modelValue"
+        @click="onToggle(name)"
         variant="primary"
         class="border-neutral-content/20 rounded-full lowercase"
         outline

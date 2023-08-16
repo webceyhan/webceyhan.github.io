@@ -1,5 +1,7 @@
 <script setup>
-import { useRepository } from "@/store/repository";
+import { useTopicStore } from "@/store/topic";
+import { useLanguageStore } from "@/store/language";
+import { useRepositoryStore } from "@/store/repository";
 import Loader from "@/components/Loader.vue";
 import Heading from "@/components/Heading.vue";
 import Divider from "@/components/Divider.vue";
@@ -10,14 +12,9 @@ import TopicFilterNav from "./partials/TopicFilterNav.vue";
 import LanguageFilterNav from "./partials/LanguageFilterNav.vue";
 import RepositoryList from "./partials/RepositoryList.vue";
 
-const {
-  loading,
-  topics,
-  languages,
-  repositories,
-  selectedTopic,
-  selectedLanguage,
-} = useRepository();
+const topicStore = useTopicStore();
+const languageStore = useLanguageStore();
+const repositoryStore = useRepositoryStore();
 </script>
 
 <template>
@@ -29,7 +26,7 @@ const {
 
     <Divider />
 
-    <Loader v-if="loading" bars large />
+    <Loader v-if="repositoryStore.loading" bars large />
 
     <Drawer v-else>
       <template #trigger="{ toggle }">
@@ -44,11 +41,14 @@ const {
       </template>
 
       <template #sidebar>
-        <LanguageFilterNav :languages="languages" v-model="selectedLanguage" />
-        <TopicFilterNav :topics="topics" v-model="selectedTopic" />
+        <LanguageFilterNav
+          :languages="languageStore.languages"
+          v-model="languageStore.selected"
+        />
+        <TopicFilterNav :topics="topicStore.topics" v-model="topicStore.selected" />
       </template>
 
-      <RepositoryList :repos="repositories" />
+      <RepositoryList :repos="repositoryStore.repositories" />
     </Drawer>
   </main>
 </template>

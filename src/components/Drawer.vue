@@ -38,7 +38,7 @@ const toggle = () => {
 
       <aside
         :class="[
-          'w-80 lg:w-96 h-full overflow-scroll p-4 lg:p-0 lg:mr-8 space-y-8',
+          'w-80 h-full max-lg:overflow-y-scroll p-4 lg:p-0 lg:mr-8 space-y-8',
           'bg-base-300 text-base-content lg:bg-opacity-50',
         ]"
       >

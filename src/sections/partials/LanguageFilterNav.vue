@@ -30,7 +30,7 @@ const onToggle = (name) => {
         :active="name === modelValue"
         @click="onToggle(name)"
         class="border-neutral-content/20"
-        variant="ghost"
+        outline
         small
       >
         <Icon class="me-1" name="box" :style="{ color }" />

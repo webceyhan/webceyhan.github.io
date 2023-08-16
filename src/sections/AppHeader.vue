@@ -1,8 +1,9 @@
 <script setup>
 import { computed, ref } from "vue";
+import { storeToRefs } from "pinia";
 import VueWriter from "vue-writer";
 import { timestamp } from "@/utils";
-import { useProfile } from "@/store/profile";
+import { useProfileStore } from "@/store/profile";
 import Loader from "@/components/Loader.vue";
 import Avatar from "@/components/Avatar.vue";
 import CoverUrl from "@/assets/bg-header.jpg";
@@ -11,7 +12,8 @@ import Stat from "@/components/Stat.vue";
 
 const showLogo = ref(true);
 
-const { profile, loading } = useProfile();
+const profileStore = useProfileStore();
+const { profile, loading } = storeToRefs(profileStore);
 
 const titles = computed(() => {
   return [profile.value.bio, "Open Source Contributor", "Web3 & Blockchain Enthusiast"];

@@ -21,3 +21,5 @@ export const makeUrl = (url, search = {}) => {
 
 export const fetchJson = async (url, search = {}) =>
     (await fetchResponse(makeUrl(url, search))).json();
+
+export const sortByRate = (items) => items.sort((a, b) => b.rate - a.rate);

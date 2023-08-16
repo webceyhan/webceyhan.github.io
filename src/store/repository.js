@@ -1,118 +1,49 @@
-import { computed, reactive } from 'vue';
+import { ref, computed } from 'vue';
+import { defineStore } from 'pinia';
 import { getRepositories } from '@/api/github';
+import { useTopicStore } from './topic';
+import { useLanguageStore } from './language';
 
-// define state
-const state = reactive({
-    preloaded: false,
-    loading: false,
-    repositories: [],
-    selectedTopic: null,
-    selectedLanguae: null,
-});
+export const useRepositoryStore = defineStore('repository', () => {
+    // state
+    const loading = ref(false);
+    const _repositories = ref([]);
+    const topicStore = useTopicStore();
+    const languageStore = useLanguageStore();
 
-// define getters & setters
-const loading = computed(() => state.loading);
+    // getters
+    const repositories = computed(() => {
+        let repos = _repositories.value;
 
-const topics = computed(() => {
-    /* name : rate */
-    const all = {};
+        // filter by language
+        if (languageStore.selected) {
+            repos = repos.filter((repo) =>
+                repo.languages.some(
+                    (lang) => lang.name === languageStore.selected
+                )
+            );
+        }
 
-    // populate topic - rate list
-    state.repositories.forEach(({ topics }) =>
-        topics.forEach((topic) => {
-            all[topic] = (all[topic] || 0) + 1;
-        })
-    );
+        // filter by topics
+        if (topicStore.selected) {
+            repos = repos.filter((repo) =>
+                repo.topics.includes(topicStore.selected)
+            );
+        }
 
-    return (
-        Object.entries(all)
-            // sort from more to less line rate
-            .sort((a, b) => (a[1] < b[1] ? 1 : a[1] > b[1] ? -1 : 0))
-            // nap to name only
-            .map(([name]) => name)
-    );
-});
-
-const languages = computed(() => {
-    const all = {};
-    let lineSum = 0;
-
-    // populate key-based unique list
-    state.repositories.forEach(({ languages }) => {
-        languages.forEach(({ name, lines, color }) => {
-            // sum lines if exists or add new
-            if (all[name]) all[name].lines += lines;
-            else all[name] = { name, lines, color };
-
-            // sum total lines
-            lineSum += lines;
-        });
+        return repos;
     });
 
-    // return as array
-    return (
-        Object.values(all)
-            .map((lang) => ({
-                ...lang,
-                // calculate line rate
-                rate: (lang.lines / lineSum) * 100,
-            }))
-            // sort from more to less line rate
-            .sort((a, b) => (a.rate < b.rate ? 1 : a.rate > b.rate ? -1 : 0))
-    );
-});
-
-const selectedTopic = computed({
-    get: () => state.selectedTopic,
-    set: (v) => (state.selectedTopic = v),
-});
-
-const selectedLanguage = computed({
-    get: () => state.selectedLanguae,
-    set: (v) => (state.selectedLanguae = v),
-});
-
-const repositories = computed(() => {
-    // get repositories;
-    let repos = state.repositories;
-
-    // filter by language
-    if (selectedLanguage.value) {
-        repos = repos.filter((repo) =>
-            repo.languages.some(({ name }) => name === selectedLanguage.value)
-        );
+    //  actions
+    async function load() {
+        loading.value = true;
+        _repositories.value = await getRepositories();
+        loading.value = false;
     }
 
-    // filter by topics
-    if (selectedTopic.value) {
-        repos = repos.filter((repo) =>
-            repo.topics.includes(selectedTopic.value)
-        );
-    }
+    // init
+    load();
 
-    return repos;
+    // public api
+    return { load, loading, repositories };
 });
-
-// define actions
-const load = async () => {
-    state.loading = true;
-    state.repositories = await getRepositories();
-    state.loading = false;
-    state.preloaded = true;
-};
-
-// public API
-export function useRepository() {
-    // preload oncce if needed
-    if (!state.preloaded) load();
-
-    return {
-        load,
-        loading,
-        topics,
-        languages,
-        repositories,
-        selectedTopic,
-        selectedLanguage,
-    };
-}

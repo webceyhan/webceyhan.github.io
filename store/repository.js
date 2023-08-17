@@ -1,6 +1,4 @@
-import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
-import { getRepositories } from '@/api/github';
 import { useTopicStore } from './topic';
 import { useLanguageStore } from './language';
 
@@ -37,7 +35,8 @@ export const useRepositoryStore = defineStore('repository', () => {
     //  actions
     async function load() {
         loading.value = true;
-        _repositories.value = await getRepositories();
+        const { data } = await useFetch('/api/repos');
+        _repositories.value = data.value;
         loading.value = false;
     }
 

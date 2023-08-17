@@ -1,7 +1,4 @@
-import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
-import { sortByRate } from '@/utils';
-import { getRepositories } from '@/api/github';
 
 export const useTopicStore = defineStore('topic', () => {
     // state
@@ -43,8 +40,8 @@ export const useTopicStore = defineStore('topic', () => {
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
 
 const getTopics = async () => {
-    const repos = await getRepositories();
-    const topics = collectTopics(repos);
+    const { data } = await useFetch('/api/repos');
+    const topics = collectTopics(data.value);
     return sortByRate(topics);
 };
 

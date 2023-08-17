@@ -1,7 +1,4 @@
-import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { sortByRate } from '@/utils';
-import { getRepositories } from '@/api/github';
 
 export const useLanguageStore = defineStore('language', () => {
     // state
@@ -26,8 +23,8 @@ export const useLanguageStore = defineStore('language', () => {
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
 
 const getLanguages = async () => {
-    const repos = await getRepositories();
-    const languages = collectLanguages(repos);
+    const { data } = await useFetch('/api/repos');
+    const languages = collectLanguages(data.value);
     return sortByRate(languages);
 };
 

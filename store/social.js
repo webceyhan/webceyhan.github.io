@@ -1,5 +1,3 @@
-import { computed } from 'vue';
-
 // define constants
 const AVAILABLE_LINKS = [
     {

@@ -1,6 +1,4 @@
-import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { getProfile } from '@/api/github';
 
 export const useProfileStore = defineStore('profile', () => {
     // state
@@ -10,7 +8,8 @@ export const useProfileStore = defineStore('profile', () => {
     // actions
     async function load() {
         loading.value = true;
-        profile.value = await getProfile();
+        const { data } = await useFetch('/api/profile');
+        profile.value = data.value;
         loading.value = false;
     }
 

@@ -125,11 +125,10 @@ The workflow will build the project using npm and output the result to the `dist
 
 ## References
 
--   [Node.js](https://nodejs.dev/)
--   [Vite](https://vitejs.dev/)
 -   [Vue.js](https://vuejs.org/)
--   [Tailwind CSS](https://tailwindcss.com/)
+-   [Nuxt.js](https://nuxtjs.org/)
 -   [DaisyUI](https://daisyui.com/)
+-   [Tailwind CSS](https://tailwindcss.com/)
 -   [Bootstrap Icons](https://icons.getbootstrap.com/)
 -   [GitHub REST API](https://docs.github.com/en/rest)
 -   [GitHub Actions](https://docs.github.com/en/actions)

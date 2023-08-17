@@ -1,6 +1,4 @@
 <script setup>
-import Icon from "./Icon.vue";
-
 defineProps({
   label: String,
   value: [String, Number],
@@ -13,7 +11,7 @@ defineProps({
   <div class="stat">
     <div v-if="$slots.figure || icon" class="stat-figure mt-5">
       <slot name="figure">
-        <Icon :name="icon" class="inline-block text-secondary text-3xl"/>
+        <Icon :name="icon" class="inline-block text-secondary text-3xl" />
       </slot>
     </div>
 

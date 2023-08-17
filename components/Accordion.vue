@@ -1,6 +1,4 @@
 <script setup>
-import { provide, ref } from "vue";
-
 const panels = ref([]);
 
 function collapseAll() {

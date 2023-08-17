@@ -1,9 +1,4 @@
 <script setup>
-import Heading from "@/components/Heading.vue";
-import Button from "@/components/Button.vue";
-import Icon from "@/components/Icon.vue";
-import ProgressBar from "@/components/ProgressBar.vue";
-
 const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps({

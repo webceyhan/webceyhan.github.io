@@ -1,14 +1,7 @@
 <script setup>
-import { computed, ref } from "vue";
-import { storeToRefs } from "pinia";
 import VueWriter from "vue-writer";
-import { timestamp } from "@/utils";
+import { storeToRefs } from "pinia";
 import { useProfileStore } from "@/store/profile";
-import Loader from "@/components/Loader.vue";
-import Avatar from "@/components/Avatar.vue";
-import CoverUrl from "@/assets/bg-header.jpg";
-import StatGroup from "@/components/StatGroup.vue";
-import Stat from "@/components/Stat.vue";
 
 const showLogo = ref(true);
 
@@ -23,7 +16,7 @@ const titles = computed(() => {
 <template>
   <header
     class="hero min-h-screen overflow-hidden bg-bottom"
-    :style="{ backgroundImage: `url(${CoverUrl})` }"
+    style="background-image: url(/img/bg-header.jpg)"
   >
     <!-- <div class="hero-overlay bg-opacity-60"></div> -->
     <div class="hero-content flex-col text-center md:text-left text-neutral-content">
@@ -42,7 +35,7 @@ const titles = computed(() => {
               {{ profile.name }}
             </h1>
 
-            <p class="text-xl lg:text-3xl">
+            <div class="text-xl lg:text-3xl">
               <!-- profession -->
               <VueWriter
                 :array="titles"
@@ -59,11 +52,11 @@ const titles = computed(() => {
               <img
                 v-if="showLogo"
                 class="w-36 h-auto inline-block"
-                src="@/assets/company-logo.png"
+                src="/img/company-logo.png"
                 @error="showLogo = false"
               />
               <span v-else class="text-nowrap">{{ profile.company }}</span>
-            </p>
+            </div>
           </div>
         </div>
 

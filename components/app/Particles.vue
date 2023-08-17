@@ -1,6 +1,6 @@
 <script setup>
-import { ParticlesComponent } from "vue3-particles";
 import { loadSlim } from "tsparticles-slim";
+import { ParticlesComponent } from "vue3-particles";
 
 const particlesInit = async (engine) => {
   await loadSlim(engine);

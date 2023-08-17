@@ -1,6 +1,7 @@
 <script setup>
-import Link from "@/components/Link.vue";
-import Icon from "@/components/Icon.vue";
+
+// todo: this must be override default NuxtLink in config files
+import Link from '@/components/Link.vue';
 
 defineProps({
   links: Array,

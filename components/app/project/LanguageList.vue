@@ -1,6 +1,4 @@
 <script setup>
-import Icon from "@/components/Icon.vue";
-
 defineProps({
   languages: Array,
 });

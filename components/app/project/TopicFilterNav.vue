@@ -1,6 +1,4 @@
 <script setup>
-import Button from "@/components/Button.vue";
-
 const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps({

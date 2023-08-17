@@ -1,5 +1,5 @@
 <script setup>
-import Repository from "./Repository.vue";
+
 
 defineProps({
   repos: Array,
@@ -17,7 +17,7 @@ defineProps({
     leave-class="opacity-100 translate-x-0"
     leave-to-class="opacity-0 translate-x-full"
   >
-    <Repository
+    <AppProjectRepository
       v-for="repo in repos"
       :key="repo.id"
       :repo="repo"

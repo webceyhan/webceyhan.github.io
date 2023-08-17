@@ -2,17 +2,6 @@
 import { useTopicStore } from "@/store/topic";
 import { useLanguageStore } from "@/store/language";
 import { useRepositoryStore } from "@/store/repository";
-import Loader from "@/components/Loader.vue";
-import Heading from "@/components/Heading.vue";
-import Divider from "@/components/Divider.vue";
-import Drawer from "../components/Drawer.vue";
-import Button from "@/components/Button.vue";
-import Icon from "@/components/Icon.vue";
-import Collapse from "@/components/Collapse.vue";
-import Accordion from "@/components/Accordion.vue";
-import TopicFilterNav from "./partials/TopicFilterNav.vue";
-import LanguageFilterNav from "./partials/LanguageFilterNav.vue";
-import RepositoryList from "./partials/RepositoryList.vue";
 
 const topicStore = useTopicStore();
 const languageStore = useLanguageStore();
@@ -42,7 +31,7 @@ const repositoryStore = useRepositoryStore();
       </template>
 
       <template #sidebar>
-        <LanguageFilterNav
+        <AppProjectLanguageFilterNav
           :languages="languageStore.languages"
           v-model="languageStore.selected"
         />
@@ -54,12 +43,12 @@ const repositoryStore = useRepositoryStore();
             :title="category"
             class="border-t border-neutral"
           >
-            <TopicFilterNav :topics="topics" v-model="topicStore.selected" />
+            <AppProjectTopicFilterNav :topics="topics" v-model="topicStore.selected" />
           </Collapse>
         </Accordion>
       </template>
 
-      <RepositoryList :repos="repositoryStore.repositories" />
+      <AppProjectRepositoryList :repos="repositoryStore.repositories" />
     </Drawer>
   </main>
 </template>

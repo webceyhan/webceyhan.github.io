@@ -3,11 +3,6 @@ let count = 0;
 </script>
 
 <script setup>
-import { ref } from "vue";
-import Icon from "./Icon.vue";
-
-defineProps({});
-
 const isOpen = ref(false);
 const id = `drawer-${count++}`;
 

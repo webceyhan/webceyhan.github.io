@@ -1,6 +1,4 @@
 <script setup>
-import { inject, ref } from "vue";
-
 const props = defineProps({
   title: String,
   open: Boolean,
@@ -24,9 +22,7 @@ function toggle() {
     :class="{ 'bg-base-300/50': open }"
     @click.prevent="toggle()"
   >
-    <summary
-      class="collapse-title hover:bg-base-100/50"
-    >
+    <summary class="collapse-title hover:bg-base-100/50">
       {{ title }}
     </summary>
 

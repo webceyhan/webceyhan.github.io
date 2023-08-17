@@ -1,13 +1,4 @@
 <script setup>
-import { timestamp } from "@/utils";
-import Card from "@/components/Card.vue";
-import Icon from "@/components/Icon.vue";
-import Link from "@/components/Link.vue";
-import Badge from "@/components/Badge.vue";
-import ProgressBar from "@/components/ProgressBar.vue";
-import LanguageList from "./LanguageList.vue";
-import TopicList from "./TopicList.vue";
-
 defineProps({
   repo: Object,
 });
@@ -71,9 +62,11 @@ defineProps({
           'transition-all duration-300',
         ]"
       >
-        <TopicList :topics="repo.topics" class="max-sm:hidden" />
+        <AppProjectTopicList :topics="repo.topics" class="max-sm:hidden" />
+
         <ProgressBar :items="repo.languages" small />
-        <LanguageList :languages="repo.languages" />
+
+        <AppProjectLanguageList :languages="repo.languages" />
       </div>
     </div>
   </Card>

@@ -1,7 +1,5 @@
 <script setup>
-import { useSocial } from "@/store/social";
-
-const { links } = useSocial();
+const { data: links } = await useFetch("/api/social-links");
 </script>
 
 <template>

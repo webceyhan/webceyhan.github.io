@@ -1,4 +1,3 @@
-// define constants
 const AVAILABLE_LINKS = [
     {
         icon: 'github',
@@ -27,15 +26,15 @@ const AVAILABLE_LINKS = [
     },
 ];
 
-// define getters
-const links = computed(() =>
-    AVAILABLE_LINKS.filter(({ id }) => !!id).map(({ icon, url, id }) => ({
-        icon,
-        url: `${url}/${id}`,
-    }))
-);
+export default defineEventHandler((event) => {
+    return AVAILABLE_LINKS.filter(havingId).map(normalizeUrl);
+});
 
-// public API
-export function useSocial() {
-    return { links };
-}
+// HELPERS /////////////////////////////////////////////////////////////////////////////////////////
+
+const havingId = ({ id }) => !!id;
+
+const normalizeUrl = (link) => ({
+    ...link,
+    url: `${link.url}/${link.id}`,
+});

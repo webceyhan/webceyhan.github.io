@@ -50,11 +50,11 @@ You need to install the [Node.js](https://nodejs.dev/) and `npm` package manager
 4. Set your social link handles in .env file.
     ```sh
     # social-link handles
-    VITE_USER_GITHUB=
-    VITE_USER_REDDIT=
-    VITE_USER_LINKEDIN=
-    VITE_USER_TWITTER=
-    VITE_USER_INSTAGRAM=
+    USER_GITHUB=
+    USER_REDDIT=
+    USER_LINKEDIN=
+    USER_TWITTER=
+    USER_INSTAGRAM=
     ```
 5. Setup your GitHub profile settings to show in header section.
     ```sh

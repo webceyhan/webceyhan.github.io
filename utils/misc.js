@@ -1,8 +1,11 @@
-import { fetchResponse } from './cache';
+// import { fetchResponse } from './cache';
 
 export const IS_DEV = import.meta.env.DEV;
 
 export const timestamp = (date) => {
+    if(!date) return new Date().getTime();
+
+
     const formatter = new Intl.DateTimeFormat('en', {
         year: 'numeric',
         month: 'short',
@@ -19,7 +22,7 @@ export const makeUrl = (url, search = {}) => {
     return urlObject;
 };
 
-export const fetchJson = async (url, search = {}) =>
-    (await fetchResponse(makeUrl(url, search))).json();
+// export const fetchJson = async (url, search = {}) =>
+//     (await fetchResponse(makeUrl(url, search))).json();
 
 export const sortByRate = (items) => items.sort((a, b) => b.rate - a.rate);

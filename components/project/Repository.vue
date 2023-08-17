@@ -1,4 +1,6 @@
 <script setup>
+import Link from "@/components/ui/Link.vue";
+
 defineProps({
   repo: Object,
 });
@@ -62,11 +64,11 @@ defineProps({
           'transition-all duration-300',
         ]"
       >
-        <AppProjectTopicList :topics="repo.topics" class="max-sm:hidden" />
+        <TopicList :topics="repo.topics" class="max-sm:hidden" />
 
         <ProgressBar :items="repo.languages" small />
 
-        <AppProjectLanguageList :languages="repo.languages" />
+        <LanguageList :languages="repo.languages" />
       </div>
     </div>
   </Card>

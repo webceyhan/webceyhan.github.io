@@ -31,7 +31,7 @@ const repositoryStore = useRepositoryStore();
       </template>
 
       <template #sidebar>
-        <AppProjectLanguageFilterNav
+        <LanguageFilterNav
           :languages="languageStore.languages"
           v-model="languageStore.selected"
         />
@@ -43,12 +43,12 @@ const repositoryStore = useRepositoryStore();
             :title="category"
             class="border-t border-neutral"
           >
-            <AppProjectTopicFilterNav :topics="topics" v-model="topicStore.selected" />
+            <TopicFilterNav :topics="topics" v-model="topicStore.selected" />
           </Collapse>
         </Accordion>
       </template>
 
-      <AppProjectRepositoryList :repos="repositoryStore.repositories" />
+      <RepositoryList :repos="repositoryStore.repositories" />
     </Drawer>
   </main>
 </template>

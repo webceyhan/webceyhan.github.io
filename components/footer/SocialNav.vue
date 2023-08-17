@@ -1,7 +1,7 @@
 <script setup>
 
 // todo: this must be override default NuxtLink in config files
-import Link from '@/components/Link.vue';
+import Link from '@/components/ui/Link.vue'
 
 defineProps({
   links: Array,

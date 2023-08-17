@@ -8,7 +8,7 @@ const { links } = useSocial();
   <footer class="footer footer-center bg-neutral/30 text-neutral-content p-5">
     <div>
       <span class="footer-title">Social</span>
-      <AppFooterSocialNav :links="links" />
+      <SocialNav :links="links" />
     </div>
   </footer>
 </template>

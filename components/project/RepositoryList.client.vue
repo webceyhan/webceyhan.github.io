@@ -1,13 +1,11 @@
 <script setup>
-
-
 defineProps({
   repos: Array,
 });
 </script>
 
 <template>
-  <transition-group
+  <TransitionGroup
     tag="div"
     class="w-full flex flex-col gap-y-4"
     enter-active-class="transform-gpu"
@@ -17,11 +15,11 @@ defineProps({
     leave-class="opacity-100 translate-x-0"
     leave-to-class="opacity-0 translate-x-full"
   >
-    <AppProjectRepository
+    <Repository
       v-for="repo in repos"
       :key="repo.id"
       :repo="repo"
       class="transition-all duration-300"
     />
-  </transition-group>
+  </TransitionGroup>
 </template>

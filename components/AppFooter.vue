@@ -1,5 +1,5 @@
 <script setup>
-const { data: links } = await useFetch("/api/social-links");
+const { data: links } = useSocialLinks();
 </script>
 
 <template>

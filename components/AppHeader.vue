@@ -1,12 +1,9 @@
 <script setup>
 import VueWriter from "vue-writer";
-import { storeToRefs } from "pinia";
-import { useProfileStore } from "@/store/profile";
 
 const showLogo = ref(true);
 
-const profileStore = useProfileStore();
-const { profile, loading } = storeToRefs(profileStore);
+const { pending, data: profile } = useProfile();
 
 const titles = computed(() => {
   return [profile.value.bio, "Open Source Contributor", "Web3 & Blockchain Enthusiast"];
@@ -20,7 +17,7 @@ const titles = computed(() => {
   >
     <!-- <div class="hero-overlay bg-opacity-60"></div> -->
     <div class="hero-content flex-col text-center md:text-left text-neutral-content">
-      <Loader v-if="loading" ring class="w-52" />
+      <Loader v-if="pending" ring class="w-52" />
 
       <template v-else>
         <div class="flex flex-col md:flex-row items-center">
@@ -70,3 +67,4 @@ const titles = computed(() => {
     </div>
   </header>
 </template>
+composables/profile

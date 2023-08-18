@@ -1,6 +1,6 @@
-import REPOS from '../mocks/repos.json';
-import LANGUAGES from '../mocks/languages.json';
 import { readFileSync } from 'fs';
+import REPOS from '../data/repos.json';
+import LANGUAGES from '../data/languages.json';
 
 export default defineEventHandler((event) => {
     // fetch languages per repository
@@ -26,7 +26,7 @@ export default defineEventHandler((event) => {
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
 
 const getRepoLanguages = async (repo) => {
-    const path = `../mocks/${repo}-languages.json`;
+    const path = `../data/${repo}-languages.json`;
     const languages = readFileSync(path);
 
     console.log('languages', languages);

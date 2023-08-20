@@ -1,13 +1,14 @@
 {
   "name": "ceyhan-io",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "mocker": "node ./src/api/mocker.mjs"
+    "mock": "node ./server/mocker.js"
   },
   "author": "Evren Ceyhan",
   "license": "MIT",

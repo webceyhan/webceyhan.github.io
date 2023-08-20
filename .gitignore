@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+server/mocks
 
 # Node dependencies
 node_modules

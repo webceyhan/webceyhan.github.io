@@ -1,4 +1,4 @@
-import { API_HEADERS, API_URL } from '../constants/github';
+import { API_URL, API_HEADERS } from '../constants/github';
 
 export async function fetchGithubApi(path, query = {}) {
     // create url object

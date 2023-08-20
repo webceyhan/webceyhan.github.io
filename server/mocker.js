@@ -98,7 +98,7 @@ const ensureMocksDir = () => {
 };
 
 const purgeMocksDir = () => {
-    rmSync(MOCKS_DIR, { recursive: true });
+    existsSync(MOCKS_DIR) && rmSync(MOCKS_DIR, { recursive: true });
 };
 
 // RUN /////////////////////////////////////////////////////////////////////////////////////////////

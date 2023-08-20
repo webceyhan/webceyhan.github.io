@@ -1,4 +1,4 @@
-import LINKS from '../data/social-links';
+import LINKS from '../constants/social-links';
 
 export default defineEventHandler((event) => {
     return LINKS.filter(havingId).map(normalizeUrl);

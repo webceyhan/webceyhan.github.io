@@ -1,4 +1,5 @@
 import { readFileSync } from 'fs';
+import { API_URL, API_USERNAME } from '../constants';
 import REPOS from '../data/repos.json';
 import LANGUAGES from '../data/languages.json';
 
@@ -25,20 +26,42 @@ export default defineEventHandler((event) => {
 
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
 
-const getRepoLanguages = async (repo) => {
-    const path = `../data/${repo}-languages.json`;
-    const languages = readFileSync(path);
+const getRepos = async () => {
+    try {
+        const url = `${API_URL}/users/${API_USERNAME}/repos`;
+        return fetchWithCache(url, {
+            query: {
+                per_page: 100,
+                sort: 'updated',
+            },
+        });
+    } catch (error) {
+        return REPOS;
+    }
+};
 
-    console.log('languages', languages);
+const getRepoLanguages = async (repo) => {
+    let languages;
+
+    try {
+        const url = `${API_URL}/repos/${API_USERNAME}/${repo}/languages`;
+        languages = await fetchWithCache(url);
+    } catch (error) {
+        const path = `../data/${repo}-languages.json`;
+        languages = readFileSync(path);
+    }
 
     return normalizeRepoLanguages(languages);
 };
 
 const normalizeRepoLanguages = (languages) => {
-    // summarize total lines of languages in single repo
-    const lineSum = Object.values(languages).reduce((sum, v) => sum + v, 0);
+    const entries = Object.entries(languages);
 
-    return Object.entries(languages).map(([name, lines]) => ({
+    // count total lines of repository
+    const lineSum = entries.reduce((sum, [_, lines]) => sum + lines, 0);
+
+    // normalize languages structure
+    return entries.map(([name, lines]) => ({
         name,
         lines,
         color: LANGUAGES[name]?.color,

@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { API_URL, API_USERNAME } from '../constants';
+import { API_USERNAME } from '../constants/github';
 import REPOS from '../data/repos.json';
 import LANGUAGES from '../data/languages.json';
 
@@ -28,13 +28,12 @@ export default defineEventHandler((event) => {
 
 const getRepos = async () => {
     try {
-        const url = `${API_URL}/users/${API_USERNAME}/repos`;
-        return fetchWithCache(url, {
-            query: {
-                per_page: 100,
-                sort: 'updated',
-            },
-        });
+    return fetchGithubApi(`/users/${API_USERNAME}/repos`, {
+        query: {
+            per_page: 100,
+            sort: 'updated',
+        },
+    });
     } catch (error) {
         return REPOS;
     }
@@ -44,8 +43,8 @@ const getRepoLanguages = async (repo) => {
     let languages;
 
     try {
-        const url = `${API_URL}/repos/${API_USERNAME}/${repo}/languages`;
-        languages = await fetchWithCache(url);
+        const url = `/repos/${API_USERNAME}/${repo}/languages`;
+        languages = await fetchGithubApi(url);
     } catch (error) {
         const path = `../data/${repo}-languages.json`;
         languages = readFileSync(path);

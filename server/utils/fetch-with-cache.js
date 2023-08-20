@@ -1,26 +1,25 @@
 const cache = useStorage('cache');
 
 export const fetchWithCache = async (url, options = {}) => {
-    // get cached data if available
-    const cachedItem = (await cache.getItem(url)) ?? {};
+    // get cached data for given url
+    const cache = await useUrlCache(url);
 
     const { headers, status, _data } = await $fetch.raw(url, {
-        headers: { 'If-None-Match': cachedItem?.etag },
         ...options,
+        headers: {
+            ...options?.headers,
+            'If-None-Match': cache.etag,
+        },
     });
 
     // purge cache with fresh data
     if (status === 200) {
-        console.log('caching fresh data');
-
-        await cache.setItem(url, {
-            data: _data,
-            etag: headers.get('etag'),
-        });
+        console.log('serving fresh data');
+        cache.refresh(headers.get('etag'), _data);
     }
 
     // serve cached data for below status codes:
     // 304 Not Modified
     // 403 Forbidden ...
-    return (await cache.getItem(url))?.data;
+    return cache.data;
 };

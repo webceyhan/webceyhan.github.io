@@ -1,6 +1,5 @@
 <script setup>
 import { loadSlim } from "tsparticles-slim";
-import { ParticlesComponent } from "vue3-particles";
 
 const particlesInit = async (engine) => {
   await loadSlim(engine);
@@ -87,7 +86,7 @@ const options = {
 </script>
 
 <template>
-  <ParticlesComponent
+  <vue-particles
     id="tsparticles"
     :particlesInit="particlesInit"
     :particlesLoaded="particlesLoaded"

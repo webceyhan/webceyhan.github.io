@@ -1,11 +1,11 @@
-import { readFileSync } from 'fs';
 import { API_USERNAME } from '../constants/github';
-import REPOS from '../data/repos.json';
-import LANGUAGES from '../data/languages.json';
+import LANGUAGES from '../constants/languages';
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
+    const repos = await getRepos();
+
     // fetch languages per repository
-    const reposWithLanguages = REPOS.map(async (repo) => {
+    const reposWithLanguages = repos.map(async (repo) => {
         let languages;
 
         try {
@@ -27,28 +27,16 @@ export default defineEventHandler((event) => {
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
 
 const getRepos = async () => {
-    try {
-    return fetchGithubApi(`/users/${API_USERNAME}/repos`, {
-        query: {
-            per_page: 100,
-            sort: 'updated',
-        },
+    const url = `/users/${API_USERNAME}/repos`;
+    return fetchGithubApi(url, {
+        per_page: 100,
+        sort: 'updated',
     });
-    } catch (error) {
-        return REPOS;
-    }
 };
 
 const getRepoLanguages = async (repo) => {
-    let languages;
-
-    try {
-        const url = `/repos/${API_USERNAME}/${repo}/languages`;
-        languages = await fetchGithubApi(url);
-    } catch (error) {
-        const path = `../data/${repo}-languages.json`;
-        languages = readFileSync(path);
-    }
+    const url = `/repos/${API_USERNAME}/${repo}/languages`;
+    const languages = await fetchGithubApi(url);
 
     return normalizeRepoLanguages(languages);
 };

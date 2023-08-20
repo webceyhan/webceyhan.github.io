@@ -6,9 +6,15 @@
  * so we need to use a personal access token to increase the limit to 5000 requests per hour.
  */
 
+import {
+    readFileSync,
+    writeFileSync,
+    existsSync,
+    mkdirSync,
+    rmSync,
+} from 'fs';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { readFileSync, writeFileSync } from 'fs';
 import dotenv from 'dotenv';
 
 // load env vars
@@ -22,7 +28,7 @@ const API_USERNAME = process.env.GITHUB_API_USERNAME;
 // https://stackoverflow.com/questions/46745014/using-dirname-in-es6-modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const DATA_DIR = __dirname + '/data';
+const MOCKS_DIR = __dirname + '/mocks';
 
 // GENERATORS //////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,20 +80,31 @@ const fetchApi = async (path, query = {}) => {
 };
 
 const readMockFile = (name) => {
-    const filename = `${DATA_DIR}/${name}.json`;
+    const filename = `${MOCKS_DIR}/${name}.json`;
     const jsonData = readFileSync(filename);
 
     return JSON.parse(jsonData);
 };
 
 const writeMockFile = (name, data) => {
-    const filename = `${DATA_DIR}/${name}.json`;
+    const filename = `${MOCKS_DIR}/${name}.json`;
     const jsonData = JSON.stringify(data, null, 2);
 
     writeFileSync(filename, jsonData);
 };
 
+const ensureMocksDir = () => {
+    existsSync(MOCKS_DIR) || mkdirSync(MOCKS_DIR);
+};
+
+const purgeMocksDir = () => {
+    rmSync(MOCKS_DIR, { recursive: true });
+};
+
 // RUN /////////////////////////////////////////////////////////////////////////////////////////////
+
+purgeMocksDir();
+ensureMocksDir();
 
 await generateProfile();
 await generateRepos();

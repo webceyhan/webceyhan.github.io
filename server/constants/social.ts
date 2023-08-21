@@ -1,4 +1,6 @@
-export default [
+import { SocialLink } from '../types/social';
+
+export const LINKS: SocialLink[] = [
     {
         icon: 'github',
         url: 'https://github.com',

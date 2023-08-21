@@ -1,4 +1,5 @@
-import LINKS from '../constants/social-links';
+import { LINKS } from '../constants/social';
+import { SocialLink } from '../types/social';
 
 export default defineEventHandler((event) => {
     return LINKS.filter(havingId).map(normalizeUrl);
@@ -6,9 +7,9 @@ export default defineEventHandler((event) => {
 
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
 
-const havingId = ({ id }) => !!id;
+const havingId = (link: SocialLink): boolean => !!link.id;
 
-const normalizeUrl = (link) => ({
+const normalizeUrl = (link: SocialLink): SocialLink => ({
     ...link,
     url: `${link.url}/${link.id}`,
 });

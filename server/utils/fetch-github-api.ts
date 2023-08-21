@@ -1,9 +1,10 @@
 import { API_URL, API_HEADERS } from '../constants/github';
-import { Data, EtagList, Query } from '../types/api';
 
-const urlEtags: EtagList = {};
+type Query = Record<string, number | string | boolean>;
 
-export async function fetchGithubApi(path: string, query: Query = {}) {
+const urlEtags: Record<string, string> = {};
+
+export async function fetchGithubApi<T>(path: string, query: Query = {}) {
     const url = makeUrl(path, query);
     const etag = urlEtags[url];
 
@@ -19,7 +20,7 @@ export async function fetchGithubApi(path: string, query: Query = {}) {
         if (status === 200) {
             // update etag and return fresh data
             urlEtags[url] = headers.get('etag') as string;
-            return _data as Data;
+            return _data as T;
         }
     } catch (error) {}
 

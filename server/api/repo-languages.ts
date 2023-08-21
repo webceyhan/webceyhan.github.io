@@ -1,24 +1,37 @@
-import { Language } from '../types/repo';
 import { API_USERNAME } from '../constants/github';
 import { COLORS } from '../constants/language';
+import { Language } from '../types/repo';
 
 type Data = Record<string, number>;
 
-const cachedLanguages: Record<string, Language[]> = {};
+type LanguageCache = Record<string, Language[]>;
+
+const cache = useStorage('api-cache');
 
 export default defineEventHandler(async (event) => {
+    // get repository name from query
     const repo = getQuery(event).repo as string;
-    const url = `/repos/${API_USERNAME}/${repo}/languages`;
 
-    // try to fetch fresh data if available or null
-    const data = await fetchGithubApi<Data>(url);
+    // try to get cached data
+    const cachedLanguages = await cache.getItem<LanguageCache>('languages');
 
-    if (data) {
-        // process and save fresh data
-        cachedLanguages[repo] = normalizeLanguages(data);
+    // return cached data if available
+    if (cachedLanguages && cachedLanguages[repo]) {
+        return cachedLanguages[repo];
     }
 
-    return cachedLanguages[repo];
+    // fetch fresh data
+    const url = `/repos/${API_USERNAME}/${repo}/languages`;
+    const data = await fetchGithubApi<Data>(url);
+    const languages = normalizeLanguages(data);
+
+    // save fresh data to cache
+    await cache.setItem('languages', {
+        ...cachedLanguages,
+        [repo]: languages,
+    });
+
+    return languages;
 });
 
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////

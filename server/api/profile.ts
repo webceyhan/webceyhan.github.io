@@ -1,18 +1,24 @@
 import { API_USERNAME } from '../constants/github';
 import { Profile } from '../types/profile';
 
-let cachedProfile: Profile;
+const cache = useStorage('api-cache');
 
 export default defineEventHandler(async (event) => {
-    // try to fetch fresh data if available or null
-    const data = await fetchGithubApi(`/users/${API_USERNAME}`);
+    // try to get cached data
+    const cachedProfile = await cache.getItem<Profile>('profile');
 
-    if (data) {
-        // process and save fresh data
-        cachedProfile = normalizeProfile(data);
-    }
+    // return cached data if available
+    if (cachedProfile) return cachedProfile;
 
-    return cachedProfile;
+    // fetch fresh data
+    const url = `/users/${API_USERNAME}`;
+    const data = await fetchGithubApi(url);
+    const profile = normalizeProfile(data);
+
+    // save fresh data to cache
+    await cache.setItem('profile', profile);
+
+    return profile;
 });
 
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////

@@ -1,11 +1,18 @@
 import { API_USERNAME } from '../constants/github';
 import { Profile } from '../types/profile';
 
-export default defineEventHandler(async (event) => {
-    const data = await fetchGithubApi(`/users/${API_USERNAME}`);
-    const profile = normalizeProfile(data);
+let cachedProfile: Profile;
 
-    return profile;
+export default defineEventHandler(async (event) => {
+    // try to fetch fresh data if available or null
+    const data = await fetchGithubApi(`/users/${API_USERNAME}`);
+
+    if (data) {
+        // process and save fresh data
+        cachedProfile = normalizeProfile(data);
+    }
+
+    return cachedProfile;
 });
 
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////

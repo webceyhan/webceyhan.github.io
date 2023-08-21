@@ -25,4 +25,5 @@ export interface Language {
 export interface Topic {
     name: string;
     rate: number;
+    category: string;
 }

@@ -1,3 +1,4 @@
+import { CATEGORIES } from '../constants/topic';
 import { Repo, Topic } from '../types/repo';
 
 export default defineEventHandler(async (event) => {
@@ -19,10 +20,11 @@ export default defineEventHandler(async (event) => {
 
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
 
-const collectTopics = (repos: Repo[]) => {
+const collectTopics = (repos: Repo[]): Topic[] => {
     const list = repos.reduce((acc, repo) => {
         repo.topics.forEach((name) => {
             acc[name] = acc[name] ?? { name, rate: 0 };
+            acc[name].category = findCategory(name);
             acc[name].rate += 1;
         });
 
@@ -30,4 +32,12 @@ const collectTopics = (repos: Repo[]) => {
     }, {} as Record<string, Topic>);
 
     return Object.values(list);
+};
+
+const findCategory = (name: string): string => {
+    return (
+        Object.entries(CATEGORIES).find(([, list]) =>
+            list.includes(name)
+        )?.[0] ?? 'other'
+    );
 };

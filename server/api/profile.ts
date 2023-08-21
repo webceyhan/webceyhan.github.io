@@ -36,5 +36,6 @@ const normalizeProfile = (data: any): Profile => {
         public_repos: data.public_repos,
         public_gists: data.public_gists,
         created_at: data.created_at,
+        updated_at: data.updated_at,
     };
 };

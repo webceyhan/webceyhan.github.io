@@ -16,4 +16,5 @@ export interface Profile {
     public_repos: number;
     public_gists: number;
     created_at: string;
+    updated_at: string;
 }

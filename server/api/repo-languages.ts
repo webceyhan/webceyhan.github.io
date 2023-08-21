@@ -6,18 +6,16 @@ type Data = Record<string, number>;
 
 type LanguageCache = Record<string, Language[]>;
 
-const cache = useStorage('api-cache');
-
 export default defineEventHandler(async (event) => {
     // get repository name from query
     const repo = getQuery(event).repo as string;
 
     // try to get cached data
-    const cachedLanguages = await cache.getItem<LanguageCache>('languages');
+    const cache = await useCache<LanguageCache>('languages');
 
     // return cached data if available
-    if (cachedLanguages && cachedLanguages[repo]) {
-        return cachedLanguages[repo];
+    if (cache.value && cache.value[repo]) {
+        return cache.value[repo];
     }
 
     // fetch fresh data
@@ -26,10 +24,7 @@ export default defineEventHandler(async (event) => {
     const languages = normalizeLanguages(data);
 
     // save fresh data to cache
-    await cache.setItem('languages', {
-        ...cachedLanguages,
-        [repo]: languages,
-    });
+     cache.value = { ...cache.value, [repo]: languages };
 
     return languages;
 });

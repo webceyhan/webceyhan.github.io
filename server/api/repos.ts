@@ -1,25 +1,22 @@
 import { API_USERNAME } from '../constants/github';
 import { Repo } from '../types/repo';
 
-const cache = useStorage('api-cache');
-
 export default defineEventHandler(async (event) => {
     // try to get cached data
-    const cachedRepos = await cache.getItem<Repo[]>('repos');
+    const cache = await useCache<Repo[]>('repos');
 
     // return cached data if available
-    if (cachedRepos) return cachedRepos;
+    if (cache.value) return cache.value;
 
     // fetch fresh data
     const url = `/users/${API_USERNAME}/repos`;
     const query = { per_page: 100, sort: 'updated' };
     const data = await fetchGithubApi<any[]>(url, query);
-    const repos = await Promise.all(data.map(normalizeRepo)) as Repo[];
 
     // save fresh data to cache
-    await cache.setItem('repos', repos);
+    cache.value = (await Promise.all(data.map(normalizeRepo))) as Repo[];
 
-    return repos;
+    return cache.value;
 });
 
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////

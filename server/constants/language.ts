@@ -1,4 +1,3 @@
-import { Language } from '../types/repo';
 export const COLORS: Record<string, string> = {
     '1C Enterprise': '#814CCC',
     '4D': '#004289',

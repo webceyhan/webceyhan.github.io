@@ -16,7 +16,10 @@ export async function fetchGithubApi(path, query = {}) {
     if (status === 200) {
         console.log('serving fresh data');
         cache.refresh(headers.get('etag'), _data);
-        // console.log('remaining requests', headers.get('x-ratelimit-remaining'));
+        console.log('remaining requests', headers.get('x-ratelimit-remaining'));
+    }
+    else {
+        console.log('serving cached data');
     }
 
     // serve cached data for below status codes:

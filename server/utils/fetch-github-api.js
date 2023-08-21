@@ -39,5 +39,5 @@ const makeUrl = (path, query = {}) => {
         url.searchParams.append(key, value);
     });
 
-    return url;
+    return url.toString();
 };

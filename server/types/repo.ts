@@ -21,3 +21,8 @@ export interface Language {
     rate: number | string;
     color: string | null;
 }
+
+export interface Topic {
+    name: string;
+    rate: number;
+}

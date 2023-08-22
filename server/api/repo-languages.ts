@@ -41,7 +41,7 @@ const normalizeLanguages = (data: Data): Language[] => {
     return entries.map(([name, lines]) => ({
         name,
         lines,
-        rate: ((lines / lineSum) * 100).toFixed(1),
+        rate: ((lines / lineSum) * 100).toFixed(1) as any,
         color: COLORS[name] ?? null,
     }));
 };

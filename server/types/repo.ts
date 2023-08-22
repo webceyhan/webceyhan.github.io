@@ -9,7 +9,7 @@ export interface Repo {
     watchers: number;
     open_issues: number;
     topics: string[];
-    languages: string[];
+    languages: Language[];
     created_at: string;
     updated_at: string;
     pushed_at: string;
@@ -18,7 +18,7 @@ export interface Repo {
 export interface Language {
     name: string;
     lines: number;
-    rate: number | string;
+    rate: number;
     color: string | null;
 }
 

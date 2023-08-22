@@ -1,5 +1,5 @@
 export const CATEGORIES = {
-    language: [
+    Language: [
         'javascript',
         'typescript',
         'python',
@@ -10,17 +10,17 @@ export const CATEGORIES = {
         'sass',
         'solidity',
     ],
-    framework: [
+    Framework: [
         'vue',
         'react',
         'angular',
         'svelte',
         'nuxt',
-        'next',
+        'nextjs',
         'express',
         'laravel',
     ],
-    database: [
+    Database: [
         'mysql',
         'mongodb',
         'postgresql',
@@ -29,7 +29,7 @@ export const CATEGORIES = {
         'firestore',
         'nosql',
     ],
-    design: [
+    Design: [
         'bootstrap',
         'tailwindcss',
         'material-ui',
@@ -40,7 +40,7 @@ export const CATEGORIES = {
         'bootstrap-icons',
         'chartjs',
     ],
-    deployment: [
+    Deployment: [
         'aws',
         'digitalocean',
         'vercel',
@@ -51,7 +51,7 @@ export const CATEGORIES = {
         'github-actions',
         'kubernetes',
     ],
-    tooling: [
+    Tooling: [
         'nodejs',
         'vite',
         'inertiajs',
@@ -63,19 +63,29 @@ export const CATEGORIES = {
         'vuex',
         'rxjs',
     ],
-    technology: [
+    Concept: [
         'rest',
         'graphql',
-        'websockets',
+        'websocket',
         'webassembly',
-        'p2p',
-        'redux',
         'web3',
-        'cryptography',
         'blockchain',
+        'cryptography',
         'proof-of-work',
-        'long-polling',
+        'p2p',
         'sse',
+        'long-polling',
         'ssr',
+        'redux',
+        'authentication',
+        'authorization',
+        'http',
+        'https',
+        'http2',
+        'bidrectional-communication',
+        'serverless',
+        'microservices',
+        'unidirectional-data-flow',
+        'voice-recognition',
     ],
 };

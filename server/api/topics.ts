@@ -38,6 +38,6 @@ const findCategory = (name: string): string => {
     return (
         Object.entries(CATEGORIES).find(([, list]) =>
             list.includes(name)
-        )?.[0] ?? 'other'
+        )?.[0] ?? 'Other'
     );
 };

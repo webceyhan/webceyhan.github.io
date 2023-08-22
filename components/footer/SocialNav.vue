@@ -1,11 +1,11 @@
-<script setup>
-
+<script setup lang="ts">
 // todo: this must be override default NuxtLink in config files
-import Link from '@/components/ui/Link.vue'
+import Link from "@/components/ui/Link.vue";
+import { SocialLink } from "@/server/types/social";
 
-defineProps({
-  links: Array,
-});
+defineProps<{
+  links: SocialLink[];
+}>();
 </script>
 
 <template>

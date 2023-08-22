@@ -1,5 +1,7 @@
-<script setup>
-const { data: links } = useSocialLinks();
+<script setup lang="ts">
+const { data: links } = await useFetch("/api/social-links", {
+  default: () => [],
+});
 </script>
 
 <template>

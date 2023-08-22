@@ -1,15 +1,17 @@
-<script setup>
+<script setup lang="ts">
+import { Variant } from "types/ui";
+
 defineEmits(["click"]);
 
-defineProps({
-  label: String,
-  variant: String,
-  outline: Boolean,
-  active: Boolean,
-  large: Boolean,
-  small: Boolean,
-  tiny: Boolean,
-});
+defineProps<{
+  label?: string;
+  variant?: Variant;
+  outline?: boolean;
+  active?: boolean;
+  large?: boolean;
+  small?: boolean;
+  tiny?: boolean;
+}>();
 </script>
 
 <template>

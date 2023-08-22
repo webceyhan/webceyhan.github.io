@@ -1,7 +1,9 @@
-<script setup>
-defineProps({
-  repos: Array,
-});
+<script setup lang="ts">
+import { Repo } from "server/types/repo";
+
+defineProps<{
+  repos: Repo[];
+}>();
 </script>
 
 <template>

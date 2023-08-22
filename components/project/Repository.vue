@@ -1,9 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import Link from "@/components/ui/Link.vue";
+import { Repo } from "server/types/repo";
 
-defineProps({
-  repo: Object,
-});
+defineProps<{
+  repo: Repo;
+}>();
 </script>
 
 <template>
@@ -66,7 +67,7 @@ defineProps({
       >
         <TopicList :topics="repo.topics" class="max-sm:hidden" />
 
-        <ProgressBar :items="repo.languages" small />
+        <ProgressBar :items="(repo.languages as any[])" small />
 
         <LanguageList :languages="repo.languages" />
       </div>

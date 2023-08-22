@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 let count = 0;
 </script>
 
-<script setup>
+<script setup lang="ts">
 const isOpen = ref(false);
 const id = `drawer-${count++}`;
 

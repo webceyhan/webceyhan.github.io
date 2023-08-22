@@ -1,11 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { loadSlim } from "tsparticles-slim";
 
-const particlesInit = async (engine) => {
+const particlesInit = async (engine: any) => {
   await loadSlim(engine);
 };
 
-const particlesLoaded = async (container) => {};
+const particlesLoaded = async (container: any) => {};
 
 const options = {
   // background: {

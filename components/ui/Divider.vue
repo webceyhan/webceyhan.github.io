@@ -1,8 +1,8 @@
-<script setup>
-defineProps({
-  label: String,
-  horizontal: Boolean,
-});
+<script setup lang="ts">
+defineProps<{
+  label: string;
+  horizontal: boolean;
+}>();
 </script>
 
 <template>

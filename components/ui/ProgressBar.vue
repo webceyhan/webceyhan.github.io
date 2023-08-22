@@ -1,9 +1,12 @@
-<script setup>
-defineProps({
-  items: Array,
-  small: Boolean,
-  large: Boolean,
-});
+<script setup lang="ts">
+import { Item } from "types/ui";
+
+defineProps<{
+  items: Item[];
+  small?: boolean;
+  //   medium: boolean; // default
+  large?: boolean;
+}>();
 </script>
 
 <template>

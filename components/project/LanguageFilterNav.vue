@@ -1,12 +1,14 @@
-<script setup>
+<script setup lang="ts">
+import { Language } from "server/types/repo";
+
 const emit = defineEmits(["update:modelValue"]);
 
-const props = defineProps({
-  modelValue: String,
-  languages: Array,
-});
+const props = defineProps<{
+  modelValue: string | null;
+  languages:  Language[];
+}>();
 
-const onToggle = (name) => {
+const onToggle = (name: string) => {
   const active = props.modelValue === name;
   emit("update:modelValue", active ? null : name);
 };
@@ -16,7 +18,7 @@ const onToggle = (name) => {
   <div class="space-y-2">
     <Heading small> Languages </Heading>
 
-    <progress-bar :items="languages" />
+    <ProgressBar :items="(languages as any[])" />
 
     <nav class="flex flex-wrap gap-1">
       <Button

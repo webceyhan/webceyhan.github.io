@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useTopicStore } from "@/store/topic";
 import { useLanguageStore } from "@/store/language";
 import { useRepositoryStore } from "@/store/repository";

@@ -1,10 +1,12 @@
-<script setup>
-defineProps({
-  label: String,
-  hover: Boolean,
-  active: Boolean,
-  variant: String, // primary, secondary, neutral, accent
-});
+<script setup lang="ts">
+import { Variant } from "types/ui";
+
+defineProps<{
+  label?: string;
+  variant?: Variant;
+  active?: boolean;
+  hover?: boolean;
+}>();
 </script>
 
 <template>

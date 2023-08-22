@@ -1,30 +1,28 @@
-<script setup>
-defineProps({
-  label: String,
-  value: [String, Number],
-  desc: String,
-  icon: String,
-});
+<script setup lang="ts">
+defineProps<{
+  label?: string;
+  value?: string | number;
+  desc?: string;
+  icon?: string;
+}>();
 </script>
 
 <template>
   <div class="stat">
-    <div v-if="$slots.figure || icon" class="stat-figure mt-5">
-      <slot name="figure">
-        <Icon :name="icon" class="inline-block text-secondary text-3xl" />
-      </slot>
+    <div v-if="icon" class="stat-figure mt-5">
+      <Icon :name="icon" class="inline-block text-secondary text-3xl" />
     </div>
 
-    <div v-if="$slots.label || label" class="stat-title">
-      <slot name="label">{{ label }}</slot>
+    <div v-if="label" class="stat-title">
+      {{ label }}
     </div>
 
-    <div v-if="$slots.value || value" class="stat-value">
-      <slot name="value">{{ value }}</slot>
+    <div v-if="value" class="stat-value">
+      {{ value }}
     </div>
 
-    <div v-if="$slots.desc || desc" class="stat-desc">
-      <slot name="desc">{{ desc }}</slot>
+    <div v-if="desc" class="stat-desc">
+      {{ desc }}
     </div>
   </div>
 </template>

@@ -1,12 +1,15 @@
-<script setup>
-const props = defineProps({
-  title: String,
-  open: Boolean,
-});
+<script setup lang="ts">
+import { AccordionInjection } from "types/ui";
+
+const props = defineProps<{
+  title: string;
+  open: boolean;
+}>();
 
 const open = ref(props.open);
 
-const { panels, collapseAll } = inject("accordion");
+const { panels, collapseAll } = inject("accordion") as AccordionInjection;
+
 panels.value.push({ open });
 
 function toggle() {

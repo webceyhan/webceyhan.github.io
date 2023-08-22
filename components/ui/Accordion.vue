@@ -1,5 +1,7 @@
-<script setup>
-const panels = ref([]);
+<script setup lang="ts">
+import { Panel } from "types/ui";
+
+const panels = ref<Panel[]>([]);
 
 function collapseAll() {
   panels.value.forEach((panel) => {

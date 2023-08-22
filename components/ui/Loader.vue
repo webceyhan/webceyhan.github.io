@@ -1,14 +1,15 @@
-<script setup>
-defineProps({
-  spinner: Boolean,
-  dots: Boolean,
-  ring: Boolean,
-  ball: Boolean,
-  bars: Boolean,
-  infinity: Boolean,
-  small: Boolean,
-  large: Boolean,
-});
+<script setup lang="ts">
+defineProps<{
+  spinner?: boolean;
+  dots?: boolean;
+  ring?: boolean;
+  ball?: boolean;
+  bars?: boolean;
+  infinity?: boolean;
+  small?: boolean;
+  // medium: boolean
+  large?: boolean;
+}>();
 </script>
 
 <template>

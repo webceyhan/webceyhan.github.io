@@ -1,12 +1,14 @@
-<script setup>
+<script setup lang="ts">
+import { Topic } from "server/types/repo";
+
 const emit = defineEmits(["update:modelValue"]);
 
-const props = defineProps({
-  modelValue: String,
-  topics: Array,
-});
+const props = defineProps<{
+  modelValue: string;
+  topics: Topic[];
+}>();
 
-const onToggle = (topic) => {
+const onToggle = (topic: string) => {
   const active = props.modelValue === topic;
   emit("update:modelValue", active ? null : topic);
 };

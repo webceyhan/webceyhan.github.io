@@ -1,10 +1,12 @@
-<script setup>
-defineProps({
-  languages: Array,
-});
+<script setup lang="ts">
+import { Language } from "server/types/repo";
+
+defineProps<{
+  languages: Language[];
+}>();
 
 // filter significant languages that has rate >= 1
-const filterSignificant = (languages) => {
+const filterSignificant = (languages: Language[]) => {
   const filtered = languages.filter((lang) => lang.rate >= 1);
   return filtered.sort((a, b) => b.rate - a.rate);
 };

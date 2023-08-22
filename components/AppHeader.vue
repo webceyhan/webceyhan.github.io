@@ -1,13 +1,16 @@
-<script setup>
+<script setup lang="ts">
+// @ts-ignore
 import VueWriter from "vue-writer";
 
 const showLogo = ref(true);
 
-const { pending, data: profile } = useProfile();
+const { data: profile } = await useFetch("/api/profile");
 
-const titles = computed(() => {
-  return [profile.value.bio, "Open Source Contributor", "Web3 & Blockchain Enthusiast"];
-});
+const titles = computed(() => [
+  profile.value?.bio,
+  "Open Source Contributor",
+  "Web3 & Blockchain Enthusiast",
+]);
 </script>
 
 <template>
@@ -17,7 +20,7 @@ const titles = computed(() => {
   >
     <!-- <div class="hero-overlay bg-opacity-60"></div> -->
     <div class="hero-content flex-col text-center md:text-left text-neutral-content">
-      <Loader v-if="pending" ring class="w-52" />
+      <Loader v-if="!profile" class="w-52" ring />
 
       <template v-else>
         <div class="flex flex-col md:flex-row items-center">

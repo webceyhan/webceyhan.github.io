@@ -1,10 +1,10 @@
-<script setup>
-defineProps({
-  title: String,
-  compact: Boolean,
-  imageAside: Boolean,
-  imageOverlay: Boolean,
-});
+<script setup lang="ts">
+defineProps<{
+  title?: string;
+  imageAside?: boolean;
+  imageOverlay?: boolean;
+  compact?: boolean;
+}>();
 </script>
 
 <template>

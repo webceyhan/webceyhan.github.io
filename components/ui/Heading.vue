@@ -1,9 +1,9 @@
-<script setup>
-defineProps({
-  large: Boolean,
-  //   medium: Boolean, // default
-  small: Boolean,
-});
+<script setup lang="ts">
+defineProps<{
+  large?: boolean;
+  //   medium: boolean; // default
+  small?: boolean;
+}>();
 </script>
 
 <template>

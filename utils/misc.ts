@@ -10,9 +10,4 @@ export const timestamp = (date: string) => {
     return formatter.format(new Date(date));
 };
 
-export const makeUrl = (url: string, search = {}) => {
-    const urlObject = new URL(url);
-    urlObject.search = new URLSearchParams(search).toString();
 
-    return urlObject;
-};

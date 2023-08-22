@@ -8,18 +8,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         env:
+          # NUXT_APP_BASE_URL: '/webceyhan.github.io/'
           GITHUB_API_TOKEN: ${{ secrets.API_TOKEN }}
           GITHUB_API_USERNAME: ${{ secrets.API_USERNAME }}
+          # social link handles
+          USER_GITHUB: ${{ vars.USER_GITHUB }}
+          USER_REDDIT: ${{ vars.USER_REDDIT }}
+          USER_LINKEDIN: ${{ vars.USER_LINKEDIN }}
+          USER_TWITTER: ${{ vars.USER_TWITTER }}
+          USER_INSTAGRAM: ${{ vars.USER_INSTAGRAM }}
         run: |
           npm ci
           npm run generate
+          rm -f .output/public/200.html
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .output/public # The folder the action should deploy.

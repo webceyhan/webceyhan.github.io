@@ -9,4 +9,10 @@ export default defineNuxtConfig({
             pathPrefix: false, // disable path prefix for components
         },
     ],
+
+    app: {
+        buildAssetsDir: process.env.NODE_ENV === 'production' ? 'assets' : '',
+
+    },
+
 });

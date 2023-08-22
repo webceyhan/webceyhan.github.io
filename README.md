@@ -50,11 +50,11 @@ You need to install the [Node.js](https://nodejs.dev/) and `npm` package manager
 4. Set your social link handles in .env file.
     ```sh
     # social-link handles
-    VITE_USER_GITHUB=
-    VITE_USER_REDDIT=
-    VITE_USER_LINKEDIN=
-    VITE_USER_TWITTER=
-    VITE_USER_INSTAGRAM=
+    USER_GITHUB=
+    USER_REDDIT=
+    USER_LINKEDIN=
+    USER_TWITTER=
+    USER_INSTAGRAM=
     ```
 5. Setup your GitHub profile settings to show in header section.
     ```sh
@@ -125,11 +125,10 @@ The workflow will build the project using npm and output the result to the `dist
 
 ## References
 
--   [Node.js](https://nodejs.dev/)
--   [Vite](https://vitejs.dev/)
 -   [Vue.js](https://vuejs.org/)
--   [Tailwind CSS](https://tailwindcss.com/)
+-   [Nuxt.js](https://nuxtjs.org/)
 -   [DaisyUI](https://daisyui.com/)
+-   [Tailwind CSS](https://tailwindcss.com/)
 -   [Bootstrap Icons](https://icons.getbootstrap.com/)
 -   [GitHub REST API](https://docs.github.com/en/rest)
 -   [GitHub Actions](https://docs.github.com/en/actions)

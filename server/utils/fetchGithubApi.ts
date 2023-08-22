@@ -3,9 +3,10 @@ import { API_URL, API_HEADERS } from '../constants/github';
 type Query = Record<string, number | string | boolean>;
 
 export async function fetchGithubApi<T>(path: string, query: Query = {}) {
-    const url = makeUrl(path, query);
-
-    return $fetch<T>(url, { headers: API_HEADERS });
+    return $fetch(API_URL + path, {
+        query,
+        headers: API_HEADERS,
+    }) as T;
 }
 
 // const urlEtags: Record<string, string> = {};
@@ -32,17 +33,3 @@ export async function fetchGithubApi<T>(path: string, query: Query = {}) {
 
 //     return null;
 // }
-
-// HELPERS /////////////////////////////////////////////////////////////////////////////////////////
-
-const makeUrl = (path: string, query: Query = {}): string => {
-    // create url object
-    const url = new URL(API_URL + path);
-
-    // add query params
-    Object.entries(query).forEach(([key, value]) => {
-        url.searchParams.append(key, `${value}`);
-    });
-
-    return url.toString();
-};

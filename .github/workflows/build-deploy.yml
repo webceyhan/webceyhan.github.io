@@ -15,6 +15,12 @@ jobs:
           # NUXT_APP_BASE_URL: '/webceyhan.github.io/'
           GITHUB_API_TOKEN: ${{ secrets.API_TOKEN }}
           GITHUB_API_USERNAME: ${{ secrets.API_USERNAME }}
+          # social link handles
+          USER_GITHUB: ${{ vars.USER_GITHUB }}
+          USER_REDDIT: ${{ vars.USER_REDDIT }}
+          USER_LINKEDIN: ${{ vars.USER_LINKEDIN }}
+          USER_TWITTER: ${{ vars.USER_TWITTER }}
+          USER_INSTAGRAM: ${{ vars.USER_INSTAGRAM }}
         run: |
           npm ci
           npm run generate

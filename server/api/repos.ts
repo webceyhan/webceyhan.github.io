@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
 
     // fetch fresh data
     const url = `/users/${API_USERNAME}/repos`;
-    const query = { per_page: 100, sort: 'updated' };
+    const query = { per_page: 100, sort: 'pushed' };
     const data = await fetchGithubApi<any[]>(url, query);
 
     // save fresh data to cache

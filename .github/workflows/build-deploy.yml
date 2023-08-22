@@ -18,6 +18,7 @@ jobs:
         run: |
           npm ci
           npm run generate
+          rm -f .output/public/200.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.3

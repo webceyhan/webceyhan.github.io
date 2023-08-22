@@ -1,5 +1,3 @@
-// const IS_PROD = process.env.NODE_ENV === 'production';
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: true },
@@ -11,7 +9,4 @@ export default defineNuxtConfig({
             pathPrefix: false, // disable path prefix for components
         },
     ],
-    // app: {
-    //     buildAssetsDir: IS_PROD ? 'assets' : undefined,
-    // },
 });

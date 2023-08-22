@@ -4,7 +4,7 @@ import { Topic } from "server/types/repo";
 const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps<{
-  modelValue: string;
+  modelValue?: string;
   topics: Topic[];
 }>();
 

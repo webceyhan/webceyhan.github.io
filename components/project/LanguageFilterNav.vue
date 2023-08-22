@@ -4,7 +4,7 @@ import { Language } from "server/types/repo";
 const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps<{
-  modelValue: string | null;
+  modelValue?: string;
   languages:  Language[];
 }>();
 

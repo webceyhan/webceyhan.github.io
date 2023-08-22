@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia';
 import { useTopicStore } from './topic';
 import { useLanguageStore } from './language';
+import { Repo } from '@/server/types/repo';
 
 export const useRepositoryStore = defineStore('repository', () => {
     // state
     const loading = ref(false);
-    const _repositories = ref([]);
+    const _repositories = ref<Repo[]>([]);
     const topicStore = useTopicStore();
     const languageStore = useLanguageStore();
 
@@ -25,7 +26,7 @@ export const useRepositoryStore = defineStore('repository', () => {
         // filter by topics
         if (topicStore.selected) {
             repos = repos.filter((repo) =>
-                repo.topics.includes(topicStore.selected)
+                repo.topics.includes(topicStore.selected as any)
             );
         }
 
@@ -36,7 +37,7 @@ export const useRepositoryStore = defineStore('repository', () => {
     async function load() {
         loading.value = true;
         const { data } = await useFetch('/api/repos');
-        _repositories.value = data.value;
+        _repositories.value = data.value as Repo[];
         loading.value = false;
     }
 

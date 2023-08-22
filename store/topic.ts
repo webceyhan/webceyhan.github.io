@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia';
 import { CATEGORIES } from '@/server/constants/topic';
+import { Topic } from '@/server/types/repo';
 
 export const useTopicStore = defineStore('topic', () => {
     // state
-    const topics = ref([]);
+    const topics = ref<Topic[]>([]);
     const loading = ref(false);
-    const selected = ref(null);
+    const selected = ref<string | null>(null);
     // get categories without first 'Languages' category
     const categories = [...Object.keys(CATEGORIES), 'Other'].slice(1);
 
@@ -21,7 +22,7 @@ export const useTopicStore = defineStore('topic', () => {
     async function load() {
         loading.value = true;
         const { data } = await useFetch('/api/topics');
-        topics.value = data.value;
+        topics.value = data.value as Topic[];
         loading.value = false;
     }
 

@@ -1,5 +1,6 @@
 import { API_USERNAME } from '../constants/github';
-import { Repo } from '../types/repo';
+import { COLORS } from '../constants/language';
+import { Language, Repo } from '../types/repo';
 
 export default defineEventHandler(async (event) => {
     // try to get cached data
@@ -22,10 +23,6 @@ export default defineEventHandler(async (event) => {
 // HELPERS /////////////////////////////////////////////////////////////////////////////////////////
 
 const normalizeRepo = async (data: any): Promise<Repo> => {
-    const languages = await $fetch('/api/repo-languages', {
-        query: { repo: data.name },
-    });
-
     return {
         id: data.id,
         name: data.name,
@@ -37,9 +34,33 @@ const normalizeRepo = async (data: any): Promise<Repo> => {
         watchers: data.watchers,
         open_issues: data.open_issues,
         topics: data.topics,
-        languages: languages as any,
+        languages: await getLanguages(data.name),
         created_at: data.created_at,
         updated_at: data.updated_at,
         pushed_at: data.pushed_at,
     };
+};
+
+type LanguageData = Record<string, number>;
+
+export const getLanguages = async (repo: string) => {
+    const url = `/repos/${API_USERNAME}/${repo}/languages`;
+    const data = await fetchGithubApi<LanguageData>(url);
+
+    return normalizeLanguages(data);
+};
+
+const normalizeLanguages = (data: LanguageData): Language[] => {
+    const entries = Object.entries(data);
+
+    // count total lines of repository
+    const lineSum = entries.reduce((sum, [_, lines]) => sum + lines, 0);
+
+    // normalize languages structure
+    return entries.map(([name, lines]) => ({
+        name,
+        lines,
+        rate: ((lines / lineSum) * 100).toFixed(1) as any,
+        color: COLORS[name] ?? null,
+    }));
 };

@@ -5,9 +5,7 @@ const particlesInit = async (engine) => {
   await loadSlim(engine);
 };
 
-const particlesLoaded = async (container) => {
-  // console.log("Particles container loaded", container);
-};
+const particlesLoaded = async (container) => {};
 
 const options = {
   // background: {

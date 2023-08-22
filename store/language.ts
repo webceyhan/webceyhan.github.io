@@ -12,7 +12,6 @@ export const useLanguageStore = defineStore('language', () => {
         loading.value = true;
         const { data } = await useFetch('/api/languages');
         languages.value = data.value as Language[];
-        console.log(languages.value);
         loading.value = false;
     }
 

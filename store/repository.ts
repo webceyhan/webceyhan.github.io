@@ -10,8 +10,17 @@ export const useRepositoryStore = defineStore('repository', () => {
     const topicStore = useTopicStore();
     const languageStore = useLanguageStore();
 
+    // pagination states
+    const page = ref(1);
+    const perPage = ref(5);
+    const total = computed(() => filteredRepositories.value.length);
+    const hasMore = computed(() => total.value > page.value * perPage.value);
+    const hasFilter = computed(
+        () => !!languageStore.selected || !!topicStore.selected
+    );
+
     // getters
-    const repositories = computed(() => {
+    const filteredRepositories = computed(() => {
         let repos = _repositories.value;
 
         // filter by language
@@ -21,6 +30,9 @@ export const useRepositoryStore = defineStore('repository', () => {
                     (lang) => lang.name === languageStore.selected
                 )
             );
+
+            // reset page on filter
+            page.value = 1;
         }
 
         // filter by topics
@@ -28,10 +40,17 @@ export const useRepositoryStore = defineStore('repository', () => {
             repos = repos.filter((repo) =>
                 repo.topics.includes(topicStore.selected as any)
             );
+
+            // reset page on filter
+            page.value = 1;
         }
 
         return repos;
     });
+
+    const repositories = computed(() =>
+        filteredRepositories.value.slice(0, page.value * perPage.value)
+    );
 
     //  actions
     async function load() {
@@ -41,9 +60,20 @@ export const useRepositoryStore = defineStore('repository', () => {
         loading.value = false;
     }
 
+    function loadMore() {
+        page.value++;
+    }
+
     // init
     load();
 
     // public api
-    return { load, loading, repositories };
+    return {
+        loadMore,
+        loading,
+        repositories,
+        hasFilter,
+        hasMore,
+        total,
+    };
 });

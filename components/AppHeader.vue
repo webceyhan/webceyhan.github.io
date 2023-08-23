@@ -6,11 +6,7 @@ const showLogo = ref(true);
 
 const { data: profile } = await useFetch("/api/profile");
 
-const titles = computed(() => [
-  profile.value?.bio,
-  "Open Source Contributor",
-  "Web3 & Blockchain Enthusiast",
-]);
+const titles = computed(() => profile.value?.bio.split(","));
 </script>
 
 <template>

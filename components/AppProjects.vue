@@ -48,7 +48,54 @@ const repositoryStore = useRepositoryStore();
         </Accordion>
       </template>
 
+      <!-- paging / filtering info -->
+      <div
+        class="flex flex-wrap justify-center items-center opacity-50 text-sm mb-4 gap-2"
+      >
+        <!-- paging info -->
+        <div class="max-sm:w-full text-center">
+          Showing
+          <Countdown :value="repositoryStore.repositories.length" /> of
+          <Countdown :value="repositoryStore.total" />
+          projects
+          <span v-if="repositoryStore.hasFilter">with</span>
+        </div>
+
+        <!-- filtering info -->
+        <Button
+          v-if="languageStore.selected"
+          @click="languageStore.selected = null"
+          outline
+          micro
+        >
+          {{ languageStore.selected }} <Icon name="x-circle-fill" />
+        </Button>
+
+        <Button
+          v-if="topicStore.selected"
+          @click="topicStore.selected = null"
+          outline
+          micro
+        >
+          {{ topicStore.selected }} <Icon name="x-circle-fill" />
+        </Button>
+      </div>
+
       <RepositoryList :repos="repositoryStore.repositories" />
+
+      <!-- load more -->
+      <!-- bugfix: hydration mismatch can be avoided by wrapping this in a client-only tag -->
+      <client-only>
+        <Button
+          v-if="repositoryStore.hasMore"
+          @click="repositoryStore.loadMore()"
+          variant="primary"
+          class="w-full my-4 mx-auto"
+          outline
+        >
+          <Icon name="caret-down" /> Load More
+        </Button>
+      </client-only>
     </Drawer>
   </main>
 </template>

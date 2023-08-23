@@ -60,7 +60,7 @@ const normalizeLanguages = (data: LanguageData): Language[] => {
     return entries.map(([name, lines]) => ({
         name,
         lines,
-        rate: ((lines / lineSum) * 100).toFixed(1) as any,
+        rate: calculateRate(lines, lineSum),
         color: COLORS[name] ?? null,
     }));
 };

@@ -3,7 +3,7 @@ import { AccordionInjection } from "types/ui";
 
 const props = defineProps<{
   title: string;
-  open: boolean;
+  open?: boolean;
 }>();
 
 const open = ref(props.open);

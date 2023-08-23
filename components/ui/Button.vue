@@ -11,6 +11,7 @@ defineProps<{
   large?: boolean;
   small?: boolean;
   tiny?: boolean;
+  micro?: boolean;
 }>();
 </script>
 
@@ -28,6 +29,7 @@ defineProps<{
       'btn-lg': large,
       'btn-sm': small,
       'btn-xs': tiny,
+      'btn-xs !h-5 !min-h-min': micro,
     }"
     @click="$emit('click')"
   >

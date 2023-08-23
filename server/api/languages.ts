@@ -36,6 +36,6 @@ const collectLanguages = (repos: Repo[]): Language[] => {
     // add rate to each language
     return Object.values(list).map((language) => ({
         ...language,
-        rate: (language.lines / lineSum) * 100,
+        rate: calculateRate(language.lines, lineSum),
     }));
 };

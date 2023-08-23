@@ -84,15 +84,18 @@ const repositoryStore = useRepositoryStore();
       <RepositoryList :repos="repositoryStore.repositories" />
 
       <!-- load more -->
-      <Button
-        v-if="repositoryStore.hasMore"
-        @click="repositoryStore.loadMore()"
-        variant="primary"
-        class="w-full my-4 mx-auto"
-        outline
-      >
-        <Icon name="caret-down" /> Load More
-      </Button>
+      <!-- bugfix: hydration mismatch can be avoided by wrapping this in a client-only tag -->
+      <client-only>
+        <Button
+          v-if="repositoryStore.hasMore"
+          @click="repositoryStore.loadMore()"
+          variant="primary"
+          class="w-full my-4 mx-auto"
+          outline
+        >
+          <Icon name="caret-down" /> Load More
+        </Button>
+      </client-only>
     </Drawer>
   </main>
 </template>

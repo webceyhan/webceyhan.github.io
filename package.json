@@ -33,7 +33,7 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^20.5.3",
     "daisyui": "^3.5.1",
-    "nuxt": "^3.6.5"
+    "nuxt": "^3.7.0"
   },
   "overrides": {
     "vue": "latest"

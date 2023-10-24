@@ -4,7 +4,7 @@
 
 <!-- LOGO (OPTIONAL) -->
 
-![Logo](./src/assets/company-logo.png)
+![Logo](./public/img/company-logo.png)
 
 <!-- HEADER ///////////////////////////////////////////////////////////// -->
 

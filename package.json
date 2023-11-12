@@ -22,7 +22,7 @@
   "homepage": "https://github.com/webceyhan/webceyhan.github.io#readme",
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
-    "bootstrap-icons": "^1.11.0",
+    "bootstrap-icons": "^1.11.1",
     "pinia": "^2.1.6",
     "tsparticles-slim": "^2.12.0",
     "vue-writer": "^1.2.0",
@@ -31,8 +31,8 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/node": "^20.6.0",
-    "daisyui": "^3.7.4",
+    "@types/node": "^20.9.0",
+    "daisyui": "^3.9.4",
     "nuxt": "^3.6.5"
   },
   "overrides": {

@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/webceyhan/webceyhan.github.io#readme",
   "dependencies": {
-    "@pinia/nuxt": "^0.4.11",
+    "@pinia/nuxt": "^0.5.1",
     "bootstrap-icons": "^1.11.1",
     "pinia": "^2.1.6",
     "tsparticles-slim": "^2.12.0",

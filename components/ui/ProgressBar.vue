@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Item } from "types/ui";
+import type { Item } from "~/types/ui";
 
 defineProps<{
   items: Item[];

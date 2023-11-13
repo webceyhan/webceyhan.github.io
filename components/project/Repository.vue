@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Link from "@/components/ui/Link.vue";
-import { Repo } from "server/types/repo";
+import type { Repo } from "~/server/types/repo";
 
 defineProps<{
   repo: Repo;

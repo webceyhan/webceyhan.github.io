@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AccordionInjection } from "types/ui";
+import type { AccordionInjection } from "~/types/ui";
 
 const props = defineProps<{
   title: string;

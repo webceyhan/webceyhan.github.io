@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Language } from "server/types/repo";
+import type { Language } from "~/server/types/repo";
 
 defineProps<{
   languages: Language[];

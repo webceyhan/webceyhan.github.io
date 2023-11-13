@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Variant } from "types/ui";
+import type { Variant } from "~/types/ui";
 
 defineProps<{
   label?: string;

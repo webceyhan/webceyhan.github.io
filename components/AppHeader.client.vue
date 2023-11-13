@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// @ts-ignore
-import VueWriter from "vue-writer";
-
 const showLogo = ref(true);
 
 const { data: profile } = await useFetch("/api/profile");

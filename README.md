@@ -1,5 +1,5 @@
 <!-- AUTOMATION BADGES -->
-[![CodeQL](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/github-code-scanning/codeql)
 [![Build and Deploy](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml)
 
 <!-- LOGO (OPTIONAL) -->

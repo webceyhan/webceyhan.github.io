@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { CATEGORIES } from '@/server/constants/topic';
-import { Topic } from '@/server/types/repo';
+import type { Topic } from '~/server/types/repo';
 
 export const useTopicStore = defineStore('topic', () => {
     // state

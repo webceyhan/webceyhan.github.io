@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { useTopicStore } from './topic';
 import { useLanguageStore } from './language';
-import { Repo } from '@/server/types/repo';
+import type { Repo } from '~/server/types/repo';
 
 export const useRepositoryStore = defineStore('repository', () => {
     // state

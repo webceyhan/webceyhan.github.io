@@ -30,12 +30,14 @@ const titles = computed(() => profile.value?.bio.split(","));
 
             <div class="text-xl lg:text-3xl">
               <!-- profession -->
-              <VueWriter
-                :array="titles"
-                class="text-warning mb-2"
-                :eraseSpeed="50"
-                :typeSpeed="30"
-              />
+              <ClientOnly>
+                <VueWriter
+                  :array="titles"
+                  class="text-warning mb-2"
+                  :eraseSpeed="50"
+                  :typeSpeed="30"
+                />
+              </ClientOnly>
 
               <!-- location -->
               Based in {{ profile.location }},

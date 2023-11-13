@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Panel } from "types/ui";
+import type { Panel } from "~/types/ui";
 
 const panels = ref<Panel[]>([]);
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Topic } from "server/types/repo";
+import type { Topic } from "~/server/types/repo";
 
 const emit = defineEmits(["update:modelValue"]);
 

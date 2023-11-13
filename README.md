@@ -1,4 +1,5 @@
 <!-- AUTOMATION BADGES -->
+
 [![CodeQL](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/github-code-scanning/codeql)
 [![Build and Deploy](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml)
 
@@ -8,11 +9,11 @@
 
 <!-- HEADER ///////////////////////////////////////////////////////////// -->
 
+# Personal Landing Page
 
-# ceyhan.cloud Landing Page
-
-This is a personal landing page which is served at [ceyhan.io](https://www.ceyhan.io/).
-It contains a short personal introduction and list of projects i developed on GitHub. All data is dynamically fetched from GitHub REST API.
+This is a personal landing page which is served at [ceyhan.cloud](https://www.ceyhan.cloud/).
+It contains a short personal introduction and list of projects i developed on GitHub.
+All data is dynamically fetched from GitHub REST API.
 Feel free to use it as your own landing page if you like.
 
 [View Demo](https://webceyhan.github.io) |
@@ -57,13 +58,13 @@ You need to install the [Node.js](https://nodejs.dev/) and `npm` package manager
     USER_INSTAGRAM=
     ```
 5. Setup your GitHub profile settings to show in header section.
-    ```sh
+   `sh
     name=       # Your Name
     bio=        # Your Job Description
     location=   # Where You're based in
     company=    # Where you work at (optional)
-    ```
-> If you like to use a company logo instead of text, you can put a company-logo.png under the assets folder which will be automatically rendered.
+    `
+    > If you like to use a company logo instead of text, you can put a company-logo.png under the assets folder which will be automatically rendered.
 
 <br>
 <!-- USAGE /////////////////////////////////////////////////////////////// -->

@@ -9,7 +9,7 @@
 <!-- HEADER ///////////////////////////////////////////////////////////// -->
 
 
-# CEYHAN I/O Landing Page
+# ceyhan.cloud Landing Page
 
 This is a personal landing page which is served at [ceyhan.io](https://www.ceyhan.io/).
 It contains a short personal introduction and list of projects i developed on GitHub. All data is dynamically fetched from GitHub REST API.

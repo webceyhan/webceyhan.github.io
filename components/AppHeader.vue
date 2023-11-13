@@ -46,7 +46,7 @@ const titles = computed(() => profile.value?.bio.split(","));
               working at
               <img
                 v-if="showLogo"
-                class="w-36 h-auto inline-block"
+                class="w-40 h-auto inline-block rounded-md"
                 src="/img/company-logo.png"
                 @error="showLogo = false"
               />

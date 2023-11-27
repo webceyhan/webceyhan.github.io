@@ -22,7 +22,7 @@
   "homepage": "https://github.com/webceyhan/webceyhan.github.io#readme",
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxtjs/tailwindcss": "^6.9.4",
+    "@nuxtjs/tailwindcss": "^6.10.1",
     "@pinia/nuxt": "^0.5.1",
     "@types/node": "^20.9.0",
     "bootstrap-icons": "^1.11.1",

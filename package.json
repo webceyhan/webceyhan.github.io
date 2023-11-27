@@ -24,7 +24,7 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.9.4",
     "@pinia/nuxt": "^0.5.1",
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.10.0",
     "bootstrap-icons": "^1.11.1",
     "daisyui": "^4.0.3",
     "nuxt": "^3.8.1",

@@ -1,5 +1,5 @@
 import { CATEGORIES } from '../constants/topic';
-import { Repo, Topic } from '../types/repo';
+import type { Repo, Topic } from '../types/repo';
 
 export default defineEventHandler(async (event) => {
     // try to get cached data
@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     if (cache.value) return cache.value;
 
     // fetch fresh data
-    const repos = await $fetch('/api/repos');
+    const repos = await $fetch<Repo[]>('/api/repos');
     const topics = collectTopics(repos);
 
     // save fresh data to cache

@@ -1,5 +1,5 @@
 import { LINKS } from '../constants/social';
-import { SocialLink } from '../types/social';
+import type { SocialLink } from '../types/social';
 
 export default defineEventHandler((event) => {
     return LINKS.filter(havingId).map(normalizeUrl);

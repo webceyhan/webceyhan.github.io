@@ -1,5 +1,5 @@
 import { API_USERNAME } from '../constants/github';
-import { Profile } from '../types/profile';
+import type { Profile } from '../types/profile';
 
 export default defineEventHandler(async (event) => {
     // try to get cached data

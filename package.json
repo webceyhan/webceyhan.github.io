@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "mock": "node ./server/mocker.js"
+    "cache": "bun ./server/utils/cache-builder"
   },
   "author": "Evren Ceyhan",
   "license": "MIT",
@@ -26,6 +26,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@types/node": "^20.9.0",
     "bootstrap-icons": "^1.11.1",
+    "bun-types": "^1.0.15",
     "daisyui": "^4.0.3",
     "nuxt": "^3.8.2",
     "pinia": "^2.1.7",

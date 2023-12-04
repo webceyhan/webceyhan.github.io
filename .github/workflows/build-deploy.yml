@@ -10,7 +10,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1        
+
+      - name: Install and Build
         env:
           # NUXT_APP_BASE_URL: '/webceyhan.github.io/'
           GITHUB_API_TOKEN: ${{ secrets.API_TOKEN }}
@@ -22,8 +25,8 @@ jobs:
           USER_TWITTER: ${{ vars.USER_TWITTER }}
           USER_INSTAGRAM: ${{ vars.USER_INSTAGRAM }}
         run: |
-          npm ci
-          npm run generate
+          bun install
+          bun run generate
           rm -f .output/public/200.html
 
       - name: Deploy

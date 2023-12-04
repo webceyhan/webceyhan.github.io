@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     if (cache.value) return cache.value;
 
     // fetch fresh data
-    const repos = await $fetch('/api/repos');
+    const repos = await $fetch<Repo[]>('/api/repos');
     const languages = collectLanguages(repos);
 
     // save fresh data to cache

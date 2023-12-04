@@ -1,4 +1,5 @@
 import { existsSync, mkdirSync, rmSync } from 'fs';
+import { API_HEADERS, API_URL, API_USERNAME } from '../constants/github';
 
 /**
  * This is a server side script to cache data.
@@ -7,10 +8,6 @@ import { existsSync, mkdirSync, rmSync } from 'fs';
  * Github has a rate limit of 60 requests per hour for unauthenticated requests,
  * so we need to use a personal access token to increase the limit to 5000 requests per hour.
  */
-
-const API_URL = 'https://api.github.com';
-const API_TOKEN = process.env.GITHUB_API_TOKEN;
-const API_USERNAME = process.env.GITHUB_API_USERNAME;
 
 const DIR = import.meta.dir;
 const CACHE_DIR = `${DIR}/../cache`;
@@ -24,11 +21,7 @@ async function fetchApi<T>(path: string, query: any = {}): Promise<T> {
         url.searchParams.append(key, value as any);
     });
 
-    const response = await fetch(url, {
-        headers: { Authorization: `Bearer ${API_TOKEN}` },
-    });
-
-    return response.json() as Promise<T>;
+    return (await fetch(url, { headers: API_HEADERS })).json() as any;
 }
 
 function writeToCacheFile(path: string, data: any): void {

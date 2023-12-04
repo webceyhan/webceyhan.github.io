@@ -1,4 +1,4 @@
-import { Language, Repo } from '../types/repo';
+import type { Language, Repo } from '../types/repo';
 
 export default defineEventHandler(async (event) => {
     // try to get cached data

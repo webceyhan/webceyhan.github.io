@@ -1,5 +1,5 @@
 import { CATEGORIES } from '../constants/topic';
-import { Repo, Topic } from '../types/repo';
+import type { Repo, Topic } from '../types/repo';
 
 export default defineEventHandler(async (event) => {
     // try to get cached data

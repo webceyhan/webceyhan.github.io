@@ -1,7 +1,9 @@
 <script setup lang="ts">
-defineProps<{
+interface Props {
   url: string;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

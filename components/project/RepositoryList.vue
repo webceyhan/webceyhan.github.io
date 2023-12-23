@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { Repo } from "~/server/types/repo";
 
-defineProps<{
+interface Props {
   repos: Repo[];
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

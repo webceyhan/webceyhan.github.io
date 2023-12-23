@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { AccordionInjection } from "~/types/ui";
 
-const props = defineProps<{
+interface Props {
   title: string;
   open?: boolean;
-}>();
+}
+
+const props = defineProps<Props>();
 
 const open = ref(props.open);
 

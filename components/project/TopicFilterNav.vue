@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { Topic } from "~/server/types/repo";
 
-const emit = defineEmits(["update:modelValue"]);
-
-const props = defineProps<{
+interface Props {
   modelValue: string | null;
   topics: Topic[];
-}>();
+}
+
+const emit = defineEmits(["update:modelValue"]);
+
+const props = defineProps<Props>();
 
 const onToggle = (topic: string) => {
   const active = props.modelValue === topic;

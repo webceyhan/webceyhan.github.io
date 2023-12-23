@@ -3,9 +3,11 @@
 import Link from "@/components/ui/Link.vue";
 import type { SocialLink } from "~/server/types/social";
 
-defineProps<{
+interface Props {
   links: SocialLink[];
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

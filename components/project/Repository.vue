@@ -2,9 +2,11 @@
 import Link from "@/components/ui/Link.vue";
 import type { Repo } from "~/server/types/repo";
 
-defineProps<{
+interface Props {
   repo: Repo;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

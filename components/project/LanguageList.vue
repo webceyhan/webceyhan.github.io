@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { Language } from "~/server/types/repo";
 
-defineProps<{
+interface Props {
   languages: Language[];
-}>();
+}
+
+defineProps<Props>();
 
 // filter significant languages that has rate >= 1
 const filterSignificant = (languages: Language[]) => {

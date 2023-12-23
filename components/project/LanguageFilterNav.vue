@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { Language } from "~/server/types/repo";
 
+interface Props {
+  modelValue: string | null;
+  languages: Language[];
+}
+
 const emit = defineEmits(["update:modelValue"]);
 
-const props = defineProps<{
-  modelValue: string | null;
-  languages:  Language[];
-}>();
+const props = defineProps<Props>();
 
 const onToggle = (name: string) => {
   const active = props.modelValue === name;

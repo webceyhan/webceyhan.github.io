@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import type { Variant } from "~/types/ui";
 
-defineEmits(["click"]);
-
-defineProps<{
+interface Props {
   label?: string;
   variant?: Variant;
   outline?: boolean;
@@ -12,7 +10,11 @@ defineProps<{
   small?: boolean;
   tiny?: boolean;
   micro?: boolean;
-}>();
+}
+
+defineEmits(["click"]);
+
+defineProps<Props>();
 </script>
 
 <template>

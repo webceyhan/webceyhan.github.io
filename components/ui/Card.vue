@@ -1,10 +1,12 @@
 <script setup lang="ts">
-defineProps<{
+interface Props {
   title?: string;
   imageAside?: boolean;
   imageOverlay?: boolean;
   compact?: boolean;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

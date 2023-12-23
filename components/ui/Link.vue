@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { Variant } from "~/types/ui";
 
-defineProps<{
+interface Props {
   label?: string;
   variant?: Variant;
   active?: boolean;
   hover?: boolean;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

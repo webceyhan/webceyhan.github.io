@@ -1,10 +1,12 @@
 <script setup lang="ts">
-defineProps<{
+interface Props {
   label?: string;
   value?: string | number;
   desc?: string;
   icon?: string;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

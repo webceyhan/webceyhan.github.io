@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{
+interface Props {
   spinner?: boolean;
   dots?: boolean;
   ring?: boolean;
@@ -9,7 +9,9 @@ defineProps<{
   small?: boolean;
   // medium: boolean
   large?: boolean;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

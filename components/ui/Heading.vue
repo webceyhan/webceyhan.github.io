@@ -1,9 +1,11 @@
 <script setup lang="ts">
-defineProps<{
+interface Props {
   large?: boolean;
   //   medium: boolean; // default
   small?: boolean;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

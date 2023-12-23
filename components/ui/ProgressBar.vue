@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { Item } from "~/types/ui";
 
-defineProps<{
+interface Props {
   items: Item[];
   small?: boolean;
   //   medium: boolean; // default
   large?: boolean;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <!-- AUTOMATION BADGES -->
 
 [![CodeQL](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/github-code-scanning/codeql)
-[![Build and Deploy](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/build-deploy.yml)
+[![Build and Deploy](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/webceyhan/webceyhan.github.io/actions/workflows/deploy.yml)
 
 <!-- LOGO (OPTIONAL) -->
 
@@ -26,7 +26,7 @@ Feel free to use it as your own landing page if you like.
 
 ## Requirements
 
-You need to install the [Node.js](https://nodejs.dev/) and `npm` package manager first.
+You need to install the [Bun](https://bun.sh/) first.
 
 > Recommended IDE:
 > [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
@@ -44,9 +44,9 @@ You need to install the [Node.js](https://nodejs.dev/) and `npm` package manager
     ```sh
     cd webceyhan.github.io
     ```
-3. Install NPM packages.
+3. Install packages.
     ```sh
-    npm install
+    bun install
     ```
 4. Set your social link handles in .env file.
     ```sh
@@ -74,9 +74,9 @@ You need to install the [Node.js](https://nodejs.dev/) and `npm` package manager
 You can use following commands to do various task with the project.
 
 ```sh
-npm run dev             # start development server
-npm run build           # build for production
-npm run preview         # preview built application
+bun run dev             # start development server
+bun run build           # build for production
+bun run preview         # preview built application
 ```
 
 > Take a look at the other scripts in [`package.json`](./package.json)
@@ -90,7 +90,7 @@ npm run preview         # preview built application
 Start the development server to watch changes while you code.
 
 ```sh
-npm run dev
+bun run dev
 ```
 
 <br>
@@ -101,13 +101,13 @@ npm run dev
 Build the application for production.
 
 ```sh
-npm run build
+bun run build
 ```
 
 You can also preview the application after building it.
 
 ```sh
-npm run preview
+bun run preview
 ```
 
 <br>
@@ -117,9 +117,9 @@ npm run preview
 
 A GitHub Action will automatically deploy the project to GitHub Pages on every push.
 
-The workflow will build the project using npm and output the result to the `dist` folder which will be then pushed to the `gh-pages` branch.
+The workflow will build the project using bun and output the result to the `dist` folder which will be then pushed to the `gh-pages` branch.
 
-> See the details in [.github/workflows/build-and-deploy.yml](./.github/workflows/build-and-deploy.yml)
+> See the details in [.github/workflows/deploy.yml](./.github/workflows/deploy.yml)
 
 <br>
 <!-- REFERENCES ////////////////////////////////////////////////////////// -->
